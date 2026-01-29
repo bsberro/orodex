@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>ORODEX — Precious Metals Trading Platform</title>
 
-<style> :root{ --bg:#fafaf8; --card:#ffffff; --ink:#1a1a1a; --muted:#808080; --line:#e5e7eb; } *{box-sizing:border-box} body{margin:0; font-family:system-ui,-apple-system,'Segoe UI',sans-serif; color:var(--ink); background:var(--bg);} .wrap{max-width:1000px; margin:0 auto; padding:40px 20px;} .topbar{padding:12px 22px 12px; border-bottom:1px solid var(--line);} .brand{display:flex; gap:16px; align-items:baseline; justify-content:flex-end;} .logo .odeon{font-weight:300; letter-spacing:3px; font-size:18px;} .logo .collection{font-weight:400; letter-spacing:.3px; font-size:10px; color:var(--muted); margin-top:2px;} .meta{font-size:11px; color:var(--muted);} .tabs{display:flex; gap:24px; padding:24px 0 0 0; margin:0; border-top:1px solid var(--line);} .tabbtn{appearance:none; border:none; background:transparent; color:var(--muted); padding:0; font-size:12px; font-weight:500; cursor:pointer; transition:color 0.2s; text-transform:uppercase; letter-spacing:0.5px;} .tabbtn:hover{color:var(--ink);} .tabbtn.active{color:var(--ink); border-bottom:2px solid var(--ink); padding-bottom:24px; margin-bottom:-24px;} .tabhint{display:none;} .body{padding:40px 0;} .panel{border:none; padding:0;} .panel h2{font-size:12px; font-weight:500; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin:0 0 24px;} .grid{display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));} label{font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:6px; display:block;} input,select,textarea{padding:10px 12px; border:1px solid var(--line); border-radius:4px; font-size:12px; transition:all 0.2s;} input:focus,select:focus,textarea:focus{outline:none; border-color:var(--muted); box-shadow:0 0 0 2px rgba(128,128,128,.1);} .result{border:1px solid var(--line); padding:16px; border-radius:4px; background:#fff;} .sub{font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:8px;} .value{font-size:28px; font-weight:300; color:var(--ink);} .tiny{font-size:10px; color:var(--muted); margin-top:4px;} .btn{padding:10px 14px; border:1px solid var(--ink); background:var(--ink); color:#fff; border-radius:4px; font-size:11px; font-weight:500; cursor:pointer; text-transform:uppercase; letter-spacing:0.5px; transition:all 0.2s;} .btn:hover{background:rgba(26,26,26,.9);} .btn.gold{border-color:var(--muted); background:transparent; color:var(--muted);} .btn.gold:hover{background:var(--muted); color:#fff;} table{font-size:11px;} th{font-weight:500; text-transform:uppercase; letter-spacing:0.5px; color:var(--muted);} *{box-sizing:border-box} body{margin:0; font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','SF Pro Display',Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif; color:var(--ink); background:var(--bg);} .wrap{max-width:980px; margin:0 auto; padding:26px 18px 22px;} .card{background:var(--card); border:1px solid var(--line); border-radius:16px; padding:16px; box-shadow:0 8px 24px rgba(0,0,0,.06);} .topbar{ padding:22px 22px 14px; border-bottom:1px solid var(--line); background:linear-gradient(180deg, rgba(15,42,34,.045), transparent); border-bottom:1px solid var(--line); padding-bottom:12px;} .brand{display:flex; align-items:flex-end; justify-content:space-between; gap:14px; flex-wrap:wrap;} .logo{display:flex; flex-direction:column; gap:2px;} .logo .odeon{font-weight:800; letter-spacing:3.5px; font-size:22px; opacity:.75; text-transform:uppercase;} .logo .collection{font-weight:650; letter-spacing:.4px; font-size:10px; color:var(--muted); text-transform:none; opacity:.75;} .meta{text-align:right; font-size:12px; color:var(--muted); line-height:1.45;} .meta b{color:var(--ink); font-weight:900;} @media (max-width:920px){ .meta{text-align:left} } .tabs{display:flex; gap:10px; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:4px; margin:14px 0 14px;} .tabbtn{appearance:none; border:1px solid var(--line); background:rgba(255,255,255,.7); color:var(--ink); padding:9px 12px; border-radius:999px; font-size:13px; font-weight:600; white-space:nowrap; cursor:pointer; transition:transform .05s ease, background .15s ease, border-color .15s ease;} .tabbtn:hover{background:rgba(15,17,21,.03)} .tabbtn.active{background:var(--ink); color:#fff; border-color:var(--ink);} .tabhint{margin-top:8px; font-size:12px; color:var(--muted);} .body{padding:18px 22px 22px;} .panel{border:1px solid var(--line); border-radius:18px; padding:14px; background:#fff;} .panel h2{margin:0 0 10px; font-size:14px; letter-spacing:.2px; text-transform:uppercase; color:var(--muted);} .grid{display:grid; gap:12px;} @media (max-width:760px){ .grid{grid-template-columns:1fr} } label{display:block; font-size:12px; color:var(--muted); margin-bottom:6px;} input,select,button,textarea{ width:100%; padding:10px 12px; border-radius:12px; border:1px solid rgba(15,17,21,.16); font-size:14px; background:#fff; color:var(--ink); } textarea{min-height:92px; resize:vertical;} input:focus,select:focus,textarea:focus{ outline:none; border-color:rgba(176,138,60,.55); box-shadow:0 0 0 4px rgba(176,138,60,.12); } .row{display:flex; gap:10px; align-items:center;} .row > *{flex:1} .btn{appearance:none; border:1px solid var(--ink); background:var(--ink); color:#fff; padding:10px 12px; border-radius:12px; font-weight:650; font-size:13px; cursor:pointer;} .btn:hover{background:rgba(15,17,21,.065)} .btn.primary{background:rgba(15,42,34,.10); border-color:rgba(15,42,34,.22);} .btn.primary:hover{background:rgba(15,42,34,.14)} .btn.gold{background:rgba(176,138,60,.14); border-color:rgba(176,138,60,.28);} .btn.gold:hover{background:rgba(176,138,60,.20)} .divider{height:1px; background:var(--line); margin:12px 0;} .result{ margin-top:12px; border-radius:18px; border:1px solid var(--line); background: radial-gradient(900px 400px at 20% 20%, rgba(176,138,60,.10), transparent 60%), radial-gradient(900px 400px at 90% 70%, rgba(15,42,34,.09), transparent 60%), #fbfbfb; padding:14px; } .sub{font-size:12px; color:var(--muted); line-height:1.45;} .value{font-size:34px; font-weight:950; letter-spacing:-.3px; margin:6px 0 2px;} .value.sm{font-size:26px} .tiny{font-size:11px} .muted{color:var(--muted)} .hidden{display:none !important;} .req{ display:inline-flex; align-items:center; padding:6px 8px; border-radius:999px; border:1px solid rgba(176,138,60,.35); background:rgba(176,138,60,.12); font-size:11px; color:var(--ink); font-weight:900; } .sigline{ margin-top:10px; padding:10px 12px; border-radius:14px; border:1px solid var(--line); background:rgba(15,17,21,.02); font-size:12px; line-height:1.5; color:var(--ink); font-weight:750; } table{width:100%; border-collapse:collapse; font-size:13px;} th,td{padding:10px 8px; border-top:1px solid var(--line); text-align:left; vertical-align:top;} th{font-size:11px; letter-spacing:.9px; text-transform:uppercase; color:var(--muted);} .right{text-align:right} .footer{ padding:14px 22px 18px; border-top:1px solid var(--line); color:var(--muted); font-size:11px; line-height:1.45; background:linear-gradient(0deg, rgba(15,42,34,.035), transparent); } #toast{ position:fixed; bottom:14px; left:50%; transform:translateX(-50%); background:rgba(15,17,21,.92); color:#fff; padding:10px 12px; border-radius:12px; font-size:12px; display:none; } /* Print header (shown only when printing) */ #printHeader{display:none; padding:10px 0 14px; border-bottom:1px solid var(--line); margin-bottom:12px;} #printHeader .ph-title{font-weight:950; letter-spacing:2.2px; font-size:18px;} #printHeader .ph-sub{margin-top:4px; font-size:11px; color:var(--muted); line-height:1.35;} @media print{ #printHeader{display:block;} body{background:#fff} .wrap{width:100%; padding:0} .card{box-shadow:none; border:none} .tabbtn, .btn{display:none !important} #toast{display:none !important} } .contact{ margin:14px 22px 6px; font-size:12px; color:var(--muted); } .contact a{ color:var(--ink); text-decoration:none; font-weight:600; margin-left:4px; } .contact a:hover{ text-decoration:underline; } .contact .dot{ margin:0 6px; } .diag{ margin-top:6px; } .diag-toggle{ appearance:none; border:1px solid var(--line); background:rgba(255,255,255,.03); padding:5px 10px; border-radius:999px; font-size:11px; color:var(--ink); cursor:pointer; font-weight:650; } .diag-toggle:hover{ background:rgba(255,255,255,.06); } .diag-body{ margin-top:6px; padding:8px 10px; border:1px solid var(--line); border-radius:12px; background:rgba(255,255,255,.06); font-size:11px; color:var(--ink); display:none; } .diag-body.show{ display:block; } .market-line{ margin-top:6px; font-size:11px; font-weight:650; letter-spacing:.2px; } .market-line.open{ color: rgba(34,197,94,.95); } .market-line.closed{ color: rgba(239,68,68,.95); } .clock-row{ margin-top:6px; font-size:11px; color: var(--muted); display:flex; align-items:center; gap:6px; flex-wrap:wrap; } .clock{ font-variant-numeric: tabular-nums; letter-spacing:.2px; } .clock-row .sep{ opacity:.6; } .coming-soon{margin-top:10px; font-size:12px; color:var(--muted); opacity:.85;} .legal{font-size:11px; line-height:1.5; color:var(--muted); opacity:.92;} .app-footer{max-width:980px; margin:18px auto 28px; padding:0 18px;}
+<style> :root{ --bg:#fafaf8; --card:#ffffff; --ink:#1a1a1a; --muted:#808080; --line:#e5e7eb; } *{box-sizing:border-box} body{margin:0; font-family:system-ui,-apple-system,'Segoe UI',sans-serif; color:var(--ink); background:var(--bg);} .wrap{max-width:1000px; margin:0 auto; padding:40px 20px;} .topbar{padding:0 0 40px 0; border:none;} .brand{display:flex; gap:16px; align-items:baseline;} .logo .odeon{font-weight:300; letter-spacing:3px; font-size:18px;} .logo .collection{font-weight:400; letter-spacing:.3px; font-size:10px; color:var(--muted); margin-top:2px;} .meta{font-size:11px; color:var(--muted);} .tabs{display:flex; gap:24px; padding:24px 0 0 0; margin:0; border-top:1px solid var(--line);} .tabbtn{appearance:none; border:none; background:transparent; color:var(--muted); padding:0; font-size:12px; font-weight:500; cursor:pointer; transition:color 0.2s; text-transform:uppercase; letter-spacing:0.5px;} .tabbtn:hover{color:var(--ink);} .tabbtn.active{color:var(--ink); border-bottom:2px solid var(--ink); padding-bottom:24px; margin-bottom:-24px;} .tabhint{display:none;} .body{padding:40px 0;} .panel{border:none; padding:0;} .panel h2{font-size:12px; font-weight:500; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin:0 0 24px;} .grid{display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));} label{font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:6px; display:block;} input,select,textarea{padding:10px 12px; border:1px solid var(--line); border-radius:4px; font-size:12px; transition:all 0.2s;} input:focus,select:focus,textarea:focus{outline:none; border-color:var(--muted); box-shadow:0 0 0 2px rgba(128,128,128,.1);} .result{border:1px solid var(--line); padding:16px; border-radius:4px; background:#fff;} .sub{font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:8px;} .value{font-size:28px; font-weight:300; color:var(--ink);} .tiny{font-size:10px; color:var(--muted); margin-top:4px;} .btn{padding:10px 14px; border:1px solid var(--ink); background:var(--ink); color:#fff; border-radius:4px; font-size:11px; font-weight:500; cursor:pointer; text-transform:uppercase; letter-spacing:0.5px; transition:all 0.2s;} .btn:hover{background:rgba(26,26,26,.9);} .btn.gold{border-color:var(--muted); background:transparent; color:var(--muted);} .btn.gold:hover{background:var(--muted); color:#fff;} table{font-size:11px;} th{font-weight:500; text-transform:uppercase; letter-spacing:0.5px; color:var(--muted);} *{box-sizing:border-box} body{margin:0; font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','SF Pro Display',Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif; color:var(--ink); background:var(--bg);} .wrap{max-width:980px; margin:0 auto; padding:26px 18px 22px;} .card{background:var(--card); border:1px solid var(--line); border-radius:16px; padding:16px; box-shadow:0 8px 24px rgba(0,0,0,.06);} .topbar{ padding:22px 22px 14px; border-bottom:1px solid var(--line); background:linear-gradient(180deg, rgba(15,42,34,.045), transparent); border-bottom:1px solid var(--line); padding-bottom:12px;} .brand{display:flex; align-items:flex-end; justify-content:space-between; gap:14px; flex-wrap:wrap;} .logo{display:flex; flex-direction:column; gap:2px;} .logo .odeon{font-weight:800; letter-spacing:3.5px; font-size:22px; opacity:.75; text-transform:uppercase;} .logo .collection{font-weight:650; letter-spacing:.4px; font-size:10px; color:var(--muted); text-transform:none; opacity:.75;} .meta{text-align:right; font-size:12px; color:var(--muted); line-height:1.45;} .meta b{color:var(--ink); font-weight:900;} @media (max-width:920px){ .meta{text-align:left} } .tabs{display:flex; gap:10px; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:4px; margin:14px 0 14px;} .tabbtn{appearance:none; border:1px solid var(--line); background:rgba(255,255,255,.7); color:var(--ink); padding:9px 12px; border-radius:999px; font-size:13px; font-weight:600; white-space:nowrap; cursor:pointer; transition:transform .05s ease, background .15s ease, border-color .15s ease;} .tabbtn:hover{background:rgba(15,17,21,.03)} .tabbtn.active{background:var(--ink); color:#fff; border-color:var(--ink);} .tabhint{margin-top:8px; font-size:12px; color:var(--muted);} .body{padding:18px 22px 22px;} .panel{border:1px solid var(--line); border-radius:18px; padding:14px; background:#fff;} .panel h2{margin:0 0 10px; font-size:14px; letter-spacing:.2px; text-transform:uppercase; color:var(--muted);} .grid{display:grid; gap:12px;} @media (max-width:760px){ .grid{grid-template-columns:1fr} } label{display:block; font-size:12px; color:var(--muted); margin-bottom:6px;} input,select,button,textarea{ width:100%; padding:10px 12px; border-radius:12px; border:1px solid rgba(15,17,21,.16); font-size:14px; background:#fff; color:var(--ink); } textarea{min-height:92px; resize:vertical;} input:focus,select:focus,textarea:focus{ outline:none; border-color:rgba(176,138,60,.55); box-shadow:0 0 0 4px rgba(176,138,60,.12); } .row{display:flex; gap:10px; align-items:center;} .row > *{flex:1} .btn{appearance:none; border:1px solid var(--ink); background:var(--ink); color:#fff; padding:10px 12px; border-radius:12px; font-weight:650; font-size:13px; cursor:pointer;} .btn:hover{background:rgba(15,17,21,.065)} .btn.primary{background:rgba(15,42,34,.10); border-color:rgba(15,42,34,.22);} .btn.primary:hover{background:rgba(15,42,34,.14)} .btn.gold{background:rgba(176,138,60,.14); border-color:rgba(176,138,60,.28);} .btn.gold:hover{background:rgba(176,138,60,.20)} .divider{height:1px; background:var(--line); margin:12px 0;} .result{ margin-top:12px; border-radius:18px; border:1px solid var(--line); background: radial-gradient(900px 400px at 20% 20%, rgba(176,138,60,.10), transparent 60%), radial-gradient(900px 400px at 90% 70%, rgba(15,42,34,.09), transparent 60%), #fbfbfb; padding:14px; } .sub{font-size:12px; color:var(--muted); line-height:1.45;} .value{font-size:34px; font-weight:950; letter-spacing:-.3px; margin:6px 0 2px;} .value.sm{font-size:26px} .tiny{font-size:11px} .muted{color:var(--muted)} .hidden{display:none !important;} .req{ display:inline-flex; align-items:center; padding:6px 8px; border-radius:999px; border:1px solid rgba(176,138,60,.35); background:rgba(176,138,60,.12); font-size:11px; color:var(--ink); font-weight:900; } .sigline{ margin-top:10px; padding:10px 12px; border-radius:14px; border:1px solid var(--line); background:rgba(15,17,21,.02); font-size:12px; line-height:1.5; color:var(--ink); font-weight:750; } table{width:100%; border-collapse:collapse; font-size:13px;} th,td{padding:10px 8px; border-top:1px solid var(--line); text-align:left; vertical-align:top;} th{font-size:11px; letter-spacing:.9px; text-transform:uppercase; color:var(--muted);} .right{text-align:right} .footer{ padding:14px 22px 18px; border-top:1px solid var(--line); color:var(--muted); font-size:11px; line-height:1.45; background:linear-gradient(0deg, rgba(15,42,34,.035), transparent); } #toast{ position:fixed; bottom:14px; left:50%; transform:translateX(-50%); background:rgba(15,17,21,.92); color:#fff; padding:10px 12px; border-radius:12px; font-size:12px; display:none; } /* Print header (shown only when printing) */ #printHeader{display:none; padding:10px 0 14px; border-bottom:1px solid var(--line); margin-bottom:12px;} #printHeader .ph-title{font-weight:950; letter-spacing:2.2px; font-size:18px;} #printHeader .ph-sub{margin-top:4px; font-size:11px; color:var(--muted); line-height:1.35;} @media print{ #printHeader{display:block;} body{background:#fff} .wrap{width:100%; padding:0} .card{box-shadow:none; border:none} .tabbtn, .btn{display:none !important} #toast{display:none !important} } .contact{ margin:14px 22px 6px; font-size:12px; color:var(--muted); } .contact a{ color:var(--ink); text-decoration:none; font-weight:600; margin-left:4px; } .contact a:hover{ text-decoration:underline; } .contact .dot{ margin:0 6px; } .diag{ margin-top:6px; } .diag-toggle{ appearance:none; border:1px solid var(--line); background:rgba(255,255,255,.03); padding:5px 10px; border-radius:999px; font-size:11px; color:var(--ink); cursor:pointer; font-weight:650; } .diag-toggle:hover{ background:rgba(255,255,255,.06); } .diag-body{ margin-top:6px; padding:8px 10px; border:1px solid var(--line); border-radius:12px; background:rgba(255,255,255,.06); font-size:11px; color:var(--ink); display:none; } .diag-body.show{ display:block; } .market-line{ margin-top:6px; font-size:11px; font-weight:650; letter-spacing:.2px; } .market-line.open{ color: rgba(34,197,94,.95); } .market-line.closed{ color: rgba(239,68,68,.95); } .clock-row{ margin-top:6px; font-size:11px; color: var(--muted); display:flex; align-items:center; gap:6px; flex-wrap:wrap; } .clock{ font-variant-numeric: tabular-nums; letter-spacing:.2px; } .clock-row .sep{ opacity:.6; } .coming-soon{margin-top:10px; font-size:12px; color:var(--muted); opacity:.85;} .legal{font-size:11px; line-height:1.5; color:var(--muted); opacity:.92;} .app-footer{max-width:980px; margin:18px auto 28px; padding:0 18px;}
 
 /* Mobile Optimization */
 @media (max-width: 768px) {
@@ -241,10 +241,6 @@ button:not(.black) {
 .diaglog{border:1px solid var(--line); background:var(--card); border-radius:14px; padding:12px; min-height:120px; white-space:pre-wrap;}
 
 #clearDiagBtn{color:#fff !important;}
-
-/* Hide 52-week range on auction tab */
-#panel-auction .result{display:none;}
-#panel-auction .value.sm{display:none;}
 </style>
 </head>
 
@@ -256,7 +252,7 @@ button:not(.black) {
       <div class="brand">
         <div class="logo">
           <div class="odeon">ORODEX</div>
-          <div class="collection">Trade Reference</div>
+          <div class="collection">Trade Reference by Odeon</div>
         </div>
 
         <div class="meta">
@@ -322,7 +318,7 @@ button:not(.black) {
 
     <div class="body">
       <div id="printHeader">
-        <div class="ph-title" id="printTitle">ORODEX — Trade Reference</div>
+        <div class="ph-title" id="printTitle">ODEON — Trade Reference</div>
         <div class="ph-sub" id="printSub">—</div>
       </div>
       
@@ -849,7 +845,7 @@ button:not(.black) {
 
       <div class="contact">
         <span>Considering selling gold or signed pieces?</span>
-        <a href="/cdn-cgi/l/email-protection#c2a0adaca8adb7b082ada6a7adaca1adaeaea7a1b6abadaceca1adaffdb1b7a0a8a7a1b6ff92b0abb4a3b6a7e7f0f28bacb3b7abb0bb">Email Odeon</a>
+        <a href="mailto:bonjour@odeoncollection.com">Email Odeon</a>
         <span class="dot">·</span>
         <a href="https://wa.me/19174454885" target="_blank" rel="noopener">WhatsApp</a>
       </div>
@@ -1193,53 +1189,14 @@ button:not(.black) {
       marketLine.textContent = open ? "Market: OPEN (COMEX)" : "Market: CLOSED (COMEX)";
       marketLine.className = open ? "market-line open" : "market-line closed";
     }
-    // Update clock times with real weather from Open-Meteo API
-    const updateClocks = async () => {
-      const updateTime = (tz, timeEl, weatherEl) => {
+    // Update clock times (fast, no weather wait)
+    const updateClocks = () => {
+      const updateTime = (tz, timeEl) => {
         try {
           const fmt = new Intl.DateTimeFormat("en-GB", {timeZone: tz, hour: "2-digit", minute: "2-digit", hour12: false});
           if(timeEl) timeEl.textContent = fmt.format(new Date());
         } catch(e) {}
       };
-      
-      // Fetch weather for cities (lat, lon)
-      const cities = {
-        'New York': {lat: 40.7128, lon: -74.0060, el: $("weatherNY")},
-        'Paris': {lat: 48.8566, lon: 2.3522, el: $("weatherPAR")},
-        'London': {lat: 51.5074, lon: -0.1278, el: $("weatherLON")},
-        'Dubai': {lat: 25.2048, lon: 55.2708, el: $("weatherDXB")},
-        'Hong Kong': {lat: 22.3193, lon: 114.1694, el: $("weatherHK")},
-        'Tel Aviv': {lat: 32.0853, lon: 34.7818, el: $("weatherTLV")}
-      };
-      
-      for(const [city, data] of Object.entries(cities)) {
-        try {
-          const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${data.lat}&longitude=${data.lon}&current=temperature_2m,weather_code&temperature_unit=fahrenheit`, {
-            method: 'GET',
-            headers: {
-              'Accept': 'application/json',
-              'User-Agent': 'Mozilla/5.0'
-            },
-            mode: 'cors'
-          });
-          const json = await res.json();
-          const temp = Math.round(json.current.temperature_2m);
-          const code = json.current.weather_code;
-          let condition = '—';
-          if(code === 0) condition = '☀️ Clear';
-          else if(code === 1 || code === 2) condition = '⛅ Cloudy';
-          else if(code === 3) condition = '☁️ Overcast';
-          else if(code >= 45 && code <= 48) condition = '🌫️ Fog';
-          else if(code >= 51 && code <= 67) condition = '🌧️ Rain';
-          else if(code >= 71 && code <= 77) condition = '❄️ Snow';
-          else if(code === 80 || code === 81 || code === 82) condition = '⛈️ Thunder';
-          else condition = '🌤️ Fair';
-          
-          if(data.el) data.el.textContent = `${condition} ${temp}°F`;
-        } catch(e) {
-          if(data.el) data.el.textContent = '—';
-        }
-      }
       
       updateTime("America/New_York", $("timeNY"));
       updateTime("Europe/Paris", $("timePAR"));
@@ -1249,8 +1206,111 @@ button:not(.black) {
       updateTime("Asia/Jerusalem", $("timeTLV"));
     };
     
+    // Fetch weather in background (don't block page)
+    const fetchWeatherAsync = async () => {
+      const getWeather = async (lat, lon, elId) => {
+        const el = $(elId);
+        if(!el) return;
+        try {
+          const res = await fetch(`https://wttr.in/${lat},${lon}?format=j1`);
+          if(res.ok) {
+            const data = await res.json();
+            const temp = Math.round(data.current_condition[0].temp_F);
+            const desc = data.current_condition[0].weatherDesc[0].value.toLowerCase();
+            let emoji = '🌤️';
+            if(desc.includes('sunny') || desc.includes('clear')) emoji = '☀️';
+            else if(desc.includes('cloud')) emoji = '⛅';
+            else if(desc.includes('rain') || desc.includes('drizzle')) emoji = '🌧️';
+            else if(desc.includes('snow')) emoji = '❄️';
+            else if(desc.includes('fog')) emoji = '🌫️';
+            else if(desc.includes('thunder')) emoji = '⛈️';
+            el.textContent = `${emoji} ${temp}°F`;
+          }
+        } catch(e) {
+          // Silent fail - keep placeholder
+        }
+      };
+      
+      // Fetch all 6 cities in parallel
+      await Promise.all([
+        getWeather(40.7128, -74.0060, "weatherNY"),
+        getWeather(48.8566, 2.3522, "weatherPAR"),
+        getWeather(51.5074, -0.1278, "weatherLON"),
+        getWeather(25.2048, 55.2708, "weatherDXB"),
+        getWeather(22.3193, 114.1694, "weatherHK"),
+        getWeather(32.0853, 34.7818, "weatherTLV")
+      ]).catch(() => {});
+    };
+    
+    // Call immediately in background
     updateClocks();
+    fetchWeatherAsync(); // Background, doesn't block
+    
+    // Update every minute
     setInterval(updateClocks, 60000);
+    setInterval(fetchWeatherAsync, 600000); // Update weather every 10 minutes
+    
+    // Add smooth animations and interactions
+    document.addEventListener('DOMContentLoaded', () => {
+      // Fade in values when loaded
+      const values = document.querySelectorAll('.value');
+      values.forEach((el, i) => {
+        el.style.opacity = '0';
+        el.style.animation = `fadeIn 0.6s ease-out ${i * 0.1}s forwards`;
+      });
+      
+      // Hover animations on cards
+      document.querySelectorAll('.card').forEach(card => {
+        card.addEventListener('mouseenter', () => {
+          card.style.transform = 'translateY(-4px)';
+          card.style.boxShadow = '0 12px 24px rgba(0,0,0,0.1)';
+        });
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'translateY(0)';
+          card.style.boxShadow = '0 8px 24px rgba(0,0,0,.06)';
+        });
+      });
+      
+      // Animated counter for prices
+      const animateValue = (el, start, end, duration) => {
+        let startTime = null;
+        const animate = (currentTime) => {
+          if(!startTime) startTime = currentTime;
+          const progress = (currentTime - startTime) / duration;
+          if(progress < 1) {
+            el.textContent = '$' + Math.floor(start + (end - start) * progress).toLocaleString();
+            requestAnimationFrame(animate);
+          } else {
+            el.textContent = '$' + end.toLocaleString();
+          }
+        };
+        requestAnimationFrame(animate);
+      };
+      
+      // Active tab animations
+      document.querySelectorAll('.tabbtn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          btn.style.transform = 'scale(1.05)';
+          setTimeout(() => { btn.style.transform = 'scale(1)'; }, 100);
+        });
+      });
+    });
+    
+    // Add CSS animations if not present
+    if(!document.querySelector('style[data-animations]')) {
+      const style = document.createElement('style');
+      style.setAttribute('data-animations', 'true');
+      style.textContent = `
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .card { transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1); }
+        .tabbtn { transition: all 0.2s ease; }
+        .value { transition: all 0.3s ease; }
+      `;
+      document.head.appendChild(style);
+    }
   }
 
   function money(n, currency){
@@ -1301,7 +1361,7 @@ button:not(.black) {
       return;
     }
 
-    setPrintHeader("ORODEX — Trade Reference", `${currency} · Spot ${spotText} · Updated ${updated}`);
+    setPrintHeader("ODEON — Trade Reference", `${currency} · Spot ${spotText} · Updated ${updated}`);
   }
 
   // Maison expectation bands (multiples of melt), used in Signed Pieces.
