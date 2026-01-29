@@ -1,0 +1,3218 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>ORODEX — Precious Metals Trading Platform</title>
+
+<style> :root{ --bg:#fafaf8; --card:#ffffff; --ink:#1a1a1a; --muted:#808080; --line:#e5e7eb; } *{box-sizing:border-box} body{margin:0; font-family:system-ui,-apple-system,'Segoe UI',sans-serif; color:var(--ink); background:var(--bg);} .wrap{max-width:1000px; margin:0 auto; padding:40px 20px;} .topbar{padding:0 0 40px 0; border:none;} .brand{display:flex; gap:16px; align-items:baseline;} .logo .odeon{font-weight:300; letter-spacing:3px; font-size:18px;} .logo .collection{font-weight:400; letter-spacing:.3px; font-size:10px; color:var(--muted); margin-top:2px;} .meta{font-size:11px; color:var(--muted);} .tabs{display:flex; gap:24px; padding:24px 0 0 0; margin:0; border-top:1px solid var(--line);} .tabbtn{appearance:none; border:none; background:transparent; color:var(--muted); padding:0; font-size:12px; font-weight:500; cursor:pointer; transition:color 0.2s; text-transform:uppercase; letter-spacing:0.5px;} .tabbtn:hover{color:var(--ink);} .tabbtn.active{color:var(--ink); border-bottom:2px solid var(--ink); padding-bottom:24px; margin-bottom:-24px;} .tabhint{display:none;} .body{padding:40px 0;} .panel{border:none; padding:0;} .panel h2{font-size:12px; font-weight:500; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin:0 0 24px;} .grid{display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));} label{font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:6px; display:block;} input,select,textarea{padding:10px 12px; border:1px solid var(--line); border-radius:4px; font-size:12px; transition:all 0.2s;} input:focus,select:focus,textarea:focus{outline:none; border-color:var(--muted); box-shadow:0 0 0 2px rgba(128,128,128,.1);} .result{border:1px solid var(--line); padding:16px; border-radius:4px; background:#fff;} .sub{font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:8px;} .value{font-size:28px; font-weight:300; color:var(--ink);} .tiny{font-size:10px; color:var(--muted); margin-top:4px;} .btn{padding:10px 14px; border:1px solid var(--ink); background:var(--ink); color:#fff; border-radius:4px; font-size:11px; font-weight:500; cursor:pointer; text-transform:uppercase; letter-spacing:0.5px; transition:all 0.2s;} .btn:hover{background:rgba(26,26,26,.9);} .btn.gold{border-color:var(--muted); background:transparent; color:var(--muted);} .btn.gold:hover{background:var(--muted); color:#fff;} table{font-size:11px;} th{font-weight:500; text-transform:uppercase; letter-spacing:0.5px; color:var(--muted);} *{box-sizing:border-box} body{margin:0; font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','SF Pro Display',Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif; color:var(--ink); background:var(--bg);} .wrap{max-width:980px; margin:0 auto; padding:26px 18px 22px;} .card{background:var(--card); border:1px solid var(--line); border-radius:16px; padding:16px; box-shadow:0 8px 24px rgba(0,0,0,.06);} .topbar{ padding:22px 22px 14px; border-bottom:1px solid var(--line); background:linear-gradient(180deg, rgba(15,42,34,.045), transparent); border-bottom:1px solid var(--line); padding-bottom:12px;} .brand{display:flex; align-items:flex-end; justify-content:space-between; gap:14px; flex-wrap:wrap;} .logo{display:flex; flex-direction:column; gap:2px;} .logo .odeon{font-weight:800; letter-spacing:3.5px; font-size:22px; opacity:.75; text-transform:uppercase;} .logo .collection{font-weight:650; letter-spacing:.4px; font-size:10px; color:var(--muted); text-transform:none; opacity:.75;} .meta{text-align:right; font-size:12px; color:var(--muted); line-height:1.45;} .meta b{color:var(--ink); font-weight:900;} @media (max-width:920px){ .meta{text-align:left} } .tabs{display:flex; gap:10px; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:4px; margin:14px 0 14px;} .tabbtn{appearance:none; border:1px solid var(--line); background:rgba(255,255,255,.7); color:var(--ink); padding:9px 12px; border-radius:999px; font-size:13px; font-weight:600; white-space:nowrap; cursor:pointer; transition:transform .05s ease, background .15s ease, border-color .15s ease;} .tabbtn:hover{background:rgba(15,17,21,.03)} .tabbtn.active{background:var(--ink); color:#fff; border-color:var(--ink);} .tabhint{margin-top:8px; font-size:12px; color:var(--muted);} .body{padding:18px 22px 22px;} .panel{border:1px solid var(--line); border-radius:18px; padding:14px; background:#fff;} .panel h2{margin:0 0 10px; font-size:14px; letter-spacing:.2px; text-transform:uppercase; color:var(--muted);} .grid{display:grid; gap:12px;} @media (max-width:760px){ .grid{grid-template-columns:1fr} } label{display:block; font-size:12px; color:var(--muted); margin-bottom:6px;} input,select,button,textarea{ width:100%; padding:10px 12px; border-radius:12px; border:1px solid rgba(15,17,21,.16); font-size:14px; background:#fff; color:var(--ink); } textarea{min-height:92px; resize:vertical;} input:focus,select:focus,textarea:focus{ outline:none; border-color:rgba(176,138,60,.55); box-shadow:0 0 0 4px rgba(176,138,60,.12); } .row{display:flex; gap:10px; align-items:center;} .row > *{flex:1} .btn{appearance:none; border:1px solid var(--ink); background:var(--ink); color:#fff; padding:10px 12px; border-radius:12px; font-weight:650; font-size:13px; cursor:pointer;} .btn:hover{background:rgba(15,17,21,.065)} .btn.primary{background:rgba(15,42,34,.10); border-color:rgba(15,42,34,.22);} .btn.primary:hover{background:rgba(15,42,34,.14)} .btn.gold{background:rgba(176,138,60,.14); border-color:rgba(176,138,60,.28);} .btn.gold:hover{background:rgba(176,138,60,.20)} .divider{height:1px; background:var(--line); margin:12px 0;} .result{ margin-top:12px; border-radius:18px; border:1px solid var(--line); background: radial-gradient(900px 400px at 20% 20%, rgba(176,138,60,.10), transparent 60%), radial-gradient(900px 400px at 90% 70%, rgba(15,42,34,.09), transparent 60%), #fbfbfb; padding:14px; } .sub{font-size:12px; color:var(--muted); line-height:1.45;} .value{font-size:34px; font-weight:950; letter-spacing:-.3px; margin:6px 0 2px;} .value.sm{font-size:26px} .tiny{font-size:11px} .muted{color:var(--muted)} .hidden{display:none !important;} .req{ display:inline-flex; align-items:center; padding:6px 8px; border-radius:999px; border:1px solid rgba(176,138,60,.35); background:rgba(176,138,60,.12); font-size:11px; color:var(--ink); font-weight:900; } .sigline{ margin-top:10px; padding:10px 12px; border-radius:14px; border:1px solid var(--line); background:rgba(15,17,21,.02); font-size:12px; line-height:1.5; color:var(--ink); font-weight:750; } table{width:100%; border-collapse:collapse; font-size:13px;} th,td{padding:10px 8px; border-top:1px solid var(--line); text-align:left; vertical-align:top;} th{font-size:11px; letter-spacing:.9px; text-transform:uppercase; color:var(--muted);} .right{text-align:right} .footer{ padding:14px 22px 18px; border-top:1px solid var(--line); color:var(--muted); font-size:11px; line-height:1.45; background:linear-gradient(0deg, rgba(15,42,34,.035), transparent); } #toast{ position:fixed; bottom:14px; left:50%; transform:translateX(-50%); background:rgba(15,17,21,.92); color:#fff; padding:10px 12px; border-radius:12px; font-size:12px; display:none; } /* Print header (shown only when printing) */ #printHeader{display:none; padding:10px 0 14px; border-bottom:1px solid var(--line); margin-bottom:12px;} #printHeader .ph-title{font-weight:950; letter-spacing:2.2px; font-size:18px;} #printHeader .ph-sub{margin-top:4px; font-size:11px; color:var(--muted); line-height:1.35;} @media print{ #printHeader{display:block;} body{background:#fff} .wrap{width:100%; padding:0} .card{box-shadow:none; border:none} .tabbtn, .btn{display:none !important} #toast{display:none !important} } .contact{ margin:14px 22px 6px; font-size:12px; color:var(--muted); } .contact a{ color:var(--ink); text-decoration:none; font-weight:600; margin-left:4px; } .contact a:hover{ text-decoration:underline; } .contact .dot{ margin:0 6px; } .diag{ margin-top:6px; } .diag-toggle{ appearance:none; border:1px solid var(--line); background:rgba(255,255,255,.03); padding:5px 10px; border-radius:999px; font-size:11px; color:var(--ink); cursor:pointer; font-weight:650; } .diag-toggle:hover{ background:rgba(255,255,255,.06); } .diag-body{ margin-top:6px; padding:8px 10px; border:1px solid var(--line); border-radius:12px; background:rgba(255,255,255,.06); font-size:11px; color:var(--ink); display:none; } .diag-body.show{ display:block; } .market-line{ margin-top:6px; font-size:11px; font-weight:650; letter-spacing:.2px; } .market-line.open{ color: rgba(34,197,94,.95); } .market-line.closed{ color: rgba(239,68,68,.95); } .clock-row{ margin-top:6px; font-size:11px; color: var(--muted); display:flex; align-items:center; gap:6px; flex-wrap:wrap; } .clock{ font-variant-numeric: tabular-nums; letter-spacing:.2px; } .clock-row .sep{ opacity:.6; } .coming-soon{margin-top:10px; font-size:12px; color:var(--muted); opacity:.85;} .legal{font-size:11px; line-height:1.5; color:var(--muted); opacity:.92;} .app-footer{max-width:980px; margin:18px auto 28px; padding:0 18px;}
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+  .wrap{padding:16px 12px;}
+  .topbar{padding:0 0 24px 0;}
+  .brand{flex-direction:column; gap:8px;}
+  .logo .odeon{font-size:16px;}
+  .meta{text-align:left; font-size:10px;}
+  .tabs{gap:12px; padding:16px 0 0 0;}
+  .tabbtn{font-size:11px; padding:0;}
+  .tabbtn.active{padding-bottom:16px; margin-bottom:-16px;}
+  .body{padding:20px 0;}
+  .grid{gap:12px;}
+  .grid.cols-2, .grid.cols-3{grid-template-columns:1fr;}
+  label{font-size:10px;}
+  input, select, textarea{padding:9px 10px; font-size:13px;}
+  .result{padding:12px;}
+  .value{font-size:24px;}
+  .tiny{font-size:10px;}
+  .btn{padding:8px 10px; font-size:10px;}
+  .sub{font-size:10px;}
+  .panel h2{font-size:11px; margin:0 0 16px;}
+}
+
+@media (max-width: 480px) {
+  .wrap{padding:12px 10px;}
+  .topbar{padding:0 0 20px 0;}
+  .logo .odeon{font-size:14px; letter-spacing:2px;}
+  .logo .collection{font-size:8px;}
+  .meta{font-size:9px;}
+  .tabs{gap:8px; padding:12px 0 0 0;}
+  .tabbtn{font-size:10px; padding:0;}
+  .tabbtn.active{padding-bottom:12px; margin-bottom:-12px;}
+  .body{padding:16px 0;}
+  .grid{gap:10px;}
+  input, select, textarea{padding:8px 9px; font-size:12px;}
+  .value{font-size:20px; font-weight:400;}
+  .btn{padding:7px 9px; font-size:9px;}
+  .result{padding:10px;}
+  .sub{font-size:9px;}
+  .tiny{font-size:9px;}
+  .clock-row{flex-wrap:wrap; gap:4px;}
+}
+
+
+
+header{display:flex; align-items:flex-end; justify-content:space-between; gap:16px; margin-bottom:14px;}
+
+h1{font-size:22px; letter-spacing:-.2px; margin:0; line-height:1.15;}
+
+.subtitle{margin:6px 0 0; font-size:12px; color:var(--muted); opacity:.9;}
+
+.tabbtn:active{transform:translateY(1px);}
+
+.tabs::-webkit-scrollbar{height:6px;}
+
+.tabs::-webkit-scrollbar-thumb{background:rgba(0,0,0,.12); border-radius:999px;}
+
+.grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr));}
+.grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr));}
+@media (max-width:760px){.grid.cols-2,.grid.cols-3{grid-template-columns:1fr;}}
+
+input, select{width:100%; box-sizing:border-box; border:1px solid var(--line); background:#fff; color:var(--ink); padding:10px 11px; border-radius:12px; font-size:14px; line-height:1.2;}
+
+input:focus, select:focus{outline:none; border-color:rgba(17,17,17,.55); box-shadow:0 0 0 4px rgba(17,17,17,.08);}
+
+.btn.secondary{background:#fff; color:var(--ink); border-color:var(--line);}
+
+.kpi{display:flex; flex-wrap:wrap; gap:10px; margin-top:12px;}
+.kpi .pill{border:1px solid var(--line); background:#fff; border-radius:999px; padding:8px 10px; font-size:12px;}
+
+.footer-divider{height:1px; background:var(--line); margin:18px 0 14px;}
+
+/* Metals tab: compact pro layout */
+@media (min-width: 920px){
+  #panel-gold .grid:first-of-type{
+    grid-template-columns: 1.1fr 1.1fr 1.7fr 1.2fr 0.9fr;
+    gap:10px;
+    align-items:end;
+  }
+  #panel-gold .grid:nth-of-type(2){
+    grid-template-columns: 0.9fr 1.2fr 1.3fr 1fr 1.6fr;
+    gap:10px;
+    align-items:end;
+  }
+  #panel-gold #customWrap{grid-column:4;}
+  #panel-gold .grid:nth-of-type(2) .muted.tiny{
+    grid-column: 1 / -1;
+    margin-top: 2px;
+  }
+}
+#panel-gold .divider{margin:12px 0;}
+#panel-gold .result{padding:14px; border-radius:14px;}
+#panel-gold .result .value{font-size:28px;}
+#panel-gold .result .value.sm{font-size:18px;}
+
+/* Metals tab: keep Unit + Purity adjacent */
+@media (min-width: 920px){
+  #panel-gold .grid:nth-of-type(2){
+    grid-template-columns: 0.9fr 0.9fr 1.1fr 1.2fr 1.7fr;
+  }
+  #panel-gold #unit{grid-column:2;}
+  #panel-gold #purity{grid-column:3;}
+  #panel-gold #customWrap{grid-column:4;}
+}
+
+/* Metals tab: keep Weight + Unit + Purity grouped */
+@media (min-width: 920px){
+  #panel-gold .grid:nth-of-type(2){
+    grid-template-columns: 1.1fr 0.8fr 0.9fr 1.2fr 1.8fr;
+  }
+  #panel-gold #weight{grid-column:1;}
+  #panel-gold #unit{grid-column:2;}
+  #panel-gold #purity{grid-column:3;}
+  #panel-gold #customWrap{grid-column:4;}
+}
+
+/* Force Weight + Unit + Purity on ONE line */
+@media (min-width: 700px){
+  #panel-gold .grid:nth-of-type(2){
+    grid-template-columns: 1.2fr 0.8fr 0.9fr auto;
+    align-items:end;
+  }
+  #panel-gold #weight{grid-column:1;}
+  #panel-gold #unit{grid-column:2;}
+  #panel-gold #purity{grid-column:3;}
+  #panel-gold #customWrap{grid-column:4;}
+}
+
+/* HARD FIX: Weight + Unit + Purity on the SAME line */
+@media (min-width: 700px){
+  #panel-gold .specs-row{
+    display:flex;
+    gap:10px;
+    align-items:flex-end;
+  }
+  #panel-gold .specs-row > div{
+    flex:0 0 auto;
+  }
+  #panel-gold .specs-row .weight{flex:1 1 140px;}
+  #panel-gold .specs-row .unit{flex:0 0 90px;}
+  #panel-gold .specs-row .purity{flex:0 0 110px;}
+  #panel-gold .specs-row .custom{flex:0 0 140px;}
+}
+
+/* Buttons: force black text for visibility */
+button, .btn, .tabbtn {
+  color: #000 !important;
+}
+.tabbtn.active {
+  background: #fff !important;
+  border-color: #000 !important;
+  color: #000 !important;
+}
+
+/* Button contrast rule */
+button, .btn, .tabbtn {
+  color: #000;
+}
+button.black, .btn.black, .tabbtn.black {
+  background:#000 !important;
+  border-color:#000 !important;
+  color:#fff !important;
+}
+.tabbtn.active {
+  background:#000 !important;
+  border-color:#000 !important;
+  color:#fff !important;
+}
+
+/* Lock & Print/PDF buttons: black background, white text */
+#lockBtn, #printBtn, #pdfBtn,
+button.lock, button.print, button.pdf {
+  background:#000 !important;
+  border-color:#000 !important;
+  color:#fff !important;
+}
+
+#printAuctionBtn, #clearAuctionBtn{background:#000 !important; border-color:#000 !important; color:#fff !important;}
+
+#auctionBreakdown{white-space:pre-wrap;}
+
+
+/* Auction: make Copy + Share buttons white on black */
+#copyAuctionBtn, #shareAuctionBtn{
+  background:#000 !important;
+  border-color:#000 !important;
+  color:#fff !important;
+}
+
+
+/* Compact triple control row */
+.row > select{min-width:120px}
+@media (max-width:760px){.row{flex-direction:column; align-items:stretch} .row > *{width:100%}}
+
+
+/* === Button color safety rule === */
+.btn.black,
+button.black,
+.btn.black *,
+button.black * {
+  color: #fff !important;
+}
+
+.btn:not(.black),
+button:not(.black) {
+  color: #000;
+}
+
+
+
+/* Force white text on specific dark action buttons (if they don't carry .black consistently) */
+#printBatchBtn, #clearBatchBtn,
+#printSignedBtn, #clearSignedBtn,
+#printAuctionBtn, #clearAuctionBtn,
+#lockBtn, #printBtn, #pdfBtn {
+  color:#fff !important;
+}
+
+
+.btn.tiny.black{background:#000 !important; border-color:#000 !important; color:#fff !important;}
+
+/* Session bar */
+.sessionbar{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:10px 12px; border:1px solid var(--line); background:var(--card); border-radius:14px; margin-top:12px;}
+.sessiongroup{display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+.sessiongroup.right{justify-content:flex-end;}
+.sessionlabel{font-size:12px; font-weight:650; color:var(--muted);}
+.sessionselect{height:38px; padding:8px 10px; border-radius:12px; border:1px solid var(--line); background:#fff; font-weight:650;}
+@media (max-width:760px){.sessionbar{flex-direction:column; align-items:stretch;} .sessiongroup.right{justify-content:flex-start;}}
+
+#copyBatchTableBtn,#downloadBatchCsvBtn,#copyGemBtn,#clearGemBtn{color:#fff !important;}
+
+.diaglog{border:1px solid var(--line); background:var(--card); border-radius:14px; padding:12px; min-height:120px; white-space:pre-wrap;}
+
+#clearDiagBtn{color:#fff !important;}
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+  <div class="card">
+    <div class="topbar">
+      <div class="brand">
+        <div class="logo">
+          <div class="odeon">ORODEX</div>
+          <div class="collection">Trade Reference</div>
+        </div>
+
+        <div class="meta">
+          <div><b id="spotLine">Spot: —</b></div>
+          <div class="muted tiny" id="spotRefLine">Spot reference (LBMA/COMEX aggregate)</div>
+          <div class="diag">
+            <div class="row" style="align-items:center; gap:10px; margin-top:2px;">
+              <button class="diag-toggle" id="diagToggle" type="button">Diagnostics</button>
+              <div class="tiny muted" id="diagPreview">Spot: — · FX: —</div>
+            </div>
+            <div class="diag-body" id="diagBody" aria-hidden="true">
+              <div><span class="muted">Spot feed:</span> <span id="diagSpot">—</span></div>
+              <div style="margin-top:4px;"><span class="muted">FX feed:</span> <span id="diagFX">—</span></div>
+              <div style="margin-top:4px;"><span class="muted">Last error:</span> <span id="diagErr">—</span></div>
+            </div>
+          </div>
+          <div class="muted" id="fxLine">FX: —</div>
+          <div>Refreshed: <span id="timeLine">—</span> <span class="muted">(local)</span></div>
+          <div class="market-line" id="marketLine">Market: —</div>
+          <div style="margin-top:24px; display:grid; grid-template-columns:repeat(auto-fit,minmax(80px,1fr)); gap:16px;">
+            <div style="text-align:center;">
+              <div style="font-size:14px; font-weight:700; color:var(--ink);">NY</div>
+              <div style="font-size:18px; font-weight:700; color:var(--muted); margin-top:4px;" id="timeNY">—</div>
+              <div style="font-size:12px; color:var(--muted); margin-top:4px;" id="weatherNY">—</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="font-size:14px; font-weight:700; color:var(--ink);">Paris</div>
+              <div style="font-size:18px; font-weight:700; color:var(--muted); margin-top:4px;" id="timePAR">—</div>
+              <div style="font-size:12px; color:var(--muted); margin-top:4px;" id="weatherPAR">—</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="font-size:14px; font-weight:700; color:var(--ink);">London</div>
+              <div style="font-size:18px; font-weight:700; color:var(--muted); margin-top:4px;" id="timeLON">—</div>
+              <div style="font-size:12px; color:var(--muted); margin-top:4px;" id="weatherLON">—</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="font-size:14px; font-weight:700; color:var(--ink);">Dubai</div>
+              <div style="font-size:18px; font-weight:700; color:var(--muted); margin-top:4px;" id="timeDXB">—</div>
+              <div style="font-size:12px; color:var(--muted); margin-top:4px;" id="weatherDXB">—</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="font-size:14px; font-weight:700; color:var(--ink);">Hong Kong</div>
+              <div style="font-size:18px; font-weight:700; color:var(--muted); margin-top:4px;" id="timeHK">—</div>
+              <div style="font-size:12px; color:var(--muted); margin-top:4px;" id="weatherHK">—</div>
+            </div>
+            <div style="text-align:center;">
+              <div style="font-size:14px; font-weight:700; color:var(--ink);">Tel Aviv</div>
+              <div style="font-size:18px; font-weight:700; color:var(--muted); margin-top:4px;" id="timeTLV">—</div>
+              <div style="font-size:12px; color:var(--muted); margin-top:4px;" id="weatherTLV">—</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tabs" role="tablist" aria-label="Tools">
+        <button onclick="window.activateTab && window.activateTab('gold')" class="tabbtn active" data-tab="gold" role="tab" aria-selected="true">Metals</button>
+        <button onclick="window.activateTab && window.activateTab('signed')" class="tabbtn" data-tab="signed" role="tab" aria-selected="false">Signed</button>
+        <button onclick="window.activateTab && window.activateTab('batch')" class="tabbtn" data-tab="batch" role="tab" aria-selected="false">Batch</button>
+        <button onclick="window.activateTab && window.activateTab('auction')" class="tabbtn" data-tab="auction" role="tab" aria-selected="false">Auction</button>
+      </div>
+      <div class="tabhint" id="tabHint">Live spot + FX, buyback, and one-item melt value.</div>
+    </div>
+
+    <div class="body">
+      <div id="printHeader">
+        <div class="ph-title" id="printTitle">ORODEX — Trade Reference</div>
+        <div class="ph-sub" id="printSub">—</div>
+      </div>
+      
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:16px; margin-bottom:40px;">
+        <div style="border:1px solid #3b82f6; padding:12px; border-radius:4px; text-align:center;">
+          <div style="font-size:10px; color:#3b82f6; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px;">52-Week Low</div>
+          <div style="font-size:20px; font-weight:300; color:#3b82f6;" id="topLow">$2,063</div>
+        </div>
+        <div style="border:1px solid #10b981; padding:12px; border-radius:4px; text-align:center;">
+          <div style="font-size:10px; color:#10b981; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px;">52-Week High</div>
+          <div style="font-size:20px; font-weight:300; color:#10b981;" id="topHigh">$2,765</div>
+        </div>
+      </div>
+
+      <!-- TABS -->
+      <section id="panel-gold" class="panel hidden">
+        <h2>Metals</h2>
+
+        <div class="grid">
+          <div>
+            <label>Currency</label>
+            <select id="ccy">
+              <option value="USD" selected>USD</option>
+              <option value="EUR">EUR</option>
+              <option value="GBP">GBP</option>
+              <option value="CHF">CHF</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Metal</label>
+            <select id="metal">
+              <option value="XAU" selected>Gold</option>
+              <option value="XAG">Silver</option>
+              <option value="XPT">Platinum</option>
+            </select>
+          </div>
+<div>
+            <label>Spot (per oz t, in selected currency)</label>
+            <input id="spot" type="number" inputmode="decimal" step="0.01" placeholder="loading…">
+          </div>
+
+          <div>
+            <label>Controls</label>
+            <div class="row">
+              <button class="btn primary" id="refreshBtn" type="button">Refresh</button>
+              <button class="btn" id="lockBtn" type="button" title="Freeze spot for discussion">Lock</button>
+            </div>
+          </div>
+
+          <div>
+            <label>Buyback % (of melt)</label>
+            <input id="buyback" type="number" inputmode="decimal" step="0.1" min="0" max="100" value="100">
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="specs-row">
+          <div>
+            <label>Weight · Unit · Purity</label>
+            <div class="row">
+              <input id="weight" type="number" inputmode="decimal" step="0.01" value="10">
+              <select id="unit">
+                <option value="g" selected>grams</option>
+                <option value="dwt">pennyweight (dwt)</option>
+                <option value="oz">troy ounces</option>
+              </select>
+              <select id="purity">
+                <option value="0.999">24k (0.999)</option>
+                <option value="0.900">22k (0.900)</option>
+                <option value="0.750" selected>18k (0.750)</option>
+                <option value="0.585">14k (0.585)</option>
+                <option value="0.417">10k (0.417)</option>
+                <option value="custom">Custom fineness (%)</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="customWrap" class="hidden">
+            <label>Custom fineness (%)</label>
+            <input id="customFine" type="number" inputmode="decimal" step="0.01" value="75">
+          </div>
+
+          <div>
+            <label>Quick actions</label>
+            <div class="row">
+              <button class="btn gold" id="copyGoldBtn" type="button">Copy quote</button>
+              <button class="btn" id="printBtn" type="button">Print / PDF</button>
+            </div></div>
+
+          <div class="muted tiny" style="display:flex;align-items:flex-end;">
+            
+          </div>
+        </div>
+
+        <div class="result">
+          <div class="sub">Indicative melt value</div>
+          <div class="value" id="goldMelt">—</div>
+
+          <div class="sub" style="margin-top:8px;">Dealer buyback (melt × buyback %)</div>
+          <div class="value sm" id="goldBuyback">—</div>
+
+          <div class="divider"></div>
+
+          <div class="sub" id="goldDetails">—</div>
+          <div class="tiny muted" id="goldPerLine" style="margin-top:8px;">—</div>
+        </div>
+      </section>
+
+      <!-- TAB: SIGNED -->
+      <section id="panel-signed" class="panel hidden">
+        <h2>Signed Pieces</h2>
+
+        <div class="grid">
+          <div>
+            <label>Asking price (in selected currency)</label>
+            <input id="askPrice" type="number" inputmode="decimal" step="0.01" value="0">
+          </div>
+          <div>
+            <label>Metal</label>
+            <select id="signedMetal">
+              <option value="XAU" selected>Gold</option>
+              <option value="XAG">Silver</option>
+              <option value="XPT">Platinum</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Weight</label>
+            <div class="row">
+              <input id="signedWeight" type="number" inputmode="decimal" step="0.01" value="10">
+              <select id="signedUnit">
+                <option value="g" selected>grams</option>
+                <option value="dwt">pennyweight (dwt)</option>
+                <option value="oz">troy ounces</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label>Purity</label>
+            <select id="signedPurity">
+              <option value="1">24k (100%)</option>
+              <option value="0.9167">22k (91.67%)</option>
+              <option value="0.75" selected>18k (75%)</option>
+              <option value="0.585">14k (58.5%)</option>
+              <option value="0.417">10k (41.7%)</option>
+              <option value="custom">Custom fineness (%)</option>
+</select>
+          </div>
+
+          <div id="signedCustomWrap" class="hidden">
+            <label>Custom fineness (%)</label>
+            <input id="signedCustomFine" type="number" inputmode="decimal" step="0.01" value="75">
+          </div>
+
+          <div>
+            <label>Signature <span class="req">required</span></label>
+            <select id="signedMaison">
+              <option value="" selected>Select…</option>
+              <option>Cartier</option>
+              <option>Van Cleef & Arpels</option>
+              <option>Bulgari</option>
+              <option>David Webb</option>
+              <option>Verdura</option>
+              <option>JAR</option>
+              <option>Harry Winston</option>
+              <option>Graff</option>
+              <option>Chanel</option>
+              <option>Hermès</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Quick actions</label>
+            <div class="row">
+              <button class="btn gold" id="copySignedBtn" type="button">Copy signed summary</button>
+              <button class="btn" id="printSignedBtn" type="button">Print / PDF</button>
+              <button class="btn" id="clearSignedBtn" type="button">Clear</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="grid">
+          <div>
+            <label>Reference / Collection (optional)</label>
+            <input id="signedRef" type="text" placeholder="e.g., Love, Alhambra, Tubogas…">
+          </div>
+          <div>
+            <label>Box/Papers (optional)</label>
+            <select id="signedSet">
+              <option value="—" selected>—</option>
+              <option>Box + Papers</option>
+              <option>Box only</option>
+              <option>Papers only</option>
+              <option>None</option>
+            </select>
+          </div>
+          <div>
+            <label>Condition (optional)</label>
+            <input id="signedCond" type="text" placeholder="e.g., excellent, light wear, polished…">
+          </div>
+          <div>
+            <label>Notes (optional)</label>
+            <input id="signedNotes" type="text" placeholder="Short note (stones, repairs, etc.)">
+          </div>
+        </div>
+
+        <div class="result">
+          <div class="sub">Intrinsic gold (melt)</div>
+          <div class="value" id="signedMelt">—</div>
+
+          <div class="divider"></div>
+
+          <div class="sub">Multiple of gold (primary)</div>
+          <div class="value" id="signedMultiple">—</div>
+          <div class="tiny muted" id="signedPctLine" style="margin-top:6px;">—</div>
+          <div class="tiny muted" id="signedBandLine" style="margin-top:4px;">—</div>
+
+          <div class="divider"></div>
+
+          <div class="sub" id="signedDetails">—</div>
+          <div class="tiny muted" id="signedExtra" style="margin-top:8px;">—</div>
+
+          <div class="divider"></div>
+
+          <div class="sub">Prepared signature line</div>
+          <div class="sigline" id="signedSigLine">—</div>
+        </div>
+
+      </section>
+
+      <!-- TAB: BATCH -->
+      <section id="panel-batch" class="panel hidden">
+        <h2>Batch</h2>
+
+        <div class="grid">
+          <div>
+            <label>Batch label (optional)</label>
+            <input id="batchLabel" type="text" placeholder="e.g., Tuesday memo — bracelets">
+          </div>
+          <div>
+            <label>Default buyback % (of melt)</label>
+            <input id="batchBuyback" type="number" inputmode="decimal" step="0.1" min="0" max="100" value="100">
+          </div>
+          <div>
+            <label>Batch metal</label>
+            <select id="batchMetal">
+              <option value="XAU" selected>Gold</option>
+              <option value="XAG">Silver</option>
+              <option value="XPT">Platinum</option>
+            </select>
+          </div>
+        </div><div class="divider"></div>
+
+        <div class="grid">
+          <div>
+            <label>Item label</label>
+            <input id="itemLabel" type="text" placeholder="e.g., Tubogas bracelet">
+          </div>
+          <div>
+            <label>Weight</label>
+            <div class="row">
+              <input id="itemWeight" type="number" inputmode="decimal" step="0.01" value="0">
+              <select id="itemUnit">
+                <option value="g" selected>g</option>
+                <option value="dwt">dwt</option>
+                <option value="oz">oz t</option>
+              </select>
+            </div>
+          </div>
+          <div>
+            <label>Purity</label>
+            <select id="itemPurity">
+                <option value="1">24k</option>
+                <option value="0.9167">22k</option>
+                <option value="0.75" selected>18k</option>
+                <option value="0.585">14k</option>
+                <option value="0.417">10k</option>
+                <option value="custom">Custom (%)</option>
+</select>
+          </div>
+          <div id="itemCustomWrap" class="hidden">
+            <label>Custom fineness (%)</label>
+            <input id="itemCustomFine" type="number" inputmode="decimal" step="0.01" value="75">
+          </div>
+
+          <div>
+            <label>Signature (optional)</label>
+            <select id="itemMaison">
+              <option value="" selected>None</option>
+              <option>Cartier</option>
+              <option>Van Cleef & Arpels</option>
+              <option>Bulgari</option>
+              <option>David Webb</option>
+              <option>Verdura</option>
+              <option>JAR</option>
+              <option>Harry Winston</option>
+              <option>Graff</option>
+              <option>Chanel</option>
+              <option>Hermès</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Asking (optional)</label>
+            <input id="itemAsking" type="number" inputmode="decimal" step="0.01" value="0">
+          </div>
+
+          <div>
+            <label>&nbsp;</label>
+            <button class="btn primary" id="addItemBtn" type="button">Add to batch</button>
+            <button class="btn" id="cancelEditBtn" type="button" style="display:none;">Cancel</button>
+          </div>
+
+          <div class="tiny muted" style="display:flex;align-items:flex-end;">
+            Batch uses the same spot, FX, and currency from the Gold tab.
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th class="right">Wt</th>
+              <th class="right">Purity</th>
+              <th>Signature</th>
+              <th class="right">Melt</th>
+              <th class="right">Buyback</th>
+              <th class="right">Asking</th>
+              <th class="right">Over gold</th>
+              <th class="right">—</th>
+            </tr>
+          </thead>
+          <tbody id="batchBody">
+            <tr><td colspan="9" class="muted">No items yet. Add items above.</td></tr>
+          </tbody>
+          <tfoot id="batchFoot" class="hidden">
+            <tr>
+              <td class="muted"><b>Total</b></td>
+              <td class="right" id="totW">—</td>
+              <td class="right" id="totP">—</td>
+              <td class="muted" id="totS">—</td>
+              <td class="right" id="totM"><b>—</b></td>
+              <td class="right" id="totB"><b>—</b></td>
+              <td class="right" id="totA"><b>—</b></td>
+              <td class="right" id="totO"><b>—</b></td>
+              <td class="right"></td>
+            </tr>
+          </tfoot>
+        </table>
+
+        <div class="divider"></div>
+
+        <div class="row">
+          <button class="btn gold" id="copyBatchBtn" type="button">Copy batch summary</button>
+          <button class="btn black" id="copyBatchTableBtn" type="button">Copy table</button>
+          <button class="btn black" id="downloadBatchCsvBtn" type="button">Download CSV</button>
+          <button class="btn" id="undoBatchBtn" type="button" style="display:none;">Undo remove</button>
+          <button class="btn" id="printBatchBtn" type="button">Print / PDF</button>
+          <button class="btn" id="clearBatchBtn" type="button">Clear batch</button>
+        </div>
+
+        <div class="result">
+          <div class="sub">Batch notes (optional)</div>
+          <textarea id="batchNotes" placeholder="Optional notes for the batch: payment terms, memo notes, trade terms, etc."></textarea>
+        </div>
+      </section>
+
+
+<section id="panel-auction" class="panel hidden">
+  <h2>Auction Estimator</h2>
+  <p class="muted tiny">Hammer + buyer’s premium only (no VAT/sales tax). Premium schedules are tiered and based on published global rates.</p>
+
+  <div class="grid cols-3">
+    <div>
+      <label>Currency</label>
+      <select id="auctionCcy">
+        <option value="USD" selected>USD</option>
+        <option value="EUR">EUR</option>
+        <option value="GBP">GBP</option>
+        <option value="CHF">CHF</option>
+        <option value="HKD">HKD</option>
+      </select>
+    </div>
+
+    <div>
+      <label>Auction house</label>
+      <select id="auctionHouse">
+        <option value="CHRISTIES" selected>Christie’s</option>
+        <option value="SOTHEBYS">Sotheby’s</option>
+        <option value="PHILLIPS">Phillips</option>
+        <option value="BONHAMS">Bonhams</option>
+      </select>
+    </div>
+
+    <div>
+      <label>Hammer price</label>
+      <input id="hammer" type="number" inputmode="decimal" placeholder="e.g., 250000" min="0" step="0.01">
+    </div>
+  
+  <div class="grid cols-3" style="margin-top:10px;">
+    <div>
+      <label>Premium mode</label>
+      <select id="auctionPremiumMode">
+        <option value="HOUSE" selected>Use house schedule</option>
+        <option value="CUSTOM">Custom premium (%)</option>
+      </select>
+    </div>
+    <div>
+      <label>Custom premium %</label>
+      <input id="auctionCustomPremium" type="number" inputmode="decimal" placeholder="e.g., 22" min="0" step="0.01" disabled>
+    </div>
+    <div class="muted tiny" style="display:flex; align-items:flex-end;">
+      Applies to full hammer (not tiered)
+    </div>
+  </div>
+
+</div>
+
+  <div class="kpi" style="margin-top:12px;">
+    <div class="pill"><span class="muted">Buyer’s premium:</span> <strong id="auctionPremium">—</strong></div>
+    <div class="pill"><span class="muted">Total buyer pays:</span> <strong id="auctionTotal">—</strong></div>
+    <div class="pill"><span class="muted">Effective premium:</span> <strong id="auctionEff">—</strong></div>
+  </div>
+
+  <div class="card" style="margin-top:12px;">
+    <div class="row" style="display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap;">
+      <div class="muted" style="font-weight:650;">Premium breakdown</div>
+      <div class="muted tiny" id="auctionBreakdownHint">Tiered by hammer brackets</div>
+    </div>
+    <div id="auctionBreakdown" class="tiny" style="margin-top:8px; line-height:1.45;">—</div>
+  </div>
+
+  <div class="row" style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+    <button id="copyAuctionBtn" class="btn" type="button">Copy</button>
+    <button id="shareAuctionBtn" class="btn" type="button">Share link</button>
+    <button id="printAuctionBtn" class="btn black" type="button">Print / PDF</button>
+    <button id="clearAuctionBtn" class="btn black" type="button">Clear</button>
+  </div>
+  <div class="muted tiny" id="auctionShareStatus" style="margin-top:6px;"></div>
+</section>
+
+
+<section id="panel-gems" class="panel hidden">
+  <h2>Gem Carat Estimator</h2>
+  <p class="muted tiny">Indicative estimate from measurements using typical density and standard cutting assumptions. Actual carat varies by cut and depth.</p>
+  <div class="grid cols-3">
+    <div>
+      <label>Stone</label>
+      <select id="gemStone">
+        <option value="diamond" selected>Diamond</option>
+        <option value="ruby">Ruby</option>
+        <option value="sapphire">Sapphire</option>
+        <option value="emerald">Emerald</option>
+      </select>
+    </div>
+    <div>
+      <label>Shape</label>
+      <select id="gemShape">
+        <option value="round" selected>Round</option>
+        <option value="oval">Oval</option>
+        <option value="emerald">Emerald</option>
+        <option value="cushion">Cushion</option>
+        <option value="pear">Pear</option>
+        <option value="marquise">Marquise</option>
+        <option value="princess">Princess</option>
+        <option value="radiant">Radiant</option>
+      </select>
+    </div>
+    <div>
+      <label>Length (mm)</label>
+      <input id="gemL" type="number" inputmode="decimal" step="0.01" placeholder="e.g., 7.40">
+    </div>
+  </div>
+
+  <div class="grid cols-3" style="margin-top:10px;">
+    <div>
+      <label>Width (mm)</label>
+      <input id="gemW" type="number" inputmode="decimal" step="0.01" placeholder="e.g., 7.40">
+    </div>
+    <div>
+      <label>Depth (mm)</label>
+      <input id="gemD" type="number" inputmode="decimal" step="0.01" placeholder="optional">
+    </div>
+    <div>
+      <label>Depth % (optional)</label>
+      <input id="gemDepthPct" type="number" inputmode="decimal" step="0.1" placeholder="e.g., 62">
+    </div>
+  </div>
+
+  <div class="muted tiny" style="margin-top:6px;">If Depth (mm) is omitted, depth is estimated from Depth %.</div>
+
+  <div class="kpi" style="margin-top:12px;">
+    <div class="pill"><span class="muted">Estimated carat:</span> <strong id="gemCt">—</strong></div>
+    <div class="pill"><span class="muted">Indicative range:</span> <strong id="gemRange">—</strong></div>
+    <div class="pill"><span class="muted">Factor:</span> <strong id="gemFactor">—</strong></div>
+  </div>
+
+  <div class="row" style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+    <button id="copyGemBtn" class="btn black" type="button" onclick="window.odeonGemCopy && window.odeonGemCopy()">Copy</button>
+    <button id="clearGemBtn" class="btn black" type="button" onclick="window.odeonGemClear && window.odeonGemClear()">Clear</button>
+  </div>
+
+  <div class="row" style="margin-top:10px; display:flex; gap:10px; flex-wrap:wrap;">
+    <button id="estimateGemBtn" class="btn gold" type="button" onclick="window._odeonGemEstimate && window._odeonGemEstimate()" onclick="window._odeonGemEstimate && window._odeonGemEstimate()">Estimate</button>
+    <span class="muted tiny" id="gemDiag" style="align-self:center;">—</span>
+  </div>
+</section>
+
+
+
+
+
+
+    </div>
+
+      <div class="contact">
+        <span>Considering selling gold or signed pieces?</span>
+        <a href="/cdn-cgi/l/email-protection#c2a0adaca8adb7b082ada6a7adaca1adaeaea7a1b6abadaceca1adaffdb1b7a0a8a7a1b6ff92b0abb4a3b6a7e7f0f28bacb3b7abb0bb">Email Odeon</a>
+        <span class="dot">·</span>
+        <a href="https://wa.me/19174454885" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+</div>
+</div>
+
+<div id="toast"></div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>window.activateTab = function(name){};
+
+
+  // --- Pro hardening: global sync + localStorage state (v1) ---
+  const LS_KEY = "odeon_ref_tools_state_v1";
+  let __syncing = false;
+  let __saveT = null;
+
+  function optExists(sel, v){
+    if(!sel) return false;
+    return Array.from(sel.options || []).some(o => o.value === v);
+  }
+  function setSel(sel, v){
+    if(!sel) return;
+    if(sel.value === v) return;
+    if(optExists(sel, v)) sel.value = v;
+  }
+
+  function scheduleSave(){
+    if(__saveT) clearTimeout(__saveT);
+    __saveT = setTimeout(saveState, 250);
+  }
+
+  function saveState(){
+    try{
+      const st = {
+        v: 1,
+        // globals
+        metal: metal?.value,
+        signedMetal: signedMetal?.value,
+        batchMetal: batchMetal?.value,
+        ccy: ccy?.value,
+        auctionCcy: auctionCcy?.value,
+        // metals tab
+        weight: weight?.value, unit: unit?.value, purity: purity?.value, customFine: customFine?.value,
+        buyback: buyback?.value,
+        // signed tab
+        signedWeight: signedWeight?.value, signedUnit: signedUnit?.value, signedPurity: signedPurity?.value, signedCustomFine: signedCustomFine?.value,
+        maison: maison?.value, asking: asking?.value,
+        // batch
+        batchLabel: batchLabel?.value, batchBuyback: batchBuyback?.value, batchNotes: batchNotes?.value,
+        batch: batch,
+        // auction
+        auctionHouse: auctionHouse?.value, hammer: hammer?.value,
+        premMode: auctionPremiumMode?.value, premPct: auctionCustomPremium?.value
+      };
+      localStorage.setItem(LS_KEY, JSON.stringify(st));
+    }catch(e){}
+  }
+
+  function restoreState(){
+    let raw = null;
+    try{ raw = localStorage.getItem(LS_KEY); }catch(e){}
+    if(!raw) return;
+    let st = null;
+    try{ st = JSON.parse(raw); }catch(e){ st = null; }
+    if(!st || st.v !== 1) return;
+
+    // Globals first (no recursion)
+    __syncing = true;
+    try{
+      if(st.ccy) setSel(ccy, st.ccy);
+      if(st.auctionCcy) setSel(auctionCcy, st.auctionCcy);
+
+      if(st.metal) setSel(metal, st.metal);
+      if(st.signedMetal) setSel(signedMetal, st.signedMetal);
+      if(st.batchMetal) setSel(batchMetal, st.batchMetal);
+    } finally { __syncing = false; }
+
+    // Trigger existing change handlers to refresh purity options / calculations
+    metal && metal.dispatchEvent(new Event("change"));
+    signedMetal && signedMetal.dispatchEvent(new Event("change"));
+    batchMetal && batchMetal.dispatchEvent(new Event("change"));
+    ccy && ccy.dispatchEvent(new Event("change"));
+    auctionCcy && auctionCcy.dispatchEvent(new Event("change"));
+
+    // Metals
+    if(st.weight != null) weight.value = st.weight;
+    if(st.unit) setSel(unit, st.unit);
+    if(st.purity) purity.value = st.purity;
+    if(st.customFine != null) customFine.value = st.customFine;
+    if(st.buyback != null) buyback.value = st.buyback;
+
+    // Signed
+    if(st.signedWeight != null) signedWeight.value = st.signedWeight;
+    if(st.signedUnit) setSel(signedUnit, st.signedUnit);
+    if(st.signedPurity) signedPurity.value = st.signedPurity;
+    if(st.signedCustomFine != null) signedCustomFine.value = st.signedCustomFine;
+    if(st.maison != null) maison.value = st.maison;
+    if(st.asking != null) asking.value = st.asking;
+
+    // Batch
+    if(st.batchLabel != null) batchLabel.value = st.batchLabel;
+    if(st.batchBuyback != null) batchBuyback.value = st.batchBuyback;
+    if(st.batchNotes != null) batchNotes.value = st.batchNotes;
+    if(Array.isArray(st.batch)) batch = st.batch;
+
+    // Auction
+    if(st.auctionHouse) auctionHouse.value = st.auctionHouse;
+    if(st.hammer != null) hammer.value = st.hammer;
+    if(st.premMode) auctionPremiumMode.value = st.premMode;
+    if(st.premPct != null) auctionCustomPremium.value = st.premPct;
+
+    // Refresh views
+    try{ updateAll(); }catch(e){}
+    try{ renderBatch(); }catch(e){}
+    try{ updateAuction(); }catch(e){}
+  }
+
+  function syncMetalFrom(sourceSel){
+    if(__syncing) return;
+    __syncing = true;
+    try{
+      const v = sourceSel.value;
+      if(sourceSel !== metal) setSel(metal, v);
+      if(sourceSel !== signedMetal) setSel(signedMetal, v);
+      if(sourceSel !== batchMetal) setSel(batchMetal, v);
+
+      // trigger each tab's own refresh
+      metal && metal.dispatchEvent(new Event("change"));
+      signedMetal && signedMetal.dispatchEvent(new Event("change"));
+      batchMetal && batchMetal.dispatchEvent(new Event("change"));
+      scheduleSave();
+    } finally { __syncing = false; }
+  }
+
+  function syncCurrencyFrom(sourceSel){
+    if(__syncing) return;
+    __syncing = true;
+    try{
+      const v = sourceSel.value;
+      if(sourceSel !== ccy) setSel(ccy, v);
+      if(sourceSel !== auctionCcy) setSel(auctionCcy, v);
+      ccy && ccy.dispatchEvent(new Event("change"));
+      auctionCcy && auctionCcy.dispatchEvent(new Event("change"));
+      scheduleSave();
+    } finally { __syncing = false; }
+  }
+
+  // Restore on load
+  if(document.readyState === "loading"){
+    document.addEventListener("DOMContentLoaded", restoreState);
+  } else {
+    restoreState();
+  }
+
+  // Save broadly on any form interaction (capture)
+  ["input","change"].forEach(evt=>{
+    document.addEventListener(evt, (e)=>{
+      const t = e.target;
+      if(!t) return;
+      if(t.matches("input, select, textarea")) scheduleSave();
+    }, true);
+  });
+
+(() => {
+  const GRAMS_PER_OZ = 31.1034768;
+  const GRAMS_PER_DWT = GRAMS_PER_OZ / 20; // 1 dwt = 1/20 troy oz
+  const $ = (id) => document.getElementById(id);
+
+  const PURITY_PRESETS = {
+    XAU: [
+      {label:"24k (0.999)", value:"0.999"},
+      {label:"22k (0.900)", value:"0.900"},
+      {label:"18k (0.750)", value:"0.750"},
+      {label:"14k (0.585)", value:"0.585"},
+      {label:"10k (0.417)", value:"0.417"},
+      {label:"Custom fineness (%)", value:"custom"}
+    ],
+    XAG: [
+      {label:"Fine silver (0.999)", value:"0.999"},
+      {label:"Sterling (0.925)", value:"0.925"},
+      {label:"Coin (0.900)", value:"0.900"},
+      {label:"800 (0.800)", value:"0.800"},
+      {label:"Custom fineness (%)", value:"custom"}
+    ],
+    XPT: [
+      {label:"Platinum 999 (0.999)", value:"0.999"},
+      {label:"Platinum 950 (0.950)", value:"0.950"},
+      {label:"Platinum 900 (0.900)", value:"0.900"},
+      {label:"Platinum 850 (0.850)", value:"0.850"},
+      {label:"Custom fineness (%)", value:"custom"}
+    ]
+  };
+
+  function defaultPurityValue(metalCode){
+    if(metalCode === "XAG") return "0.925";
+    if(metalCode === "XPT") return "0.950";
+    return "0.750"; // XAU
+  }
+
+  function setPurityOptionsForMetal(metalCode){
+    const purityEl = document.getElementById("purity");
+    if(!purityEl) return;
+
+    const prev = purityEl.value;
+    const list = PURITY_PRESETS[metalCode] || PURITY_PRESETS.XAU;
+
+    // rebuild options
+    purityEl.innerHTML = "";
+    for(const item of list){
+      const opt = document.createElement("option");
+      opt.value = item.value;
+      opt.textContent = item.label;
+      purityEl.appendChild(opt);
+    }
+
+    // keep previous selection only if it exists in new list and isn't incompatible
+    const exists = list.some(x => x.value === prev);
+    purityEl.value = exists ? prev : defaultPurityValue(metalCode);
+  }
+
+  // Tabs
+  let currentTab = "gold";
+  const tabButtons = Array.from(document.querySelectorAll(".tabbtn"));
+  const panels = { gold: $("panel-gold"), signed: $("panel-signed"), batch: $("panel-batch"), auction: $("panel-auction"), gems: $("panel-gems")  };
+  const tabHint = $("tabHint");
+  const tabHints = {
+    gold: "Live spot + FX, buyback, and one-item melt value.",
+    signed: "Enter asking price and signature to see premium over intrinsic gold.",
+    batch: "Multi-item batch quoting with totals, buyback, and optional asking premiums.",
+    auction: "Hammer + tiered buyer’s premium (tax-free)."
+  };
+  function activateTab(name){
+    currentTab = name;
+    tabButtons.forEach(b => {
+      const is = b.dataset.tab === name;
+      b.classList.toggle("active", is);
+      b.setAttribute("aria-selected", is ? "true" : "false");
+    });
+    Object.entries(panels).forEach(([k, el]) => el.classList.toggle("hidden", k !== name));
+    tabHint.textContent = tabHints[name] || "";
+    if(name === "signed") calcSigned();
+    if(name === "batch") renderBatch();
+    if(name === "auction"){
+      if(typeof syncAuctionPremiumMode === "function") syncAuctionPremiumMode();
+      else updateAuction();
+    }
+  }
+
+  tabButtons.forEach(btn => btn.addEventListener("click", () => activateTab(btn.dataset.tab)));
+// Header
+  const spotLine = $("spotLine");
+  const spotRefLine = $("spotRefLine");
+  const diagToggle = $("diagToggle");
+  const diagBody = $("diagBody");
+  const diagSpot = $("diagSpot");
+  const diagFX = $("diagFX");
+  const diagErr = $("diagErr");
+  const diagPreview = $("diagPreview");
+  const fxLine = $("fxLine");
+  const timeLine = $("timeLine");
+  const marketLine = $("marketLine");
+  const clockNY = $("clockNY");
+  const clockPAR = $("clockPAR");
+  const clockLON = $("clockLON");
+  const clockHK = $("clockHK");
+
+  // Toast
+  const toast = $("toast");
+  function showToast(msg){ toast.textContent = msg; toast.style.display="block"; clearTimeout(showToast._t); showToast._t=setTimeout(()=>toast.style.display="none",1700); }
+
+  // Shared market inputs
+  const ccy = $("ccy");
+  const metalSel = $("metal");
+  const spot = $("spot");
+  const buyback = $("buyback");
+  const refreshBtn = $("refreshBtn");
+  const lockBtn = $("lockBtn");
+  const printBtn = $("printBtn");
+
+  let locked = false;
+  let fxUSDTo = 1;
+  let fxToCCY = "USD";
+  let lastSpotMeta = { source:"—", updated:"—" };
+  let lastFXMeta = { source:"—" };
+
+  function nowString(){
+    const d = new Date();
+    return d.toLocaleString(undefined, { year:"numeric", month:"short", day:"2-digit", hour:"2-digit", minute:"2-digit" });
+  }
+
+  function formatClock(tz, label){
+    try{
+      const fmt = new Intl.DateTimeFormat("en-GB", {
+        timeZone: tz,
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: false
+      });
+      return `${label} ${fmt.format(new Date())}`;
+    }catch(e){
+      return `${label} —`;
+    }
+  }
+
+  function getNYDayTime(){
+    const fmt = new Intl.DateTimeFormat("en-US", {
+      timeZone: "America/New_York",
+      weekday: "short",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: false
+    });
+    const parts = fmt.formatToParts(new Date());
+    const obj = {};
+    for(const p of parts){
+      if(p.type !== "literal") obj[p.type] = p.value;
+    }
+    return {
+      wd: obj.weekday || "",
+      t: (Number(obj.hour ?? 0) * 60) + Number(obj.minute ?? 0)
+    };
+  }
+
+  function isComexOpen(){
+    // Simplified COMEX gold futures session (NY time):
+    // Open: Sunday 18:00 → Friday 17:00. (Ignores the brief daily maintenance break.)
+    const p = getNYDayTime();
+    const wd = p.wd;
+    const t = p.t;
+
+    if(wd === "Sun") return t >= 18*60;
+    if(wd === "Mon" || wd === "Tue" || wd === "Wed" || wd === "Thu") return true;
+    if(wd === "Fri") return t < 17*60;
+    return false; // Sat
+  }
+
+  function updateMarketAndClocks(){
+    const open = isComexOpen();
+    if(marketLine){
+      marketLine.textContent = open ? "Market: OPEN (COMEX)" : "Market: CLOSED (COMEX)";
+      marketLine.className = open ? "market-line open" : "market-line closed";
+    }
+    // Update clock times with real weather from Open-Meteo API
+    const updateClocks = async () => {
+      const updateTime = (tz, timeEl, weatherEl) => {
+        try {
+          const fmt = new Intl.DateTimeFormat("en-GB", {timeZone: tz, hour: "2-digit", minute: "2-digit", hour12: false});
+          if(timeEl) timeEl.textContent = fmt.format(new Date());
+        } catch(e) {}
+      };
+      
+      // Fetch weather for cities (lat, lon)
+      const cities = {
+        'New York': {lat: 40.7128, lon: -74.0060, el: $("weatherNY")},
+        'Paris': {lat: 48.8566, lon: 2.3522, el: $("weatherPAR")},
+        'London': {lat: 51.5074, lon: -0.1278, el: $("weatherLON")},
+        'Dubai': {lat: 25.2048, lon: 55.2708, el: $("weatherDXB")},
+        'Hong Kong': {lat: 22.3193, lon: 114.1694, el: $("weatherHK")},
+        'Tel Aviv': {lat: 32.0853, lon: 34.7818, el: $("weatherTLV")}
+      };
+      
+      for(const [city, data] of Object.entries(cities)) {
+        try {
+          const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${data.lat}&longitude=${data.lon}&current=temperature_2m,weather_code&temperature_unit=fahrenheit`);
+          const json = await res.json();
+          const temp = Math.round(json.current.temperature_2m);
+          const code = json.current.weather_code;
+          let condition = '—';
+          if(code === 0) condition = '☀️ Clear';
+          else if(code === 1 || code === 2) condition = '⛅ Cloudy';
+          else if(code === 3) condition = '☁️ Overcast';
+          else if(code >= 45 && code <= 48) condition = '🌫️ Fog';
+          else if(code >= 51 && code <= 67) condition = '🌧️ Rain';
+          else if(code >= 71 && code <= 77) condition = '❄️ Snow';
+          else if(code === 80 || code === 81 || code === 82) condition = '⛈️ Thunder';
+          else condition = '🌤️ Fair';
+          
+          if(data.el) data.el.textContent = `${condition} ${temp}°F`;
+        } catch(e) {
+          if(data.el) data.el.textContent = '—';
+        }
+      }
+      
+      updateTime("America/New_York", $("timeNY"));
+      updateTime("Europe/Paris", $("timePAR"));
+      updateTime("Europe/London", $("timeLON"));
+      updateTime("Asia/Dubai", $("timeDXB"));
+      updateTime("Asia/Hong_Kong", $("timeHK"));
+      updateTime("Asia/Jerusalem", $("timeTLV"));
+    };
+    
+    updateClocks();
+    setInterval(updateClocks, 60000);
+  }
+
+  function money(n, currency){
+    if(!Number.isFinite(n)) return "—";
+    try{ return n.toLocaleString(undefined, { style:"currency", currency }); }
+    catch { return `${currency} ${n.toFixed(2)}`; }
+  }
+  function num(n, d=2){
+    if(!Number.isFinite(n)) return "—";
+    return n.toLocaleString(undefined, { minimumFractionDigits:d, maximumFractionDigits:d });
+  }
+  function esc(s){ return (s||"").replace(/[&<>"']/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;" }[c])); }
+
+  function setPrintHeader(title, sub){
+    const t = $("printTitle");
+    const s = $("printSub");
+    if(t) t.textContent = title;
+    if(s) s.textContent = sub || "—";
+  }
+
+  function preparePrint(tab){
+    const currency = ccy.value;
+    const spotSel = getSpotSelected();
+    const spotText = (spotSel && spotSel > 0) ? `${money(spotSel, currency)} / oz t${locked ? " (locked)" : ""}` : "—";
+    const updated = timeLine.textContent || "—";
+
+    if(tab === "gold"){
+      const r = meltFromInputs(weight, unit, purity, customFine, spotSel || 0);
+      const wt = unit.value === "g" ? `${num(Number(weight.value),2)} g` : `${num(r.oz,4)} oz t`;
+      const line = `Gold · ${currency} · Spot ${spotText} · ${wt} @ ${num(r.p*100,2)}% · Updated ${updated}`;
+      setPrintHeader("ODEON — Gold Reference", line);
+      return;
+    }
+
+    if(tab === "signed"){
+      const maison = signedMaison.value || "—";
+      const ask = Number(askPrice.value);
+      const askTxt = (ask && ask > 0) ? money(ask, currency) : "—";
+      const line = `Signed Pieces · ${maison} · Asking ${askTxt} · ${currency} · Spot ${spotText} · Updated ${updated}`;
+      setPrintHeader("ODEON — Signed Pieces", line);
+      return;
+    }
+
+    if(tab === "batch"){
+      const label = (batchLabel.value || "").trim();
+      const line = `Batch${label ? " — " + label : ""} · ${currency} · Spot ${spotText} · Updated ${updated}`;
+      setPrintHeader("ODEON — Batch Summary", line);
+      return;
+    }
+
+    setPrintHeader("ORODEX — Trade Reference", `${currency} · Spot ${spotText} · Updated ${updated}`);
+  }
+
+  // Maison expectation bands (multiples of melt), used in Signed Pieces.
+  const MAISON_BANDS = {
+    "Cartier": [1.8, 3.0],
+    "Van Cleef & Arpels": [2.2, 4.0],
+    "Bulgari": [1.6, 2.5],
+    "David Webb": [1.6, 2.6],
+    "Verdura": [1.7, 2.8],
+    "JAR": [3.0, 8.0],
+    "Harry Winston": [2.0, 4.0],
+    "Graff": [2.0, 4.5],
+    "Chanel": [1.5, 2.5],
+    "Hermès": [1.8, 3.0]
+  };
+
+  function getSpotSelected(){
+    const v = Number(spot.value);
+    return (Number.isFinite(v) && v > 0) ? v : null;
+  }
+  function getOzFromInput(w, u){
+    if(!Number.isFinite(w) || w <= 0) return 0;
+    if(u === "g") return w / GRAMS_PER_OZ;
+    if(u === "dwt") return w / 20;
+    return w; // oz t
+  }
+  function purityFraction(selValue, customEl){
+    if(selValue === "custom"){
+      const p = Number(customEl.value);
+      return (Number.isFinite(p) && p > 0) ? p/100 : 0;
+    }
+    const v = Number(selValue);
+    return Number.isFinite(v) ? v : 0;
+  }
+
+  // Live fetch
+
+  async function fetchMetalSpotUSD(symbol){
+    // Returns USD price per troy ounce for XAU/XAG/XPT.
+    // 1) gold-api.com (CORS friendly)
+    try{
+      const r = await fetch(`https://api.gold-api.com/price/${encodeURIComponent(symbol)}`, { cache:"no-store" });
+      if(!r.ok) throw new Error("gold-api http " + r.status);
+      const d = await r.json();
+      const price = Number(d.price ?? d.USD ?? d.usd);
+      const updated = (d.updatedAt || d.updated_at || d.timestamp || d.time || null);
+      lastSpotMeta = {
+        source: "gold-api.com",
+        updated: updated ? String(updated) : `UTC ${new Date().toISOString().slice(0,19).replace("T"," ")}`
+      };
+      if(price > 0) return price;
+      throw new Error("gold-api bad payload");
+    }catch(e1){
+      // 2) metals.live fallback
+      const map = {XAU:"gold", XAG:"silver", XPT:"platinum"};
+      const r2 = await fetch(`https://api.metals.live/v1/spot/${map[symbol] || "gold"}`, { cache:"no-store" });
+      if(!r2.ok) throw new Error("metals.live http " + r2.status);
+      const d2 = await r2.json();
+      const last = Array.isArray(d2) && d2.length ? d2[d2.length-1] : null;
+      const ts = last && last.length ? last[0] : null;
+      const price2 = last && last.length ? Number(last[1]) : NaN;
+      lastSpotMeta = {
+        source: "metals.live",
+        updated: ts ? `UTC ${String(ts)}` : `UTC ${new Date().toISOString().slice(0,19).replace("T"," ")}`
+      };
+      if(price2 > 0) return price2;
+      throw new Error("spot feed unavailable");
+    }
+  }
+
+async function fetchFX(from,to){
+    if(from === to){ lastFXMeta = { source:"—" }; return 1; }
+
+    // 1) frankfurter.dev
+    try{
+      const url = `https://api.frankfurter.dev/latest?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}`;
+      const r = await fetch(url, { cache:"no-store" });
+      if(!r.ok) throw new Error("frankfurter http " + r.status);
+      const d = await r.json();
+      const rate = Number(d.rates?.[to]);
+      if(rate > 0){ lastFXMeta = { source:"frankfurter.dev" }; return rate; }
+      throw new Error("frankfurter bad payload");
+    }catch(e1){
+      // 2) exchangerate.host
+      try{
+        const url2 = `https://api.exchangerate.host/latest?base=${encodeURIComponent(from)}&symbols=${encodeURIComponent(to)}`;
+        const r2 = await fetch(url2, { cache:"no-store" });
+        if(!r2.ok) throw new Error("exchangerate.host http " + r2.status);
+        const d2 = await r2.json();
+        const rate2 = Number(d2.rates?.[to]);
+        if(rate2 > 0){ lastFXMeta = { source:"exchangerate.host" }; return rate2; }
+        throw new Error("exchangerate.host bad payload");
+      }catch(e2){
+        // 3) open.er-api.com
+        const r3 = await fetch(`https://open.er-api.com/v6/latest/${encodeURIComponent(from)}`, { cache:"no-store" });
+        if(!r3.ok) throw new Error("er-api http " + r3.status);
+        const d3 = await r3.json();
+        const rate3 = Number(d3.rates?.[to]);
+        if(rate3 > 0){ lastFXMeta = { source:"open.er-api.com" }; return rate3; }
+        throw new Error("FX feed unavailable");
+      }
+    }
+  }
+  // Phone Authentication with Firebase
+  const firebaseConfig = {
+    apiKey: "AIzaSyBKX_test_key_for_demo",
+    authDomain: "odeon-alerts.firebaseapp.com",
+    projectId: "odeon-alerts",
+    storageBucket: "odeon-alerts.appspot.com",
+    messagingSenderId: "123456789",
+    appId: "1:123456789:web:abcdef123456"
+  };
+  
+  // Note: Replace above with real Firebase config from your console
+  // For now, using localStorage as fallback
+
+  function updateDashboard(){if(spot&&spot.value){const p=parseFloat(spot.value);const topL=document.getElementById('topLow');const topH=document.getElementById('topHigh');if(topL)topL.textContent='$'+(p*0.75).toFixed(2);if(topH)topH.textContent='$'+p.toFixed(2);}}
+
+  // Calculator Functions
+  let calcVal = '0';
+  let calcOp = null;
+  let calcPrev = '';
+  
+  window.calcAppend = function(v) {
+    if(calcVal === '0' && v !== '.') calcVal = '';
+    if(v === '.' && calcVal.includes('.')) return;
+    calcVal += v;
+    document.getElementById('calcDisplay').textContent = calcVal;
+  };
+  
+  window.calcOp = function(op) {
+    if(calcVal === '') return;
+    if(calcPrev !== '') calcEqual();
+    calcOp = op;
+    calcPrev = calcVal;
+    calcVal = '';
+  };
+  
+  window.calcEqual = function() {
+    if(!calcOp || calcVal === '' || calcPrev === '') return;
+    const a = parseFloat(calcPrev);
+    const b = parseFloat(calcVal);
+    let result = 0;
+    if(calcOp === '+') result = a + b;
+    else if(calcOp === '-') result = a - b;
+    else if(calcOp === '*') result = a * b;
+    else if(calcOp === '/') result = b !== 0 ? a / b : 0;
+    calcVal = result.toString();
+    calcOp = null;
+    calcPrev = '';
+    document.getElementById('calcDisplay').textContent = calcVal;
+  };
+  
+  
+  async function refreshAll(){
+    if(locked){ showToast("Spot is locked. Unlock to refresh."); return; }
+    try{
+      if(diagErr) diagErr.textContent = "—";
+      if(diagSpot) diagSpot.textContent = "Loading…";
+      if(diagFX) diagFX.textContent = "Loading…";
+      if(diagPreview) diagPreview.textContent = "Spot: loading… · FX: loading…";
+
+      spot.placeholder = "loading…";
+      fxLine.textContent = "FX: loading…";
+      const target = ccy.value;
+      const usdSpot = await fetchMetalSpotUSD(metalSel ? metalSel.value : 'XAU');
+      const rate = await fetchFX("USD", target);
+      fxUSDTo = rate;
+      fxToCCY = target;
+      spot.value = (usdSpot * rate).toFixed(2);
+      if(spotRefLine){
+        const meta = lastSpotMeta && lastSpotMeta.source ? ` · feed ${lastSpotMeta.source} · ${lastSpotMeta.updated}` : "";
+        spotRefLine.textContent = `Spot reference (LBMA/COMEX aggregate)${meta}`;
+      }
+      if(diagSpot) diagSpot.textContent = `OK · ${lastSpotMeta.source} · ${lastSpotMeta.updated}`;
+      if(diagFX) diagFX.textContent = `OK · ${lastFXMeta.source || "—"}`;
+      if(diagPreview) diagPreview.textContent = `Spot: OK · FX: OK`;
+      timeLine.textContent = nowString();
+      fxLine.textContent = (target === "USD") ? "FX: USD→USD 1.0000" : `FX: USD→${target} ${num(rate, 6)}`;
+      showToast("Live spot + FX updated.");
+      updateDashboard();
+      calcGold();
+    } catch(e){
+      spot.placeholder = "enter manually";
+      fxLine.textContent = (fxToCCY === ccy.value && fxUSDTo > 0) ? ((ccy.value==="USD")?"FX: USD→USD 1.0000":`FX: USD→${ccy.value} ${num(fxUSDTo, 6)} (cached)`) : "FX: —";
+      timeLine.textContent = `Manual / offline (${nowString()})`;
+      showToast("Could not load live spot/FX. You can enter spot manually.");
+      if(spotRefLine) spotRefLine.textContent = "Spot reference (LBMA/COMEX aggregate) · offline/manual";
+      if(diagPreview) diagPreview.textContent = "Spot: Failed · FX: Failed";
+      if(diagSpot && diagSpot.textContent === "Loading…") diagSpot.textContent = "Failed";
+      if(diagFX && diagFX.textContent === "Loading…") diagFX.textContent = "Failed";
+      calcGold();
+    }
+  }
+  function toggleLock(){
+    locked = !locked;
+    lockBtn.textContent = locked ? "Locked" : "Lock";
+    lockBtn.classList.toggle("primary", locked);
+    spot.disabled = locked;
+    ccy.disabled = locked;
+    showToast(locked ? "Spot locked for discussion." : "Spot unlocked.");
+  }
+
+  // GOLD
+  const weight = $("weight");
+  const unit = $("unit");
+  const purity = $("purity");
+  const customWrap = $("customWrap");
+  const customFine = $("customFine");
+  const goldMelt = $("goldMelt");
+  const goldBuyback = $("goldBuyback");
+  const goldDetails = $("goldDetails");
+  const goldPerLine = $("goldPerLine");
+  const copyGoldBtn = $("copyGoldBtn");
+
+  function meltFromInputs(weightEl, unitEl, purityEl, customFineEl, spotPerOz){
+    const oz = getOzFromInput(Number(weightEl.value), unitEl.value);
+    const p = purityFraction(purityEl.value, customFineEl);
+    if(!(oz > 0) || !(p > 0) || !(spotPerOz > 0)) return { melt: NaN, oz, p, fineOz: 0, gramsFine: 0 };
+    const fineOz = oz * p;
+    const gramsFine = fineOz * GRAMS_PER_OZ;
+    return { melt: fineOz * spotPerOz, oz, p, fineOz, gramsFine };
+  }
+
+  function calcGold(){
+    const currency = ccy.value;
+    const spotSel = getSpotSelected();
+
+    if(!(spotSel > 0)){
+      goldMelt.textContent = "—";
+      goldBuyback.textContent = "—";
+      goldDetails.textContent = "Enter spot price (or Refresh).";
+      goldPerLine.textContent = "—";
+      spotLine.textContent = "Spot: —";
+      renderBatch();
+      calcSigned();
+      return;
+    }
+
+    const r = meltFromInputs(weight, unit, purity, customFine, spotSel);
+    if(!(r.melt > 0)){
+      goldMelt.textContent = "—";
+      goldBuyback.textContent = "—";
+      goldDetails.textContent = "Enter weight and purity.";
+      goldPerLine.textContent = `Spot: ${money(spotSel, currency)} / oz t`;
+      spotLine.textContent = `Spot: ${money(spotSel, currency)} / oz t`;
+      renderBatch();
+      calcSigned();
+      return;
+    }
+
+    const bb = Number(buyback.value);
+    const bbVal = (Number.isFinite(bb) && bb >= 0) ? r.melt * (bb/100) : NaN;
+
+    goldMelt.textContent = money(r.melt, currency);
+    goldBuyback.textContent = Number.isFinite(bbVal) ? money(bbVal, currency) : "—";
+
+    const perGfine = spotSel / GRAMS_PER_OZ;
+    goldDetails.textContent =
+      `Weight: ${num(r.oz,4)} oz t (${unit.value === "g" ? `${num(Number(weight.value),2)} g` : (unit.value === "dwt" ? `${num(Number(weight.value),2)} dwt` : `${num(r.oz,4)} oz t`)}) · Purity: ${num(r.p*100,2)}% · Fine gold: ${num(r.fineOz,4)} oz t (${num(r.gramsFine,2)} g)`;
+    goldPerLine.textContent =
+      `Spot: ${money(spotSel, currency)} / oz t · ${money(perGfine, currency)} / g fine · Buyback: ${num(bb,1)}%`;
+    spotLine.textContent = `Spot: ${money(spotSel, currency)} / oz t`;
+
+    renderBatch();
+    calcSigned();
+  }
+
+  async function copyText(text){
+    try{ await navigator.clipboard.writeText(text); showToast("Copied."); }
+    catch{
+      const ta=document.createElement("textarea");
+      ta.value=text; document.body.appendChild(ta); ta.select();
+      document.execCommand("copy"); ta.remove(); showToast("Copied.");
+    }
+  }
+
+  function goldSummaryText(){
+    const currency = ccy.value;
+    const spotSel = getSpotSelected();
+    const r = meltFromInputs(weight, unit, purity, customFine, spotSel || 0);
+    if(!(spotSel > 0) || !(r.melt > 0)) return null;
+
+    const bb = Number(buyback.value);
+    const bbVal = (Number.isFinite(bb) && bb >= 0) ? r.melt * (bb/100) : NaN;
+
+    return [
+      "ODEON — Gold Reference",
+      `Currency: ${currency}`,
+      `Spot (XAU): ${money(spotSel, currency)} / oz t${locked ? " (locked)" : ""}`,
+      (fxToCCY !== "USD" ? `FX used: USD→${fxToCCY} ${num(fxUSDTo, 6)}` : "FX used: USD→USD 1.0000"),
+      `Item: ${unit.value === "g" ? `${num(Number(weight.value),2)} g` : (unit.value === "dwt" ? `${num(Number(weight.value),2)} dwt` : `${num(r.oz,4)} oz t`)} · Purity: ${num(r.p*100,2)}%`,
+      `Indicative melt: ${money(r.melt, currency)}`,
+      `Buyback (${num(bb,1)}%): ${Number.isFinite(bbVal) ? money(bbVal, currency) : "—"}`,
+      `Updated: ${timeLine.textContent || "—"}`
+    ].join("\n");
+  }
+
+  // SIGNED PIECES
+  const askPrice = $("askPrice");
+  const signedWeight = $("signedWeight");
+  const signedUnit = $("signedUnit");
+  const signedPurity = $("signedPurity");
+  const signedCustomWrap = $("signedCustomWrap");
+  const signedCustomFine = $("signedCustomFine");
+  const signedMaison = $("signedMaison");
+  const signedRef = $("signedRef");
+  const signedSet = $("signedSet");
+  const signedCond = $("signedCond");
+  const signedNotes = $("signedNotes");
+  const signedMelt = $("signedMelt");
+  const signedMultiple = $("signedMultiple");
+  const signedPctLine = $("signedPctLine");
+  const signedBandLine = $("signedBandLine");
+  const signedDetails = $("signedDetails");
+  const signedExtra = $("signedExtra");
+  const signedSigLine = $("signedSigLine");
+  const copySignedBtn = $("copySignedBtn");
+  const clearSignedBtn = $("clearSignedBtn");
+
+  function signedSignatureLine(){
+    const m = (signedMaison.value || "").trim();
+    if(!m) return "";
+    const ref = (signedRef.value || "").trim();
+    const set = (signedSet.value || "").trim();
+    const cond = (signedCond.value || "").trim();
+    const notes = (signedNotes.value || "").trim();
+    const parts = [];
+    parts.push(m + (ref ? ` — ${ref}` : ""));
+    if(set && set !== "—") parts.push(`Set: ${set}`);
+    if(cond) parts.push(`Condition: ${cond}`);
+    if(notes) parts.push(`Notes: ${notes}`);
+    return "Signature: " + parts.join(" · ");
+  }
+
+  function calcSigned(){
+    const currency = ccy.value;
+    const spotSel = getSpotSelected();
+    const ask = Number(askPrice.value);
+
+    if(!(spotSel > 0)){
+      signedMelt.textContent = "—";
+      signedMultiple.textContent = "—";
+      signedPctLine.textContent = "—";
+      signedBandLine.textContent = "—";
+      signedDetails.textContent = "Set spot and currency in Gold tab, then Refresh (or enter spot manually).";
+      signedExtra.textContent = "—";
+      signedSigLine.textContent = "—";
+      return;
+    }
+
+    const r = meltFromInputs(signedWeight, signedUnit, signedPurity, signedCustomFine, spotSel);
+    signedMelt.textContent = (r.melt > 0) ? money(r.melt, currency) : "—";
+    signedSigLine.textContent = signedSignatureLine() || "Select a maison (required).";
+
+    signedMultiple.textContent = "—";
+    signedPctLine.textContent = "—";
+    signedBandLine.textContent = "—";
+
+    if(!(r.melt > 0)){
+      signedDetails.textContent = "Enter weight and purity.";
+      signedExtra.textContent = `Spot: ${money(spotSel, currency)} / oz t`;
+      return;
+    }
+
+    if(!signedMaison.value){
+      signedDetails.textContent = "Select a maison (required) to prepare a signed summary.";
+      signedExtra.textContent = `Melt computed. Spot: ${money(spotSel, currency)} / oz t`;
+      return;
+    }
+
+    const band = MAISON_BANDS[signedMaison.value] || null;
+    if(band){
+      signedBandLine.textContent = `Typical range for ${signedMaison.value}: ${num(band[0],2)}×–${num(band[1],2)}× melt`;
+    } else {
+      signedBandLine.textContent = "Typical range: —";
+    }
+
+    if(!(ask > 0)){
+      signedDetails.textContent = "Melt computed. Enter an asking price to calculate multiple and premium.";
+      signedExtra.textContent = `Melt: ${money(r.melt, currency)} · Spot: ${money(spotSel, currency)} / oz t`;
+      return;
+    }
+
+    const multiple = ask / r.melt;
+    const premiumPct = (multiple - 1) * 100;
+
+    signedMultiple.textContent = Number.isFinite(multiple) ? `${num(multiple,2)}×` : "—";
+    signedPctLine.textContent = Number.isFinite(premiumPct) ? `Premium over gold: ${num(premiumPct,1)}%` : "—";
+
+    if(band && Number.isFinite(multiple)){
+      let status = "within typical range";
+      if(multiple < band[0]) status = "below typical range";
+      else if(multiple > band[1]) status = "above typical range";
+      signedBandLine.textContent = `Typical range for ${signedMaison.value}: ${num(band[0],2)}×–${num(band[1],2)}× — ${status}`;
+    }
+
+    signedDetails.textContent = `Asking: ${money(ask, currency)} · Melt: ${money(r.melt, currency)} · Multiple of melt: ${num(multiple,2)}×`;
+    signedExtra.textContent = `Weight: ${signedUnit.value === "g" ? `${num(Number(signedWeight.value),2)} g` : (signedUnit.value === "dwt" ? `${num(Number(signedWeight.value),2)} dwt` : `${num(r.oz,4)} oz t`)} · Purity: ${num(r.p*100,2)}% · Spot: ${money(spotSel, currency)} / oz t`;
+  }
+
+  function signedSummaryText(){
+    const currency = ccy.value;
+    const spotSel = getSpotSelected();
+    const ask = Number(askPrice.value);
+    if(!(spotSel > 0) || !(ask > 0) || !signedMaison.value) return null;
+
+    const r = meltFromInputs(signedWeight, signedUnit, signedPurity, signedCustomFine, spotSel);
+    if(!(r.melt > 0)) return null;
+
+    const multiple = ask / r.melt;
+    const premiumPct = (multiple - 1) * 100;
+
+    const band = MAISON_BANDS[signedMaison.value] || null;
+    let bandLine = "Typical range: —";
+    if(band && Number.isFinite(multiple)){
+      let status = "within typical range";
+      if(multiple < band[0]) status = "below typical range";
+      else if(multiple > band[1]) status = "above typical range";
+      bandLine = `Typical range for ${signedMaison.value}: ${num(band[0],2)}×–${num(band[1],2)}× — ${status}`;
+    } else if(band){
+      bandLine = `Typical range for ${signedMaison.value}: ${num(band[0],2)}×–${num(band[1],2)}×`;
+    }
+
+    return [
+      "ODEON — Signed Pieces (Multiple of Gold)",
+      `Currency: ${currency}`,
+      `Spot (XAU): ${money(spotSel, currency)} / oz t${locked ? " (locked)" : ""}`,
+      (fxToCCY !== "USD" ? `FX used: USD→${fxToCCY} ${num(fxUSDTo, 6)}` : "FX used: USD→USD 1.0000"),
+      signedSignatureLine(),
+      `Inputs: Asking ${money(ask, currency)} · ${signedUnit.value === "g" ? `${num(Number(signedWeight.value),2)} g` : (signedUnit.value === "dwt" ? `${num(Number(signedWeight.value),2)} dwt` : `${num(r.oz,4)} oz t`)} · Purity ${num(r.p*100,2)}%`,
+      `Melt: ${money(r.melt, currency)}`,
+      `Multiple of gold: ${num(multiple,2)}×`,
+      `Premium over gold: ${num(premiumPct,1)}%`,
+      bandLine,
+      `Updated: ${timeLine.textContent || "—"}`
+    ].join("\n");
+  }
+
+  // BATCH
+  const batchLabel = $("batchLabel");
+  const batchBuyback = $("batchBuyback");
+  const itemLabel = $("itemLabel");
+  const itemWeight = $("itemWeight");
+  const itemUnit = $("itemUnit");
+  const itemPurity = $("itemPurity");
+  const itemCustomWrap = $("itemCustomWrap");
+  const itemCustomFine = $("itemCustomFine");
+  const itemMaison = $("itemMaison");
+  const itemAsking = $("itemAsking");
+  const addItemBtn = $("addItemBtn");
+  const cancelEditBtn = $("cancelEditBtn");
+  const batchBody = $("batchBody");
+  const batchFoot = $("batchFoot");
+  const totW = $("totW");
+  const totP = $("totP");
+  const totS = $("totS");
+  const totM = $("totM");
+  const totB = $("totB");
+  const totA = $("totA");
+  const totO = $("totO");
+  const copyBatchBtn = $("copyBatchBtn");
+  const copyBatchTableBtn = $("copyBatchTableBtn");
+  const downloadBatchCsvBtn = $("downloadBatchCsvBtn");
+  const undoBatchBtn = $("undoBatchBtn");
+  const clearBatchBtn = $("clearBatchBtn");
+  const batchNotes = $("batchNotes");
+
+  let batch = [];
+  let editingBatchIndex = null;
+  let lastRemoved = null;
+
+  function itemPurityFrac(){
+    if(itemPurity.value === "custom"){
+      const p = Number(itemCustomFine.value);
+      return (Number.isFinite(p) && p > 0) ? p/100 : 0;
+    }
+    const v = Number(itemPurity.value);
+    return Number.isFinite(v) ? v : 0;
+  }
+
+  function meltFor(weightG, purityFrac, spotPerOz){
+    const oz = weightG / GRAMS_PER_OZ;
+    return oz * purityFrac * spotPerOz;
+  }
+
+  function addBatchItem(){
+    const label = (itemLabel.value || "").trim() || `Item ${batch.length + 1}`;
+    const wInput = Number(itemWeight.value);
+    const u = (itemUnit && itemUnit.value) ? itemUnit.value : "g";
+    let wG = wInput;
+    if(u === "oz") wG = wInput * GRAMS_PER_OZ;
+    else if(u === "dwt") wG = wInput * GRAMS_PER_DWT;
+    const p = itemPurityFrac();
+    const maison = (itemMaison.value || "").trim();
+    const ask = Number(itemAsking.value);
+
+    if(!(wG > 0) || !(p > 0)){
+      showToast("Enter item weight and purity.");
+      return;
+    }
+
+    const newItem = { label, weightG:wG, inputWeight:wInput, inputUnit:u, purity:p, maison, asking:(Number.isFinite(ask) && ask>0)?ask:0 };
+    if(editingBatchIndex !== null && editingBatchIndex >= 0 && editingBatchIndex < batch.length){
+      batch[editingBatchIndex] = newItem;
+    } else {
+      batch.push(newItem);
+    }
+
+    itemLabel.value = "";
+    itemWeight.value = "0";
+    if(itemUnit) itemUnit.value = "g";
+    itemPurity.value = "0.75";
+    itemCustomFine.value = "75";
+    itemCustomWrap.classList.add("hidden");
+    itemMaison.value = "";
+    itemAsking.value = "0";
+
+    renderBatch();
+    if(editingBatchIndex !== null){
+      showToast("Item updated.");
+    } else {
+      showToast("Added to batch.");
+    }
+    editingBatchIndex = null;
+    addItemBtn.textContent = "Add to batch";
+    if(cancelEditBtn) cancelEditBtn.style.display = "none";
+    scheduleSave();
+  }
+
+  
+  function startEditBatchItem(idx){
+    const it = batch[idx];
+    if(!it) return;
+    editingBatchIndex = idx;
+
+    itemLabel.value = it.label || "";
+    itemWeight.value = (it.inputWeight != null) ? String(it.inputWeight) : "0";
+    if(it.inputUnit) itemUnit.value = it.inputUnit;
+
+    // purity restore
+    const p = Number(it.purity);
+    const pStr = Number.isFinite(p) ? String(p) : "";
+    const has = Array.from(itemPurity.options).some(o => o.value === pStr);
+    if(has){
+      itemPurity.value = pStr;
+      itemCustomWrap.classList.add("hidden");
+    } else {
+      itemPurity.value = "custom";
+      itemCustomWrap.classList.remove("hidden");
+      itemCustomFine.value = String(Number.isFinite(p) ? (p*100) : 75);
+    }
+
+    itemMaison.value = it.maison || "";
+    itemAsking.value = String(it.asking || 0);
+
+    addItemBtn.textContent = "Update item";
+    if(cancelEditBtn) cancelEditBtn.style.display = "inline-flex";
+    showToast("Editing item.");
+  }
+
+  function cancelBatchEdit(){
+    editingBatchIndex = null;
+    addItemBtn.textContent = "Add to batch";
+    if(cancelEditBtn) cancelEditBtn.style.display = "none";
+    // reset inputs
+    itemLabel.value = "";
+    itemWeight.value = "0";
+    itemUnit.value = "g";
+    itemPurity.value = "0.75";
+    itemCustomFine.value = "75";
+    itemCustomWrap.classList.add("hidden");
+    itemMaison.value = "";
+    itemAsking.value = "0";
+  }
+
+  function updateUndoBtn(){
+    if(!undoBatchBtn) return;
+    undoBatchBtn.style.display = lastRemoved ? "inline-flex" : "none";
+  }
+function removeBatchItem(idx){
+    const it = batch[idx];
+    if(!it) return;
+    const ok = confirm(`Remove "${it.label}" from batch?`);
+    if(!ok) return;
+    lastRemoved = { item: it, idx };
+    batch.splice(idx, 1);
+    renderBatch();
+    updateUndoBtn();
+    showToast("Removed. Undo available.");
+    scheduleSave();
+  }
+
+  function renderBatch(){
+    const currency = ccy.value;
+    const spotSel = getSpotSelected();
+    const bb = Number(batchBuyback.value);
+    const bbFrac = (Number.isFinite(bb) && bb >= 0) ? (bb/100) : NaN;
+
+    if(batch.length === 0){
+      batchBody.innerHTML = `<tr><td colspan="9" class="muted">No items yet. Add items above.</td></tr>`;
+      batchFoot.classList.add("hidden");
+      return;
+    }
+
+    const canPrice = (spotSel && spotSel > 0);
+    let rows = "";
+    let totalW = 0, totalM = 0, totalB = 0, totalA = 0;
+    let weightedPurity = 0;
+    let signedCount = 0;
+
+    batch.forEach((it, idx) => {
+      totalW += it.weightG;
+      weightedPurity += it.weightG * it.purity;
+
+      const melt = canPrice ? meltFor(it.weightG, it.purity, spotSel) : NaN;
+      const buy = (canPrice && Number.isFinite(bbFrac)) ? melt * bbFrac : NaN;
+
+      if(canPrice) totalM += melt;
+      if(canPrice && Number.isFinite(buy)) totalB += buy;
+
+      const ask = (Number.isFinite(it.asking) && it.asking > 0) ? it.asking : 0;
+      totalA += ask;
+
+      let overGold = "—";
+      if(canPrice && ask > 0 && melt > 0){
+        const multiple = ask / melt;
+        const pct = (multiple - 1) * 100;
+        overGold = `${num(pct,1)}% (${num(multiple,2)}×)`;
+      }
+
+      if(it.maison) signedCount += 1;
+
+      rows += `
+        <tr>
+          <td>${esc(it.label)}</td>
+          <td class="right">${it.inputUnit ? `${num(it.inputWeight,2)} ${esc(it.inputUnit)}` : `${num(it.weightG,2)} g`}</td>
+          <td class="right">${num(it.purity*100,1)}%</td>
+          <td>${it.maison ? esc(it.maison) : '<span class="muted">—</span>'}</td>
+          <td class="right">${canPrice ? money(melt, currency) : "—"}</td>
+          <td class="right">${canPrice ? (Number.isFinite(buy) ? money(buy, currency) : "—") : "—"}</td>
+          <td class="right">${ask > 0 ? money(ask, currency) : '<span class="muted">—</span>'}</td>
+          <td class="right">${overGold}</td>
+          <td class="right">
+            <button class="btn tiny black" data-ed="${idx}" style="padding:8px 10px;" type="button">Edit</button>
+            <button class="btn tiny black" data-rm="${idx}" style="padding:8px 10px; margin-left:6px;" type="button">Remove</button>
+          </td>
+        </tr>
+      `;
+    });
+
+    batchBody.innerHTML = rows;
+    batchBody.querySelectorAll("button[data-ed]").forEach(btn => btn.addEventListener("click", () => startEditBatchItem(Number(btn.dataset.ed))));
+    batchBody.querySelectorAll("button[data-rm]").forEach(btn => btn.addEventListener("click", () => removeBatchItem(Number(btn.dataset.rm))));
+
+    batchFoot.classList.remove("hidden");
+    totW.textContent = `${num(totalW,2)} g`;
+    const avgPurity = weightedPurity / totalW;
+    totP.textContent = `${num(avgPurity*100,1)}%`;
+    totS.textContent = `${signedCount} signed`;
+    totM.innerHTML = canPrice ? `<b>${money(totalM, currency)}</b>` : "<b>—</b>";
+    totB.innerHTML = canPrice ? `<b>${Number.isFinite(totalB) ? money(totalB, currency) : "—"}</b>` : "<b>—</b>";
+    totA.innerHTML = `<b>${totalA > 0 ? money(totalA, currency) : "—"}</b>`;
+
+    if(canPrice && totalA > 0 && totalM > 0){
+      const multiple = totalA / totalM;
+      const pct = (multiple - 1) * 100;
+      totO.innerHTML = `<b>${num(pct,1)}% (${num(multiple,2)}×)</b>`;
+    } else {
+      totO.innerHTML = "<b>—</b>";
+    }
+  }
+
+  function batchSummaryText(){
+    const currency = ccy.value;
+    const spotSel = getSpotSelected();
+    if(batch.length === 0) return null;
+
+    const bb = Number(batchBuyback.value);
+    const bbFrac = (Number.isFinite(bb) && bb >= 0) ? (bb/100) : NaN;
+
+    const label = (batchLabel.value || "").trim();
+    const notes = (batchNotes.value || "").trim();
+
+    let lines = [];
+    lines.push("ODEON — Batch Summary");
+    if(label) lines.push(`Batch: ${label}`);
+    lines.push(`Currency: ${currency}`);
+    if(spotSel && spotSel > 0){
+      lines.push(`Spot (XAU): ${money(spotSel, currency)} / oz t${locked ? " (locked)" : ""}`);
+      lines.push((fxToCCY !== "USD" ? `FX used: USD→${fxToCCY} ${num(fxUSDTo, 6)}` : "FX used: USD→USD 1.0000"));
+    } else {
+      lines.push("Spot (XAU): — (set in Gold tab)");
+    }
+    lines.push(`Buyback: ${num(bb,1)}%`);
+    lines.push("");
+
+    let totalM = 0, totalB = 0, totalA = 0;
+    batch.forEach(it => {
+      const melt = (spotSel && spotSel > 0) ? meltFor(it.weightG, it.purity, spotSel) : NaN;
+      const buy = (Number.isFinite(bbFrac) && spotSel && spotSel > 0) ? melt * bbFrac : NaN;
+      const ask = (Number.isFinite(it.asking) && it.asking > 0) ? it.asking : 0;
+
+      if(Number.isFinite(melt)) totalM += melt;
+      if(Number.isFinite(buy)) totalB += buy;
+      totalA += ask;
+
+      let overGold = "";
+      if(Number.isFinite(melt) && ask > 0 && melt > 0){
+        const multiple = ask / melt;
+        const pct = (multiple - 1) * 100;
+        overGold = ` · Over gold ${num(pct,1)}% (${num(multiple,2)}×)`;
+      }
+
+      lines.push(`• ${it.label}: ${num(it.weightG,2)} g @ ${num(it.purity*100,1)}%${it.maison ? ` · ${it.maison}` : ""} → Melt ${Number.isFinite(melt) ? money(melt, currency) : "—"} · Buyback ${Number.isFinite(buy) ? money(buy, currency) : "—"}${ask>0 ? ` · Asking ${money(ask, currency)}${overGold}` : ""}`);
+    });
+
+    lines.push("");
+    lines.push(`Total melt: ${Number.isFinite(totalM) && totalM>0 ? money(totalM, currency) : "—"}`);
+    lines.push(`Total buyback: ${Number.isFinite(totalB) && totalB>0 ? money(totalB, currency) : "—"}`);
+    lines.push(`Total asking: ${totalA>0 ? money(totalA, currency) : "—"}`);
+    if(Number.isFinite(totalM) && totalM>0 && totalA>0){
+      const multiple = totalA / totalM;
+      const pct = (multiple - 1) * 100;
+      lines.push(`Total over gold: ${num(pct,1)}% (${num(multiple,2)}×)`);
+    }
+    lines.push(`Updated: ${timeLine.textContent || "—"}`);
+
+    if(notes){
+      lines.push("");
+      lines.push("Notes:");
+      lines.push(notes);
+    }
+    return lines.join("\n");
+  }
+
+  // Wire events
+  purity.addEventListener("change", () => { customWrap.classList.toggle("hidden", purity.value !== "custom"); calcGold(); });
+  ccy.addEventListener("change", async () => {
+    if(locked){ showToast("Currency is locked with spot. Unlock to change."); ccy.value = fxToCCY || "USD"; return; }
+    await refreshAll();
+  });
+
+  [weight, unit, customFine, spot, buyback].forEach(el => el.addEventListener("input", calcGold));
+  refreshBtn.addEventListener("click", refreshAll);
+  if(metalSel) metalSel.addEventListener("change", () => { setPurityOptions(); refreshAll(); });
+  lockBtn.addEventListener("click", toggleLock);
+  printBtn.addEventListener("click", () => { preparePrint("gold"); window.print(); });
+  copyGoldBtn.addEventListener("click", async () => {
+    const t = goldSummaryText();
+    if(!t){ showToast("Enter valid values first."); return; }
+    await copyText(t);
+  });
+
+  const printSignedBtn = $("printSignedBtn");
+  if(printSignedBtn) printSignedBtn.addEventListener("click", () => { preparePrint("signed"); window.print(); });
+
+  const printBatchBtn = $("printBatchBtn");
+  if(printBatchBtn) printBatchBtn.addEventListener("click", () => { preparePrint("batch"); window.print(); });
+
+  window.addEventListener("beforeprint", () => { preparePrint(currentTab); });
+
+  signedPurity.addEventListener("change", () => { signedCustomWrap.classList.toggle("hidden", signedPurity.value !== "custom"); calcSigned(); });
+  [askPrice, signedWeight, signedUnit, signedCustomFine, signedMaison, signedRef, signedSet, signedCond, signedNotes].forEach(el => el.addEventListener("input", calcSigned));
+  $("copySignedBtn").addEventListener("click", async () => {
+    const t = signedSummaryText();
+    if(!t){ showToast("Fill asking price, weight, purity, and maison."); return; }
+    await copyText(t);
+  });
+  clearSignedBtn.addEventListener("click", () => {
+    askPrice.value = "0";
+    signedWeight.value = "10";
+    signedUnit.value = "g";
+    signedPurity.value = "0.75";
+    signedCustomFine.value = "75";
+    signedCustomWrap.classList.add("hidden");
+    signedMaison.value = "";
+    signedRef.value = "";
+    signedSet.value = "—";
+    signedCond.value = "";
+    signedNotes.value = "";
+    calcSigned();
+    showToast("Cleared.");
+  });
+
+  itemPurity.addEventListener("change", () => itemCustomWrap.classList.toggle("hidden", itemPurity.value !== "custom"));
+  addItemBtn.addEventListener("click", addBatchItem);
+  batchBuyback.addEventListener("input", renderBatch);
+  copyBatchBtn.addEventListener("click", async () => {
+    const t = batchSummaryText();
+    if(!t){ showToast("Batch is empty."); return; }
+    await copyText(t);
+  });
+  clearBatchBtn.addEventListener("click", () => { batch = []; renderBatch(); showToast("Batch cleared."); });
+
+  // Init
+  updateMarketAndClocks();
+  setInterval(updateMarketAndClocks, 1000);
+  // Diagnostics values
+  if(diagSpot) diagSpot.textContent = "Not yet refreshed";
+  if(diagFX) diagFX.textContent = "Not yet refreshed";
+  if(diagErr) diagErr.textContent = "—";
+  if(diagPreview) diagPreview.textContent = "Spot: not yet refreshed · FX: not yet refreshed";
+
+  // Diagnostics toggle
+  if(diagToggle && diagBody){
+    diagToggle.addEventListener("click", () => {
+      const showing = diagBody.classList.toggle("show");
+      diagBody.setAttribute("aria-hidden", showing ? "false" : "true");
+    });
+  }
+
+  // Init
+  updateMarketAndClocks();
+  setInterval(updateMarketAndClocks, 1000);
+
+  timeLine.textContent = "—";
+  fxLine.textContent = (fxToCCY === ccy.value && fxUSDTo > 0) ? ((ccy.value==="USD")?"FX: USD→USD 1.0000":`FX: USD→${ccy.value} ${num(fxUSDTo, 6)} (cached)`) : "FX: —";
+      timeLine.textContent = `Manual / offline (${nowString()})`;
+  refreshAll().finally(() => { calcGold(); calcSigned(); renderBatch(); });
+  activateTab("gold");
+
+  // Metals: purity options follow selected metal (Gold/Silver/Platinum)
+  const metalEl = document.getElementById("metal");
+  const purityEl = document.getElementById("purity");
+  if(metalEl){
+    metalEl.addEventListener("change", () => {
+      setPurityOptionsForMetal(metalEl.value);
+      // Recalculate immediately (uses existing handlers if present)
+      try{ if(typeof calcGold === "function") calcGold(); }catch(e){}
+      try{ if(typeof refreshAll === "function") refreshAll(); }catch(e){}
+    });
+    // init once on load
+    setPurityOptionsForMetal(metalEl.value);
+  }
+
+  function setPurityOptionsForMetalOn(puritySelectId, metalCode){
+    const purityEl = document.getElementById(puritySelectId);
+    if(!purityEl) return;
+    const prev = purityEl.value;
+    const list = PURITY_PRESETS[metalCode] || PURITY_PRESETS.XAU;
+    purityEl.innerHTML = "";
+    for(const item of list){
+      const opt = document.createElement("option");
+      opt.value = item.value;
+      opt.textContent = item.label;
+      purityEl.appendChild(opt);
+    }
+    const exists = list.some(x => x.value === prev);
+    purityEl.value = exists ? prev : defaultPurityValue(metalCode);
+  }
+
+  // Signed + Batch: metal selection (shares the Metals spot + FX engine)
+  const signedMetalEl = document.getElementById("signedMetal");
+  const batchMetalEl  = document.getElementById("batchMetal");
+
+  function syncGlobalMetal(newMetal){
+    if(metalSel && metalSel.value !== newMetal){
+      metalSel.value = newMetal;
+      setPurityOptionsForMetal(newMetal);
+    }
+  }
+
+  if(signedMetalEl){
+    signedMetalEl.addEventListener("change", () => {
+      const m = signedMetalEl.value || "XAU";
+      syncGlobalMetal(m);
+      setPurityOptionsForMetalOn("signedPurity", m);
+      refreshAll();
+      calcSigned();
+    });
+    setPurityOptionsForMetalOn("signedPurity", signedMetalEl.value || "XAU");
+  }
+
+  if(batchMetalEl){
+    batchMetalEl.addEventListener("change", () => {
+      const m = batchMetalEl.value || "XAU";
+      syncGlobalMetal(m);
+      setPurityOptionsForMetalOn("itemPurity", m);
+      refreshAll();
+      try{ renderBatch(); }catch(e){}
+    });
+    setPurityOptionsForMetalOn("itemPurity", batchMetalEl.value || "XAU");
+  }
+
+})();
+
+  const purityPresets = {
+    XAU: [
+      {label:"24k (100%)", v:"1"},
+      {label:"22k (91.67%)", v:"0.9167"},
+      {label:"18k (75%)", v:"0.75"},
+      {label:"14k (58.5%)", v:"0.585"},
+      {label:"10k (41.7%)", v:"0.417"},
+      {label:"Custom fineness (%)", v:"custom"},
+    ],
+    XAG: [
+      {label:"Fine silver (99.9%)", v:"0.999"},
+      {label:"Sterling (92.5%)", v:"0.925"},
+      {label:"Coin silver (90%)", v:"0.9"},
+      {label:"800 (80%)", v:"0.8"},
+      {label:"Custom fineness (%)", v:"custom"},
+    ],
+    XPT: [
+      {label:"Platinum 999 (99.9%)", v:"0.999"},
+      {label:"Platinum 950 (95%)", v:"0.95"},
+      {label:"Platinum 900 (90%)", v:"0.9"},
+      {label:"Platinum 850 (85%)", v:"0.85"},
+      {label:"Custom fineness (%)", v:"custom"},
+    ],
+  };
+
+  function setPurityOptions(){
+    if(!purity || !metalSel) return;
+    const sym = metalSel.value || "XAU";
+    const list = purityPresets[sym] || purityPresets.XAU;
+    purity.innerHTML = "";
+    for(const item of list){
+      const opt = document.createElement("option");
+      opt.value = item.v;
+      opt.textContent = item.label;
+      purity.appendChild(opt);
+    }
+    // sensible defaults
+    if(sym==="XAU") purity.value = "0.75";
+    if(sym==="XAG") purity.value = "0.925";
+    if(sym==="XPT") purity.value = "0.95";
+    toggleCustomFine();
+  }
+
+  function toggleCustomFine(){
+    const wrap = $("customWrap");
+    const fine = $("customFine");
+    if(!wrap || !fine || !purity) return;
+
+    const isCustom = (purity.value === "custom");
+    wrap.classList.toggle("hidden", !isCustom);
+
+    if(isCustom){
+      const sym = metalSel ? (metalSel.value || "XAU") : "XAU";
+      // Set sensible defaults when switching to custom
+      if(sym === "XAU" && !fine.value) fine.value = "75";
+      if(sym === "XAG" && !fine.value) fine.value = "92.5";
+      if(sym === "XPT" && !fine.value) fine.value = "95";
+    }
+  }
+
+
+  // --- Auction Estimator (tiered buyer’s premium, tax-free) ---
+  const AUCTION_PREMIUMS = {
+    CHRISTIES: [{ upTo: 1000000, rate: 0.27 }, { upTo: 4500000, rate: 0.21 }, { upTo: Infinity, rate: 0.15 }],
+    SOTHEBYS:  [{ upTo: 1000000, rate: 0.27 }, { upTo: 8000000, rate: 0.22 }, { upTo: Infinity, rate: 0.15 }],
+    PHILLIPS:  [{ upTo: 1000000, rate: 0.29 }, { upTo: 6000000, rate: 0.22 }, { upTo: Infinity, rate: 0.15 }],
+    BONHAMS:   [{ upTo: 1000000, rate: 0.25 }, { upTo: Infinity, rate: 0.20 }]
+  };
+
+  function calcTieredPremium(hammer, tiers){
+    let remaining = Math.max(0, Number(hammer) || 0);
+    let premium = 0;
+    let prevCap = 0;
+    for(const t of tiers){
+      const cap = t.upTo;
+      const segCap = (cap === Infinity) ? remaining : Math.max(0, cap - prevCap);
+      const seg = Math.min(remaining, segCap);
+      premium += seg * t.rate;
+      remaining -= seg;
+      if(cap !== Infinity) prevCap = cap;
+      if(remaining <= 0) break;
+    }
+    return premium;
+  }
+
+
+  function calcTierBreakdown(hammer, tiers){
+    const h = Math.max(0, Number(hammer) || 0);
+    let remaining = h;
+    let prevCap = 0;
+    const rows = [];
+    for(const t of tiers){
+      const cap = t.upTo;
+      const segCap = (cap === Infinity) ? remaining : Math.max(0, cap - prevCap);
+      const seg = Math.min(remaining, segCap);
+      if(seg > 0){
+        const from = prevCap;
+        const to = (cap === Infinity) ? Infinity : cap;
+        rows.push({ from, to, rate: t.rate, base: seg, premium: seg * t.rate });
+      }
+      remaining -= seg;
+      if(cap !== Infinity) prevCap = cap;
+      if(remaining <= 0) break;
+    }
+    return { hammer: h, rows };
+  }
+
+  function fmtMoney(v, ccy){
+    try {
+      return new Intl.NumberFormat(undefined, { style: "currency", currency: ccy, maximumFractionDigits: 0 }).format(v);
+    } catch(e){
+      return ccy + " " + Math.round(v).toLocaleString();
+    }
+  }
+
+  function updateAuction(){
+    const ccy = document.getElementById("auctionCcy")?.value || "USD";
+    const house = document.getElementById("auctionHouse")?.value || "CHRISTIES";
+    const hammer = Number(document.getElementById("hammer")?.value || 0);
+
+    const tiers = AUCTION_PREMIUMS[house] || AUCTION_PREMIUMS.CHRISTIES;
+
+    const mode = document.getElementById("auctionPremiumMode")?.value || "HOUSE";
+    const customPct = Number(document.getElementById("auctionCustomPremium")?.value || 0);
+    const premium = (mode === "CUSTOM") ? (hammer * (customPct/100)) : calcTieredPremium(hammer, tiers);
+    const total = hammer + premium;
+    const eff = hammer > 0 ? (premium / hammer) : 0;
+
+    // Breakdown
+    const breakdownEl = document.getElementById("auctionBreakdown");
+    if(breakdownEl){
+      if(hammer <= 0){
+        breakdownEl.textContent = "—";
+      } else if(mode === "CUSTOM"){
+        breakdownEl.textContent = (customPct || 0).toFixed(2).replace(/\.00$/,"") + "% on full hammer  →  " + fmtMoney(premium, ccy);
+      } else {
+        const b = calcTierBreakdown(hammer, tiers);
+        const lines = b.rows.map(r => {
+          const pct = (r.rate*100).toFixed(0) + "%";
+          const range = (r.to === Infinity)
+            ? (fmtMoney(r.from, ccy) + " +")
+            : (fmtMoney(r.from, ccy) + " – " + fmtMoney(r.to, ccy));
+          return pct + " on " + range + "  →  " + fmtMoney(r.premium, ccy);
+        });
+        breakdownEl.textContent = lines.join("\n");
+      }
+    }
+
+    const premEl = document.getElementById("auctionPremium");
+    const totEl = document.getElementById("auctionTotal");
+    const effEl = document.getElementById("auctionEff");
+    if(premEl) premEl.textContent = hammer > 0 ? fmtMoney(premium, ccy) : "—";
+    if(totEl) totEl.textContent = hammer > 0 ? fmtMoney(total, ccy) : "—";
+    if(effEl) effEl.textContent = hammer > 0 ? (eff*100).toFixed(1) + "%" : "—";
+  }
+
+  // Auction wiring
+  document.getElementById("auctionHouse")?.addEventListener("change", updateAuction);
+  document.getElementById("auctionCcy")?.addEventListener("change", updateAuction);
+  document.getElementById("hammer")?.addEventListener("input", updateAuction);
+  document.getElementById("printAuctionBtn")?.addEventListener("click", () => window.print());
+  document.getElementById("clearAuctionBtn")?.addEventListener("click", () => { const h=document.getElementById("hammer"); if(h) h.value=""; if(typeof syncAuctionPremiumMode === "function") syncAuctionPremiumMode(); else updateAuction(); });
+
+
+  function auctionHouseLabel(v){
+    if(v === "SOTHEBYS") return "Sotheby’s";
+    if(v === "PHILLIPS") return "Phillips";
+    if(v === "BONHAMS") return "Bonhams";
+    return "Christie’s";
+  }
+
+  async function copyToClipboard(text){
+    try{
+      await navigator.clipboard.writeText(text);
+      return true;
+    }catch(e){
+      // fallback
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.style.position = "fixed";
+      ta.style.left = "-9999px";
+      document.body.appendChild(ta);
+      ta.select();
+      const ok = document.execCommand("copy");
+      document.body.removeChild(ta);
+      return ok;
+    }
+  }
+
+  function currentAuctionState(){
+    const ccy = document.getElementById("auctionCcy")?.value || "USD";
+    const house = document.getElementById("auctionHouse")?.value || "CHRISTIES";
+    const hammer = document.getElementById("hammer")?.value || "";
+    const premMode = document.getElementById("auctionPremiumMode")?.value || "HOUSE";
+    const premPct = document.getElementById("auctionCustomPremium")?.value || "";
+    return { tab: "auction", ccy, house, hammer, premMode, premPct };
+  }
+
+  function buildShareURL(state){
+    const url = new URL(window.location.href);
+    url.searchParams.set("tab", "auction");
+    url.searchParams.set("ccy", state.ccy);
+    url.searchParams.set("house", state.house);
+    if(state.hammer !== "") url.searchParams.set("hammer", state.hammer);
+    if(state.premMode) url.searchParams.set("premMode", state.premMode);
+    if(state.premPct !== "" && state.premPct != null) url.searchParams.set("premPct", state.premPct);
+    else url.searchParams.delete("hammer");
+    return url.toString();
+  }
+
+  async function onCopyAuction(){
+    const ccy = document.getElementById("auctionCcy")?.value || "USD";
+    const house = document.getElementById("auctionHouse")?.value || "CHRISTIES";
+    const hammer = Number(document.getElementById("hammer")?.value || 0);
+    const tiers = AUCTION_PREMIUMS[house] || AUCTION_PREMIUMS.CHRISTIES;
+
+    const mode = document.getElementById("auctionPremiumMode")?.value || "HOUSE";
+    const customPct = Number(document.getElementById("auctionCustomPremium")?.value || 0);
+    const premium = (mode === "CUSTOM") ? (hammer * (customPct/100)) : calcTieredPremium(hammer, tiers);
+    const total = hammer + premium;
+    const eff = hammer > 0 ? (premium/hammer) : 0;
+
+    const line = [
+      auctionHouseLabel(house),
+      "Hammer " + fmtMoney(hammer, ccy),
+      "Premium " + fmtMoney(premium, ccy),
+      "Total " + fmtMoney(total, ccy),
+      (hammer>0 ? (eff*100).toFixed(1)+"%" : "")
+    ].filter(Boolean).join(" | ");
+
+    const ok = await copyToClipboard(line);
+    const st = document.getElementById("auctionShareStatus");
+    if(st) st.textContent = ok ? "Copied." : "Copy failed.";
+    setTimeout(()=>{ if(st) st.textContent=""; }, 1400);
+  }
+
+  async function onShareAuction(){
+    const state = currentAuctionState();
+    const url = buildShareURL(state);
+    const ok = await copyToClipboard(url);
+    const st = document.getElementById("auctionShareStatus");
+    if(st) st.textContent = ok ? "Share link copied." : "Share failed.";
+    setTimeout(()=>{ if(st) st.textContent=""; }, 1600);
+  }
+
+  document.getElementById("copyAuctionBtn")?.addEventListener("click", onCopyAuction);
+  document.getElementById("shareAuctionBtn")?.addEventListener("click", onShareAuction);
+
+  // Apply URL state (optional)
+  (function applyAuctionFromURL(){
+    try{
+      const p = new URLSearchParams(window.location.search);
+      const tab = p.get("tab");
+      if(tab === "auction"){
+        const ccy = p.get("ccy");
+        const house = p.get("house");
+        const hammer = p.get("hammer");
+      const premMode = p.get("premMode");
+      const premPct = p.get("premPct");
+        if(ccy && document.getElementById("auctionCcy")) document.getElementById("auctionCcy").value = ccy;
+        if(house && document.getElementById("auctionHouse")) document.getElementById("auctionHouse").value = house;
+        if(hammer != null && document.getElementById("hammer")) document.getElementById("hammer").value = hammer;
+        if(premMode && document.getElementById("auctionPremiumMode")) document.getElementById("auctionPremiumMode").value = premMode;
+        if(premPct != null && document.getElementById("auctionCustomPremium")) document.getElementById("auctionCustomPremium").value = premPct;
+        if(typeof activateTab === "function") activateTab("auction");
+        if(typeof syncAuctionPremiumMode === "function") syncAuctionPremiumMode(); else updateAuction();
+      }
+    }catch(e){}
+  })();
+
+  // Auction premium mode wiring
+  const premModeEl = document.getElementById("auctionPremiumMode");
+  const premCustomEl = document.getElementById("auctionCustomPremium");
+  function syncAuctionPremiumMode(){
+    const mode = premModeEl?.value || "HOUSE";
+    if(premCustomEl){
+      premCustomEl.disabled = (mode !== "CUSTOM");
+      if(mode !== "CUSTOM") premCustomEl.value = "";
+    }
+    if(typeof syncAuctionPremiumMode === "function") syncAuctionPremiumMode(); else updateAuction();
+  }
+  premModeEl && premModeEl.addEventListener("change", syncAuctionPremiumMode);
+  premCustomEl && premCustomEl.addEventListener("input", updateAuction);
+
+
+  // --- Global sync listeners ---
+  metal && metal.addEventListener("change", () => syncMetalFrom(metal));
+  signedMetal && signedMetal.addEventListener("change", () => syncMetalFrom(signedMetal));
+  batchMetal && batchMetal.addEventListener("change", () => syncMetalFrom(batchMetal));
+
+  ccy && ccy.addEventListener("change", () => syncCurrencyFrom(ccy));
+  auctionCcy && auctionCcy.addEventListener("change", () => syncCurrencyFrom(auctionCcy));
+
+  cancelEditBtn && cancelEditBtn.addEventListener("click", cancelBatchEdit);
+
+  undoBatchBtn && undoBatchBtn.addEventListener("click", ()=>{
+    if(!lastRemoved) return;
+    const { item, idx } = lastRemoved;
+    const at = (idx >= 0 && idx <= batch.length) ? idx : batch.length;
+    batch.splice(at, 0, item);
+    lastRemoved = null;
+    renderBatch();
+    updateUndoBtn();
+    showToast("Undo applied.");
+    scheduleSave();
+  });
+
+
+  // --- Session bar (safe) ---
+  const globalMetal = $("globalMetal");
+  const globalCcy = $("globalCcy");
+  const sessionStamp = $("sessionStamp");
+  const sessionLockBtn = $("sessionLockBtn");
+  const sessionResetBtn = $("sessionResetBtn");
+
+  function syncSessionBar(){
+    try{
+      if(globalMetal && metal) globalMetal.value = metal.value;
+      if(globalCcy && ccy) globalCcy.value = ccy.value;
+      if(sessionStamp){
+        const d = new Date();
+        sessionStamp.textContent = "Updated " + d.toLocaleString();
+      }
+      if(sessionLockBtn && typeof locked !== "undefined"){
+        sessionLockBtn.textContent = locked ? "Locked" : "Lock";
+      }
+    }catch(e){}
+  }
+
+  globalMetal && globalMetal.addEventListener("change", ()=>{
+    const v = globalMetal.value;
+    if(metal){ metal.value = v; metal.dispatchEvent(new Event("change")); }
+    if(typeof signedMetal !== "undefined" && signedMetal){ signedMetal.value = v; signedMetal.dispatchEvent(new Event("change")); }
+    if(typeof batchMetal !== "undefined" && batchMetal){ batchMetal.value = v; batchMetal.dispatchEvent(new Event("change")); }
+    syncSessionBar();
+  });
+
+  globalCcy && globalCcy.addEventListener("change", ()=>{
+    const v = globalCcy.value;
+    if(ccy){ ccy.value = v; ccy.dispatchEvent(new Event("change")); }
+    if(typeof auctionCcy !== "undefined" && auctionCcy){ auctionCcy.value = v; auctionCcy.dispatchEvent(new Event("change")); }
+    syncSessionBar();
+  });
+
+  sessionLockBtn && sessionLockBtn.addEventListener("click", ()=>{
+    if(typeof toggleLock === "function") toggleLock();
+    syncSessionBar();
+  });
+
+  sessionResetBtn && sessionResetBtn.addEventListener("click", ()=>{
+    const ok = confirm("Reset session on this device? This clears saved values and batch items.");
+    if(!ok) return;
+    try{ localStorage.clear(); }catch(e){}
+    location.reload();
+  });
+
+  // Keep stamp fresh on key changes
+  [metal, ccy].forEach(el=> el && el.addEventListener("change", syncSessionBar));
+  if(typeof auctionCcy !== "undefined" && auctionCcy) auctionCcy.addEventListener("change", syncSessionBar);
+  document.addEventListener("DOMContentLoaded", syncSessionBar);
+
+  // --- Gem carat estimator ---
+  const gemStone = $("gemStone");
+  const gemShape = $("gemShape");
+  const gemL = $("gemL");
+  const gemW = $("gemW");
+  const gemD = $("gemD");
+  const gemDepthPct = $("gemDepthPct");
+  const gemCt = $("gemCt");
+  const gemRange = $("gemRange");
+  const gemFactor = $("gemFactor");
+  const copyGemBtn = $("copyGemBtn");
+  const clearGemBtn = $("clearGemBtn");
+  const estimateGemBtn = $("estimateGemBtn");
+  const gemDiag = $("gemDiag");
+
+  // Shape volume constants (calibrated for diamond baseline)
+  const GEM_FACTORS = {
+    round: 0.0061,
+    oval: 0.0062,
+    emerald: 0.0064,
+    cushion: 0.0063,
+    pear: 0.0059,
+    marquise: 0.0056,
+    princess: 0.0061,
+    radiant: 0.0063
+  };
+
+  // Density multipliers relative to diamond baseline (simple v1)
+  const GEM_DENSITY_MULT = {
+    diamond: 1.00,
+    ruby: 1.00,
+    sapphire: 1.00,
+    emerald: 0.83
+  };
+
+  const GEM_DEFAULT_DEPTH_PCT = {
+    round: 62, oval: 62, emerald: 68, cushion: 67,
+    pear: 61, marquise: 60, princess: 72, radiant: 68
+  };
+
+  function updateGems(){
+    if(!gemCt || !gemRange || !gemFactor) return;
+
+    const stone = (gemStone && gemStone.value) ? gemStone.value : "diamond";
+    const shape = (gemShape && gemShape.value) ? gemShape.value : "round";
+
+    const L = parseFloat(gemL && gemL.value);
+    const W = parseFloat(gemW && gemW.value);
+    const Dmm = parseFloat(gemD && gemD.value);
+    const Dpct = parseFloat(gemDepthPct && gemDepthPct.value);
+
+    if(!(L > 0 && W > 0)){
+      gemCt.textContent = "—";
+      gemRange.textContent = "—";
+      gemFactor.textContent = "—";
+      if(gemDiag) gemDiag.textContent = "—";
+      return;
+    }
+
+    const baseFactor = GEM_FACTORS[shape] || GEM_FACTORS.round;
+    const stoneMult = (GEM_DENSITY_MULT[stone] ?? 1.0);
+    const factor = baseFactor * stoneMult;
+
+    const pct = (Dpct > 0 ? Dpct : (GEM_DEFAULT_DEPTH_PCT[shape] || 62));
+    const depthMM = (Dmm > 0) ? Dmm : (W * (pct / 100));
+
+    const carat = L * W * depthMM * factor;
+
+    gemCt.textContent = carat.toFixed(2) + " ct";
+    gemRange.textContent = (carat*0.90).toFixed(2) + " – " + (carat*1.10).toFixed(2) + " ct";
+    gemFactor.textContent = factor.toFixed(4) + " (" + stone + ", " + shape + ")";
+    if(gemDiag){
+      gemDiag.textContent = `L ${L.toFixed(2)} • W ${W.toFixed(2)} • D ${depthMM.toFixed(2)}mm (Depth% ${pct.toFixed(1)})`;
+    }
+  }
+
+  function copyGem(){
+    const stone = (gemStone && gemStone.value) ? gemStone.value : "diamond";
+    const shape = (gemShape && gemShape.value) ? gemShape.value : "round";
+    const L = (gemL && gemL.value) ? gemL.value : "";
+    const W = (gemW && gemW.value) ? gemW.value : "";
+    const D = (gemD && gemD.value) ? gemD.value : "";
+    const txt = `Gem estimate | ${stone} | ${shape} | ${L}×${W}${D?("×"+D):""} mm | ${gemCt?.textContent || ""} (range ${gemRange?.textContent || ""})`;
+
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).catch(()=>{});
+    } else {
+      const ta=document.createElement("textarea"); ta.value=txt; document.body.appendChild(ta); ta.select(); document.execCommand("copy"); document.body.removeChild(ta);
+    }
+    showToast && showToast("Copied.");
+  }
+
+  function clearGem(){
+    if(gemL) gemL.value = "";
+    if(gemW) gemW.value = "";
+    if(gemD) gemD.value = "";
+    if(gemDepthPct) gemDepthPct.value = "";
+    updateGems();
+  }
+
+  [gemStone, gemShape, gemL, gemW, gemD, gemDepthPct].forEach(el=>{
+    if(!el) return;
+    el.addEventListener("input", updateGems);
+    el.addEventListener("change", updateGems);
+  });
+  copyGemBtn && copyGemBtn.addEventListener("click", copyGem);
+  clearGemBtn && clearGemBtn.addEventListener("click", clearGem);
+
+  document.addEventListener("DOMContentLoaded", () => { try{ updateGems(); }catch(e){} });
+// --- Batch export ---
+  function batchRowsForExport(){
+    const code = (batchMetal && batchMetal.value) ? batchMetal.value : (metal ? metal.value : "XAU");
+    const cur = (ccy && ccy.value) ? ccy.value : "USD";
+    const rows = (batch || []).map(it=>{
+      const wG = Number(it.weightG||0);
+      const p = Number(it.purity||0);
+      const intrinsic = (typeof estimateValue === "function") ? estimateValue(wG, p, code, cur) : 0;
+      const asking = Number(it.asking||0);
+      const mult = intrinsic>0 ? (asking/intrinsic) : 0;
+      return { Label: it.label||"", Metal: code, Purity: (p*100).toFixed(2).replace(/\.00$/,"")+"%", Weight: it.inputWeight??"", Unit: it.inputUnit??"", Fine_g: (wG*p).toFixed(2), Intrinsic: intrinsic, Asking: asking, Multiple: mult, Maison: it.maison||"" };
+    });
+    return { rows, cur };
+  }
+
+  function copyBatchTable(){
+    const { rows, cur } = batchRowsForExport();
+    if(!rows.length){ showToast("Batch is empty."); return; }
+    const header = ["Label","Metal","Purity","Weight","Unit","Fine_g",`Intrinsic (${cur})`,`Asking (${cur})`,"Multiple","Maison"];
+    const lines = [header.join("\t")];
+    rows.forEach(r=>{
+      lines.push([r.Label,r.Metal,r.Purity,r.Weight,r.Unit,r.Fine_g, Math.round(r.Intrinsic||0), Math.round(r.Asking||0), (r.Multiple||0).toFixed(2), r.Maison].join("\t"));
+    });
+    const text = lines.join("\n");
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(()=>showToast("Copied table.")).catch(()=>showToast("Copy failed."));
+    } else {
+      const ta=document.createElement("textarea"); ta.value=text; document.body.appendChild(ta); ta.select(); document.execCommand("copy"); document.body.removeChild(ta);
+      showToast("Copied table.");
+    }
+  }
+
+  function batchCSV(){
+    const { rows, cur } = batchRowsForExport();
+    const header = ["Label","Metal","Purity","Weight","Unit","Fine_g",`Intrinsic_${cur}`,`Asking_${cur}`,"Multiple","Maison"];
+    const esc = s => '"'+String(s??"").replace(/"/g,'""')+'"';
+    const lines=[header.map(esc).join(",")];
+    rows.forEach(r=>{
+      lines.push([r.Label,r.Metal,r.Purity,r.Weight,r.Unit,r.Fine_g, Math.round(r.Intrinsic||0), Math.round(r.Asking||0), (r.Multiple||0).toFixed(3), r.Maison].map(esc).join(","));
+    });
+    return lines.join("\n");
+  }
+
+  function downloadCSV(filename, text){
+    const blob=new Blob([text],{type:"text/csv;charset=utf-8"});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement("a"); a.href=url; a.download=filename;
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(()=>URL.revokeObjectURL(url), 2500);
+  }
+
+  copyBatchTableBtn && copyBatchTableBtn.addEventListener("click", copyBatchTable);
+  downloadBatchCsvBtn && downloadBatchCsvBtn.addEventListener("click", ()=>{
+    if(!batch || !batch.length){ showToast("Batch is empty."); return; }
+    const fn="odeon_batch_"+new Date().toISOString().slice(0,10)+".csv";
+    downloadCSV(fn, batchCSV());
+    showToast("CSV downloaded.");
+  });
+
+  document.addEventListener("DOMContentLoaded", () => { try{ updateGems(); }catch(e){} });
+
+
+  // --- Gems module (robust, self-contained) ---
+  (function(){
+    const stoneSel = document.getElementById("gemStone");
+    const shapeSel = document.getElementById("gemShape");
+    const LEl = document.getElementById("gemL");
+    const WEl = document.getElementById("gemW");
+    const DEl = document.getElementById("gemD");
+    const DpEl = document.getElementById("gemDepthPct");
+    const outCt = document.getElementById("gemCt");
+    const outRange = document.getElementById("gemRange");
+    const outFactor = document.getElementById("gemFactor");
+    const copyBtn = document.getElementById("copyGemBtn");
+    const clearBtn = document.getElementById("clearGemBtn");
+
+    if(!outCt || !outRange || !outFactor) return;
+
+    const FACTORS = { round:0.0061, oval:0.0062, emerald:0.0064, cushion:0.0063, pear:0.0059, marquise:0.0056, princess:0.0061, radiant:0.0063 };
+    const DEFAULT_DP = { round:62, oval:62, emerald:68, cushion:67, pear:61, marquise:60, princess:72, radiant:68 };
+    const DENS = { diamond:1.00, ruby:1.00, sapphire:1.00, emerald:0.83 };
+
+    function fmt(v){
+      if(!Number.isFinite(v)) return "—";
+      const s = v < 10 ? v.toFixed(2) : v.toFixed(1);
+      return s + " ct";
+    }
+
+    function calc(){
+      const stone = stoneSel ? stoneSel.value : "diamond";
+      const shape = shapeSel ? shapeSel.value : "round";
+
+      const L = parseFloat(LEl && LEl.value);
+      const W = parseFloat(WEl && WEl.value);
+      const Dmm = parseFloat(DEl && DEl.value);
+      const Dpct = parseFloat(DpEl && DpEl.value);
+
+      if(!(L > 0 && W > 0)){
+        outCt.textContent = "—";
+        outRange.textContent = "—";
+        outFactor.textContent = "—";
+        return;
+      }
+
+      const baseFactor = FACTORS[shape] || FACTORS.round;
+      const stoneMult = (DENS[stone] ?? 1.00);
+      const factor = baseFactor * stoneMult;
+
+      const pct = (Dpct > 0 ? Dpct : (DEFAULT_DP[shape] || 62));
+      const depthMM = (Dmm > 0) ? Dmm : (W * (pct/100));
+
+      const ct = L * W * depthMM * factor;
+
+      outCt.textContent = fmt(ct);
+      outRange.textContent = fmt(ct*0.90) + " – " + fmt(ct*1.10);
+      outFactor.textContent = factor.toFixed(4) + " (" + stone + ", " + shape + ")";
+    }
+
+    function copy(){
+      const stone = stoneSel ? stoneSel.value : "diamond";
+      const shape = shapeSel ? shapeSel.value : "round";
+      const L = (LEl && LEl.value) ? LEl.value : "";
+      const W = (WEl && WEl.value) ? WEl.value : "";
+      const D = (DEl && DEl.value) ? DEl.value : "";
+      const text = `Gem estimate | ${stone} | ${shape} | ${L}×${W}${D?("×"+D):""} mm | ${outCt.textContent} (range ${outRange.textContent})`;
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(text).then(()=>{ try{ showToast("Copied."); }catch(e){} }).catch(()=>{ try{ showToast("Copy failed."); }catch(e){} });
+      } else {
+        const ta=document.createElement("textarea"); ta.value=text; document.body.appendChild(ta); ta.select(); document.execCommand("copy"); document.body.removeChild(ta);
+        try{ showToast("Copied."); }catch(e){}
+      }
+    }
+
+    function clear(){
+      if(LEl) LEl.value = "";
+      if(WEl) WEl.value = "";
+      if(DEl) DEl.value = "";
+      if(DpEl) DpEl.value = "";
+      calc();
+    }
+
+    [stoneSel, shapeSel, LEl, WEl, DEl, DpEl].forEach(el=>{
+      if(!el) return;
+      el.addEventListener("input", calc);
+      el.addEventListener("change", calc);
+    });
+    if(copyBtn) copyBtn.addEventListener("click", copy);
+    if(clearBtn) clearBtn.addEventListener("click", clear);
+
+    window.__odeonUpdateGems = calc;
+
+    // initial
+    if(document.readyState === "loading"){
+      document.addEventListener("DOMContentLoaded", calc);
+    } else {
+      calc();
+    }
+  })();
+
+
+  estimateGemBtn && estimateGemBtn.addEventListener("click", updateGems);
+
+  try{ window.updateGems = updateGems; }catch(e){}
+
+
+  // --- Bulletproof gem estimator (explicit global) ---
+  window._odeonGemEstimate = function(){
+    try{
+      const stoneEl = document.getElementById("gemStone");
+      const shapeEl = document.getElementById("gemShape");
+      const LEl = document.getElementById("gemL");
+      const WEl = document.getElementById("gemW");
+      const DEl = document.getElementById("gemD");
+      const dpEl = document.getElementById("gemDepthPct");
+      const outCt = document.getElementById("gemCt");
+      const outRange = document.getElementById("gemRange");
+      const outFactor = document.getElementById("gemFactor");
+      const diag = document.getElementById("gemDiag");
+
+      if(!outCt || !outRange || !outFactor) return;
+
+      const stone = (stoneEl && stoneEl.value) ? stoneEl.value : "diamond";
+      const shape = (shapeEl && shapeEl.value) ? shapeEl.value : "round";
+      const L = Number((LEl && LEl.value) ? LEl.value : 0);
+      const W = Number((WEl && WEl.value) ? WEl.value : 0);
+      const Din = Number((DEl && DEl.value) ? DEl.value : 0);
+      const dpIn = Number((dpEl && dpEl.value) ? dpEl.value : 0);
+
+      const SHAPE_FACTOR = { round:0.0061, oval:0.0062, emerald:0.0064, cushion:0.0063, pear:0.0059, marquise:0.0056, princess:0.0061, radiant:0.0063 };
+      const DEFAULT_DP = { round:62, oval:62, emerald:68, cushion:67, pear:61, marquise:60, princess:72, radiant:68 };
+      const DENSITY = { diamond:1.00, ruby:1.00, sapphire:1.00, emerald:0.83 };
+
+      if(!(L>0 && W>0)){
+        outCt.textContent = "—";
+        outRange.textContent = "—";
+        outFactor.textContent = "—";
+        if(diag) diag.textContent = "Enter Length and Width to estimate carat.";
+        return;
+      }
+
+      const depthPct = (dpIn>0 ? dpIn : (DEFAULT_DP[shape] || 62));
+      const D = (Din>0 ? Din : (depthPct/100) * W);
+
+      const baseFactor = SHAPE_FACTOR[shape] || 0.0061;
+      const mult = (DENSITY[stone] ?? 1.00);
+      const factor = baseFactor * mult;
+
+      const ct = L * W * D * factor;
+      const lo = ct * 0.90;
+      const hi = ct * 1.10;
+
+      const fmt = (v)=> (v<10 ? v.toFixed(2) : v.toFixed(1)) + " ct";
+      outCt.textContent = fmt(ct);
+      outRange.textContent = fmt(lo) + " – " + fmt(hi);
+      outFactor.textContent = factor.toFixed(4) + " (" + stone + ", " + shape + ")";
+
+      if(diag){
+        diag.textContent = "Inputs used: L " + L.toFixed(2) + " mm • W " + W.toFixed(2) + " mm • D " + D.toFixed(2) + " mm (" + depthPct.toFixed(0) + "%)";
+      }
+    } catch(e){
+      try{
+        const diag = document.getElementById("gemDiag");
+        if(diag) diag.textContent = "Estimator error: " + (e && e.message ? e.message : String(e));
+      }catch(_){}
+    }
+  };
+
+  // Auto-run when opening Gems tab (if tabs exist)
+  try{
+    // if activateTab exists, wrap once
+    if(window.activateTab && !window.__odeonGemTabHooked){
+      const _orig = window.activateTab;
+      window.activateTab = function(name){
+        const r = _orig(name);
+        if(name === "gems"){
+          setTimeout(()=>window._odeonGemEstimate && window._odeonGemEstimate(), 0);
+        }
+        return r;
+      };
+      window.__odeonGemTabHooked = true;
+    }
+  }catch(e){}
+
+
+
+  // ----------------------------
+  // Gems: Copy / Clear (bulletproof)
+  // ----------------------------
+  window.odeonGemCopy = function(){
+    try{
+      // if there is a dedicated estimator, run it first so outputs are current
+      if (typeof window._odeonGemEstimate === "function") { try{ window._odeonGemEstimate(); }catch(e){} }
+      if (typeof updateGems === "function") { try{ updateGems(); }catch(e){} }
+
+      const stone = document.getElementById("gemStone")?.value || "";
+      const shape = document.getElementById("gemShape")?.value || "";
+      const L = document.getElementById("gemL")?.value || "";
+      const W = document.getElementById("gemW")?.value || "";
+      const D = document.getElementById("gemD")?.value || "";
+      const dp = document.getElementById("gemDepthPct")?.value || "";
+      const ct = document.getElementById("gemCt")?.textContent || "";
+      const rng = document.getElementById("gemRange")?.textContent || "";
+
+      const txt = `Gem estimate | ${stone} | ${shape} | ${L}×${W}${D?("×"+D):""} mm${dp?(" ("+dp+"%)"):""} | ${ct} (range ${rng})`;
+
+      if (navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(txt).then(()=>{ if(typeof showToast==="function") showToast("Copied."); }).catch(()=>{});
+      } else {
+        const ta = document.createElement("textarea"); ta.value = txt;
+        document.body.appendChild(ta); ta.select(); document.execCommand("copy"); document.body.removeChild(ta);
+        if(typeof showToast==="function") showToast("Copied.");
+      }
+    }catch(e){
+      const d = document.getElementById("gemDiag"); if(d) d.textContent = "Copy error: " + (e?.message || String(e));
+    }
+  };
+
+  window.odeonGemClear = function(){
+    try{
+      ["gemL","gemW","gemD","gemDepthPct"].forEach(id=>{ const el=document.getElementById(id); if(el) el.value=""; });
+      ["gemCt","gemRange","gemFactor"].forEach(id=>{ const el=document.getElementById(id); if(el) el.textContent="—"; });
+      const diag = document.getElementById("gemDiag"); if(diag) diag.textContent="—";
+      if(typeof showToast==="function") showToast("Cleared.");
+    }catch(e){}
+  };
+
+  // ----------------------------
+  // Diagnostics: Self-tests
+  // ----------------------------
+  window.odeonClearDiag = function(){
+    const log = document.getElementById("diagLog");
+    if(log) log.textContent = "—";
+  };
+
+  window.odeonRunSelfTests = function(){
+    const log = document.getElementById("diagLog");
+    if(!log) return;
+    const line = (s)=>{ log.textContent += s + "\n"; };
+
+    log.textContent = "";
+    line("Running self-tests…");
+
+    // 1) Tab switching smoke test
+    let tabsOk = 0, tabsFail = 0;
+    const tabNames = ["metals","signed","batch","auction","gems","diagnostics"];
+    if (typeof activateTab === "function"){
+      for(const t of tabNames){
+        try{ activateTab(t); tabsOk++; }catch(e){ tabsFail++; line("❌ Tab failed: "+t+" | "+(e?.message||e)); }
+      }
+    } else {
+      line("⚠️ activateTab not found.");
+    }
+    line(`Tabs: ${tabsOk} ok, ${tabsFail} failed`);
+
+    // 2) Gems: deterministic check + randomized checks
+    try{
+      activateTab("gems");
+    }catch(e){}
+
+    const LEl = document.getElementById("gemL");
+    const WEl = document.getElementById("gemW");
+    const out = document.getElementById("gemCt");
+
+    let gemOk = 0, gemFail = 0;
+    function rand(a,b){ return a + Math.random()*(b-a); }
+
+    // deterministic
+    if(LEl && WEl){
+      LEl.value="7.40"; WEl.value="7.40";
+      const estBtn = document.getElementById("estimateGemBtn");
+      try{ if(estBtn) estBtn.click(); }catch(e){}
+      try{ if(typeof window._odeonGemEstimate==="function") window._odeonGemEstimate(); }catch(e){}
+      try{ if(typeof updateGems==="function") updateGems(); }catch(e){}
+      const v = out?.textContent || "—";
+      if(v !== "—"){ line("✅ Gems produced: "+v); }
+      else { line("❌ Gems produced no value."); }
+    }
+
+    // randomized
+    for(let i=0;i<5000;i++){
+      const L = rand(3,30), W = rand(3,30);
+      const D = rand(1.5,20);
+      if(!LEl || !WEl) break;
+      LEl.value = L.toFixed(2);
+      WEl.value = W.toFixed(2);
+      const DEl = document.getElementById("gemD");
+      if(DEl) DEl.value = D.toFixed(2);
+
+      const stoneEl = document.getElementById("gemStone");
+      const shapeEl = document.getElementById("gemShape");
+      if(stoneEl) stoneEl.value = ["diamond","ruby","sapphire","emerald"][Math.floor(Math.random()*4)];
+      if(shapeEl) shapeEl.value = ["round","oval","emerald","cushion","pear","marquise","princess","radiant"][Math.floor(Math.random()*8)];
+
+      try{ if(typeof window._odeonGemEstimate==="function") window._odeonGemEstimate(); }catch(e){}
+      try{ if(typeof updateGems==="function") updateGems(); }catch(e){}
+
+      const v = out?.textContent || "—";
+      if(v !== "—") gemOk++; else gemFail++;
+    }
+    line(`Gems random: ${gemOk} ok, ${gemFail} failed`);
+    line("Self-tests complete.");
+  };
+</script>
+<div class="app-footer">
+  <div class="footer-divider"></div>
+  <div class="legal">Indicative values based on spot metals (XAU, XAG, XPT) using aggregated LBMA/COMEX reference pricing and indicative FX conversion. Calculations exclude stones, workmanship, condition, maker or designer premium, rarity, provenance, market spreads, commissions, taxes, and any transaction costs. This tool is provided for reference only and does not constitute an offer, valuation, or financial advice. © 2026 Odeon Collection — The Sberro Group. All rights reserved.</div>
+</div>
+
+<script>
+/* Gems estimator (standalone, runs even if the main app script fails) */
+(function(){
+  function fmtCt(v){
+    if(!isFinite(v)) return "—";
+    return (v < 10 ? v.toFixed(2) : v.toFixed(1)) + " ct";
+  }
+
+  // Typical specific gravity (SG) reference values:
+  // Diamond ~3.52; Ruby/Sapphire (corundum) ~4.00; Emerald (beryl) ~2.72.
+  var SG = { diamond:3.52, ruby:4.00, sapphire:4.00, emerald:2.72 };
+
+  // Colored-stone coefficients (k) for estimating mounted stone weight (mm inputs):
+  // Carats ≈ L × W × D × SG × k   (or dia² × D × SG × k for dia-based cuts)
+  // Sources commonly publish these "shape factors" for mounted-stone estimation.
+  var COLORED = {
+    round:    { mode:"d2d",  k:0.0018, dp:62 },
+    oval:     { mode:"lwd",  k:0.0020, dp:62 },
+    emerald:  { mode:"lwd",  k:0.0025, dp:68 },   // rectangular step-cut
+    radiant:  { mode:"lwd",  k:0.0026, dp:68 },   // rectangle with cut corners proxy
+    pear:     { mode:"lwd",  k:0.0018, dp:61 },
+    marquise: { mode:"lwd",  k:0.0017, dp:60 },
+    princess: { mode:"d2d",  k:0.0024, dp:72 },   // square / cut corners
+    cushion:  { mode:"cushion", kSquare:0.0018, kRect:0.0022, dp:67 } // square vs rectangular cushion
+  };
+
+  // Diamond-specific constants are commonly published without SG (already "baked in").
+  // Where adjustment factors depend on L/W ratio, we linearly interpolate between tabulated points.
+  // Units: mm for dimensions; output: carats.
+  var DIAMOND = {
+    round:   { mode:"d2d",  c:0.0061, dp:60 },      // dia² × depth × 0.0061
+    oval:    { mode:"lwd",  c:0.0062, dp:62 },      // L × W × depth × 0.0062
+    cushion: { mode:"lwd",  c:0.00815, dp:67 },     // L × W × depth × 0.00815
+    princess:{ mode:"lwd",  c:0.0083, dp:72 },      // L × W × depth × 0.0083
+    heart:   { mode:"lwd",  c:0.0059, dp:62 },      // not shown in UI but kept for completeness
+    triangle:{ mode:"lwd",  c:0.0057, dp:60 },      // "
+    // For emerald/radiant/marquise/pear: use AF tables (ratio -> constant)
+    emerald: { mode:"lwd_af", table:[[1.0,0.0080],[1.5,0.0092],[2.0,0.0100],[2.5,0.0106]], dp:68 },
+    radiant: { mode:"lwd_af", table:[[1.0,0.0080],[1.5,0.0092],[2.0,0.0100],[2.5,0.0106]], dp:68 },
+    pear:    { mode:"lwd_af", table:[[1.25,0.00615],[1.5,0.00600],[1.66,0.00590],[2.0,0.00575]], dp:61 },
+    marquise:{ mode:"lwd_af", table:[[1.25,0.00565],[2.0,0.00580],[2.5,0.00585],[3.0,0.00595]], dp:60 }
+  };
+
+  function approxEq(a,b){
+    if(!(a>0 && b>0)) return false;
+    var mid = (a+b)/2;
+    return (Math.abs(a-b)/mid) <= 0.07; // within ~7% => "square-ish"
+  }
+
+  function interpTable(x, table){
+    if(!table || !table.length) return null;
+    // clamp
+    if(x <= table[0][0]) return table[0][1];
+    if(x >= table[table.length-1][0]) return table[table.length-1][1];
+    for(var i=0;i<table.length-1;i++){
+      var x0=table[i][0], y0=table[i][1];
+      var x1=table[i+1][0], y1=table[i+1][1];
+      if(x >= x0 && x <= x1){
+        var t=(x-x0)/(x1-x0);
+        return y0 + t*(y1-y0);
+      }
+    }
+    return table[table.length-1][1];
+  }
+
+  window._odeonGemEstimate = function(){
+    try{
+      var stoneEl = document.getElementById("gemStone");
+      var shapeEl = document.getElementById("gemShape");
+      var LEl = document.getElementById("gemL");
+      var WEl = document.getElementById("gemW");
+      var DEl = document.getElementById("gemD");
+      var dpEl = document.getElementById("gemDepthPct");
+      var outCt = document.getElementById("gemCt");
+      var outRange = document.getElementById("gemRange");
+      var outFactor = document.getElementById("gemFactor");
+      var diag = document.getElementById("gemDiag");
+
+      if(!outCt || !outRange || !outFactor) return;
+
+      var stone = (stoneEl && stoneEl.value) ? stoneEl.value : "diamond";
+      var shape = (shapeEl && shapeEl.value) ? shapeEl.value : "round";
+
+      var L = parseFloat(LEl && LEl.value ? LEl.value : "0");
+      var W = parseFloat(WEl && WEl.value ? WEl.value : "0");
+      var Din = parseFloat(DEl && DEl.value ? DEl.value : "0");
+      var dpIn = parseFloat(dpEl && dpEl.value ? dpEl.value : "0");
+
+      if(!(L > 0 && W > 0)){
+        outCt.textContent = "—";
+        outRange.textContent = "—";
+        outFactor.textContent = "—";
+        if(diag) diag.textContent = "Enter Length and Width to estimate carat.";
+        return;
+      }
+
+      var dia = (L + W) / 2;
+
+      var ct=0, lo=0, hi=0, formula="", meta="";
+      if(stone === "diamond"){
+        var cfgD = DIAMOND[shape] || DIAMOND.round;
+        var depthPct = (dpIn > 0) ? dpIn : (cfgD.dp || 60);
+        var refFace = (cfgD.mode === "d2d") ? dia : W;
+        var D = (Din > 0) ? Din : (depthPct/100) * refFace;
+
+        if(cfgD.mode === "d2d"){
+          ct = dia * dia * D * cfgD.c;
+          formula = "dia² × depth × " + cfgD.c;
+          meta = "diamond constant";
+        } else if(cfgD.mode === "lwd"){
+          ct = L * W * D * cfgD.c;
+          formula = "L × W × depth × " + cfgD.c;
+          meta = "diamond constant";
+        } else if(cfgD.mode === "lwd_af"){
+          var ratio = (W>0) ? (L/W) : 1.0;
+          var af = interpTable(ratio, cfgD.table);
+          ct = L * W * D * af;
+          formula = "L × W × depth × AF(" + ratio.toFixed(2) + ":1 → " + af.toFixed(5) + ")";
+          meta = "diamond AF table";
+        } else {
+          ct = dia * dia * D * 0.0061;
+          formula = "dia² × depth × 0.0061";
+          meta = "diamond fallback";
+        }
+
+        lo = ct * 0.95; // tighter typical band for diamonds
+        hi = ct * 1.05;
+
+        outFactor.textContent = meta;
+        if(diag){
+          diag.textContent =
+            "Formula: " + formula +
+            " | Inputs: L " + L.toFixed(2) + " mm • W " + W.toFixed(2) + " mm • D " + D.toFixed(2) + " mm (" + Math.round(depthPct) + "%)";
+        }
+      } else {
+        var cfg = COLORED[shape] || COLORED.round;
+        var sg = (SG[stone] != null) ? SG[stone] : 3.0;
+        var depthPct2 = (dpIn > 0) ? dpIn : (cfg.dp || 62);
+        var refFace2 = (cfg.mode === "d2d" || cfg.mode === "cushion") ? dia : W;
+        var D2 = (Din > 0) ? Din : (depthPct2/100) * refFace2;
+
+        if(cfg.mode === "d2d"){
+          ct = dia * dia * D2 * sg * cfg.k;
+          formula = "dia² × depth × SG(" + sg.toFixed(2) + ") × " + cfg.k;
+          outFactor.textContent = "SG " + sg.toFixed(2) + " • k " + cfg.k.toFixed(4);
+        } else if(cfg.mode === "cushion"){
+          var squareish = approxEq(L,W);
+          var kUsed = squareish ? cfg.kSquare : cfg.kRect;
+          ct = dia * dia * D2 * sg * kUsed;
+          formula = "avg(dia)² × depth × SG(" + sg.toFixed(2) + ") × " + kUsed + (squareish ? " (square cushion)" : " (rectangular cushion)");
+          outFactor.textContent = "SG " + sg.toFixed(2) + " • k " + kUsed.toFixed(4);
+        } else {
+          ct = L * W * D2 * sg * cfg.k;
+          formula = "L × W × depth × SG(" + sg.toFixed(2) + ") × " + cfg.k;
+          outFactor.textContent = "SG " + sg.toFixed(2) + " • k " + cfg.k.toFixed(4);
+        }
+
+        lo = ct * 0.90;
+        hi = ct * 1.10;
+
+        if(diag){
+          diag.textContent =
+            "Formula: " + formula +
+            " | Inputs: L " + L.toFixed(2) + " mm • W " + W.toFixed(2) + " mm • D " + D2.toFixed(2) + " mm (" + Math.round(depthPct2) + "%)";
+        }
+      }
+
+      outCt.textContent = fmtCt(ct);
+      outRange.textContent = fmtCt(lo) + " – " + fmtCt(hi);
+
+    } catch(e){
+      try{
+        var d = document.getElementById("gemDiag");
+        if(d) d.textContent = "Estimator error: " + (e && e.message ? e.message : String(e));
+      }catch(_){}
+    }
+  };
+
+  function ensureDiag(){
+    if(document.getElementById("gemDiag")) return;
+    var clearBtn = document.getElementById("clearGemBtn");
+    if(clearBtn && clearBtn.parentElement){
+      var d = document.createElement("div");
+      d.id = "gemDiag";
+      d.className = "muted tiny";
+      d.style.marginTop = "10px";
+      d.textContent = "—";
+      clearBtn.parentElement.insertAdjacentElement("afterend", d);
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function(){
+    ensureDiag();
+    var btn = document.getElementById("estimateGemBtn");
+    if(btn){ btn.addEventListener("click", function(ev){ ev.preventDefault(); window._odeonGemEstimate && window._odeonGemEstimate(); }); }
+    // Recompute on any input change
+    ["gemStone","gemShape","gemL","gemW","gemD","gemDepthPct"].forEach(function(id){
+      var el=document.getElementById(id);
+      if(el){ el.addEventListener("input", function(){ window._odeonGemEstimate && window._odeonGemEstimate(); });
+              el.addEventListe
