@@ -5,7 +5,15 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>ORODEX — Precious Metals Trading Platform</title>
 
-<style> :root{ --bg:#fafaf8; --card:#ffffff; --ink:#1a1a1a; --muted:#808080; --line:#e5e7eb; } *{box-sizing:border-box} body{margin:0; font-family:system-ui,-apple-system,'Segoe UI',sans-serif; color:var(--ink); background:var(--bg);} .wrap{max-width:1000px; margin:0 auto; padding:40px 20px;} .topbar{padding:0 0 40px 0; border:none;} .brand{display:flex; gap:16px; align-items:baseline;} .logo .odeon{font-weight:300; letter-spacing:3px; font-size:18px;} .logo .collection{font-weight:400; letter-spacing:.3px; font-size:10px; color:var(--muted); margin-top:2px;} .meta{font-size:11px; color:var(--muted);} .tabs{display:flex; gap:24px; padding:24px 0 0 0; margin:0; border-top:1px solid var(--line);} .tabbtn{appearance:none; border:none; background:transparent; color:var(--muted); padding:0; font-size:12px; font-weight:500; cursor:pointer; transition:color 0.2s; text-transform:uppercase; letter-spacing:0.5px;} .tabbtn:hover{color:var(--ink);} .tabbtn.active{color:var(--ink); border-bottom:2px solid var(--ink); padding-bottom:24px; margin-bottom:-24px;} .tabhint{display:none;} .body{padding:40px 0;} .panel{border:none; padding:0;} .panel h2{font-size:12px; font-weight:500; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin:0 0 24px;} .grid{display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));} label{font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:6px; display:block;} input,select,textarea{padding:10px 12px; border:1px solid var(--line); border-radius:4px; font-size:12px; transition:all 0.2s;} input:focus,select:focus,textarea:focus{outline:none; border-color:var(--muted); box-shadow:0 0 0 2px rgba(128,128,128,.1);} .result{border:1px solid var(--line); padding:16px; border-radius:4px; background:#fff;} .sub{font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:8px;} .value{font-size:28px; font-weight:300; color:var(--ink);} .tiny{font-size:10px; color:var(--muted); margin-top:4px;} .btn{padding:10px 14px; border:1px solid var(--ink); background:var(--ink); color:#fff; border-radius:4px; font-size:11px; font-weight:500; cursor:pointer; text-transform:uppercase; letter-spacing:0.5px; transition:all 0.2s;} .btn:hover{background:rgba(26,26,26,.9);} .btn.gold{border-color:var(--muted); background:transparent; color:var(--muted);} .btn.gold:hover{background:var(--muted); color:#fff;} table{font-size:11px;} th{font-weight:500; text-transform:uppercase; letter-spacing:0.5px; color:var(--muted);} *{box-sizing:border-box} body{margin:0; font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','SF Pro Display',Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif; color:var(--ink); background:var(--bg);} .wrap{max-width:980px; margin:0 auto; padding:26px 18px 22px;} .card{background:var(--card); border:1px solid var(--line); border-radius:16px; padding:16px; box-shadow:0 8px 24px rgba(0,0,0,.06);} .topbar{ padding:22px 22px 14px; border-bottom:1px solid var(--line); background:linear-gradient(180deg, rgba(15,42,34,.045), transparent); border-bottom:1px solid var(--line); padding-bottom:12px;} .brand{display:flex; align-items:flex-end; justify-content:space-between; gap:14px; flex-wrap:wrap;} .logo{display:flex; flex-direction:column; gap:2px;} .logo .odeon{font-weight:800; letter-spacing:3.5px; font-size:22px; opacity:.75; text-transform:uppercase;} .logo .collection{font-weight:650; letter-spacing:.4px; font-size:10px; color:var(--muted); text-transform:none; opacity:.75;} .meta{text-align:right; font-size:12px; color:var(--muted); line-height:1.45;} .meta b{color:var(--ink); font-weight:900;} @media (max-width:920px){ .meta{text-align:left} } .tabs{display:flex; gap:10px; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:4px; margin:14px 0 14px;} .tabbtn{appearance:none; border:1px solid var(--line); background:rgba(255,255,255,.7); color:var(--ink); padding:9px 12px; border-radius:999px; font-size:13px; font-weight:600; white-space:nowrap; cursor:pointer; transition:transform .05s ease, background .15s ease, border-color .15s ease;} .tabbtn:hover{background:rgba(15,17,21,.03)} .tabbtn.active{background:var(--ink); color:#fff; border-color:var(--ink);} .tabhint{margin-top:8px; font-size:12px; color:var(--muted);} .body{padding:18px 22px 22px;} .panel{border:1px solid var(--line); border-radius:18px; padding:14px; background:#fff;} .panel h2{margin:0 0 10px; font-size:14px; letter-spacing:.2px; text-transform:uppercase; color:var(--muted);} .grid{display:grid; gap:12px;} @media (max-width:760px){ .grid{grid-template-columns:1fr} } label{display:block; font-size:12px; color:var(--muted); margin-bottom:6px;} input,select,button,textarea{ width:100%; padding:10px 12px; border-radius:12px; border:1px solid rgba(15,17,21,.16); font-size:14px; background:#fff; color:var(--ink); } textarea{min-height:92px; resize:vertical;} input:focus,select:focus,textarea:focus{ outline:none; border-color:rgba(176,138,60,.55); box-shadow:0 0 0 4px rgba(176,138,60,.12); } .row{display:flex; gap:10px; align-items:center;} .row > *{flex:1} .btn{appearance:none; border:1px solid var(--ink); background:var(--ink); color:#fff; padding:10px 12px; border-radius:12px; font-weight:650; font-size:13px; cursor:pointer;} .btn:hover{background:rgba(15,17,21,.065)} .btn.primary{background:rgba(15,42,34,.10); border-color:rgba(15,42,34,.22);} .btn.primary:hover{background:rgba(15,42,34,.14)} .btn.gold{background:rgba(176,138,60,.14); border-color:rgba(176,138,60,.28);} .btn.gold:hover{background:rgba(176,138,60,.20)} .divider{height:1px; background:var(--line); margin:12px 0;} .result{ margin-top:12px; border-radius:18px; border:1px solid var(--line); background: radial-gradient(900px 400px at 20% 20%, rgba(176,138,60,.10), transparent 60%), radial-gradient(900px 400px at 90% 70%, rgba(15,42,34,.09), transparent 60%), #fbfbfb; padding:14px; } .sub{font-size:12px; color:var(--muted); line-height:1.45;} .value{font-size:34px; font-weight:950; letter-spacing:-.3px; margin:6px 0 2px;} .value.sm{font-size:26px} .tiny{font-size:11px} .muted{color:var(--muted)} .hidden{display:none !important;} .req{ display:inline-flex; align-items:center; padding:6px 8px; border-radius:999px; border:1px solid rgba(176,138,60,.35); background:rgba(176,138,60,.12); font-size:11px; color:var(--ink); font-weight:900; } .sigline{ margin-top:10px; padding:10px 12px; border-radius:14px; border:1px solid var(--line); background:rgba(15,17,21,.02); font-size:12px; line-height:1.5; color:var(--ink); font-weight:750; } table{width:100%; border-collapse:collapse; font-size:13px;} th,td{padding:10px 8px; border-top:1px solid var(--line); text-align:left; vertical-align:top;} th{font-size:11px; letter-spacing:.9px; text-transform:uppercase; color:var(--muted);} .right{text-align:right} .footer{ padding:14px 22px 18px; border-top:1px solid var(--line); color:var(--muted); font-size:11px; line-height:1.45; background:linear-gradient(0deg, rgba(15,42,34,.035), transparent); } #toast{ position:fixed; bottom:14px; left:50%; transform:translateX(-50%); background:rgba(15,17,21,.92); color:#fff; padding:10px 12px; border-radius:12px; font-size:12px; display:none; } /* Print header (shown only when printing) */ #printHeader{display:none; padding:10px 0 14px; border-bottom:1px solid var(--line); margin-bottom:12px;} #printHeader .ph-title{font-weight:950; letter-spacing:2.2px; font-size:18px;} #printHeader .ph-sub{margin-top:4px; font-size:11px; color:var(--muted); line-height:1.35;} @media print{ #printHeader{display:block;} body{background:#fff} .wrap{width:100%; padding:0} .card{box-shadow:none; border:none} .tabbtn, .btn{display:none !important} #toast{display:none !important} } .contact{ margin:14px 22px 6px; font-size:12px; color:var(--muted); } .contact a{ color:var(--ink); text-decoration:none; font-weight:600; margin-left:4px; } .contact a:hover{ text-decoration:underline; } .contact .dot{ margin:0 6px; } .diag{ margin-top:6px; } .diag-toggle{ appearance:none; border:1px solid var(--line); background:rgba(255,255,255,.03); padding:5px 10px; border-radius:999px; font-size:11px; color:var(--ink); cursor:pointer; font-weight:650; } .diag-toggle:hover{ background:rgba(255,255,255,.06); } .diag-body{ margin-top:6px; padding:8px 10px; border:1px solid var(--line); border-radius:12px; background:rgba(255,255,255,.06); font-size:11px; color:var(--ink); display:none; } .diag-body.show{ display:block; } .market-line{ margin-top:6px; font-size:11px; font-weight:650; letter-spacing:.2px; } .market-line.open{ color: rgba(34,197,94,.95); } .market-line.closed{ color: rgba(239,68,68,.95); } .clock-row{ margin-top:6px; font-size:11px; color: var(--muted); display:flex; align-items:center; gap:6px; flex-wrap:wrap; } .clock{ font-variant-numeric: tabular-nums; letter-spacing:.2px; } .clock-row .sep{ opacity:.6; } .coming-soon{margin-top:10px; font-size:12px; color:var(--muted); opacity:.85;} .legal{font-size:11px; line-height:1.5; color:var(--muted); opacity:.92;} .app-footer{max-width:980px; margin:18px auto 28px; padding:0 18px;}
+<style> :root{ --bg:#fafaf8; --card:#ffffff; --ink:#1a1a1a; --muted:#808080; --line:#e5e7eb; } *{box-sizing:border-box} body{margin:0; font-family:system-ui,-apple-system,'Segoe UI',sans-serif; color:var(--ink); background:var(--bg);} .wrap{max-width:1000px; margin:0 auto; padding:40px 20px;} .topbar{padding:0 0 40px 0; border:none;} .brand{display:flex; gap:16px; align-items:baseline;} .logo .odeon{font-weight:300; letter-spacing:3px; font-size:18px;} .logo .collection{font-weight:400; letter-spacing:.3px; font-size:10px; color:var(--muted); margin-top:2px;} .meta{font-size:11px; color:var(--muted);} .tabs{display:flex; gap:24px; padding:24px 0 0 0; margin:0; border-top:1px solid var(--line);} .tabbtn{appearance:none; border:none; background:transparent; color:var(--muted); padding:0; font-size:12px; font-weight:500; cursor:pointer; transition:color 0.2s; text-transform:uppercase; letter-spacing:0.5px;} .tabbtn:hover{color:var(--ink);} .tabbtn.active{color:var(--ink); border-bottom:2px solid var(--ink); padding-bottom:24px; margin-bottom:-24px;} .tabhint{display:none;} .body{padding:40px 0;} .panel{border:none; padding:0;} .panel h2{font-size:12px; font-weight:500; color:var(--muted); text-transform:uppercase; letter-spacing:1px; margin:0 0 24px;} .grid{display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(200px,1fr));} label{font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:6px; display:block;} input,select,textarea{padding:10px 12px; border:1px solid var(--line); border-radius:4px; font-size:12px; transition:all 0.2s;} input:focus,select:focus,textarea:focus{outline:none; border-color:var(--muted); box-shadow:0 0 0 2px rgba(128,128,128,.1);} .result{border:1px solid var(--line); padding:16px; border-radius:4px; background:#fff;} .sub{font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:8px;} .value{font-size:28px; font-weight:300; color:var(--ink);} .tiny{font-size:10px; color:var(--muted); margin-top:4px;} .btn{padding:10px 14px; border:1px solid var(--ink); background:var(--ink); color:#fff; border-radius:4px; font-size:11px; font-weight:500; cursor:pointer; text-transform:uppercase; letter-spacing:0.5px; transition:all 0.2s;} .btn:hover{background:rgba(26,26,26,.9);} .btn.gold{border-color:var(--muted); background:transparent; color:var(--muted);} .btn.gold:hover{background:var(--muted); color:#fff;} table{font-size:11px;} th{font-weight:500; text-transform:uppercase; letter-spacing:0.5px; color:var(--muted);} *{box-sizing:border-box} body{margin:0; font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','SF Pro Display',Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif; color:var(--ink); background:var(--bg);} .wrap{max-width:980px; margin:0 auto; padding:20px 16px 18px;} .card{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:14px; box-shadow:0 6px 20px rgba(0,0,0,.05);} .topbar{ padding:18px 18px 12px; border-bottom:1px solid var(--line); background:linear-gradient(180deg, rgba(15,42,34,.045), transparent); border-bottom:1px solid var(--line); padding-bottom:10px;} .brand{display:flex; align-items:flex-end; justify-content:space-between; gap:14px; flex-wrap:wrap;} .logo{display:flex; flex-direction:column; gap:2px;} .logo .odeon{font-weight:800; letter-spacing:3.5px; font-size:22px; opacity:.75; text-transform:uppercase;} .logo .collection{font-weight:650; letter-spacing:.4px; font-size:10px; color:var(--muted); text-transform:none; opacity:.75;} .meta{text-align:right; font-size:12px; color:var(--muted); line-height:1.45;} .meta b{color:var(--ink); font-weight:900;} @media (max-width:920px){ .meta{text-align:left} } .tabs{display:flex; gap:8px; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:4px; margin:10px 0 10px;} .tabbtn{appearance:none; border:1px solid var(--line); background:rgba(255,255,255,.7); color:var(--ink); padding:7px 10px; border-radius:999px; font-size:12px; font-weight:600; white-space:nowrap; cursor:pointer; transition:transform .05s ease, background .15s ease, border-color .15s ease;} .tabbtn:hover{background:rgba(15,17,21,.03)} .tabbtn.active{background:var(--ink); color:#fff; border-color:var(--ink);} .tabhint{margin-top:8px; font-size:12px; color:var(--muted);} .body{padding:14px 18px 18px;} .panel{border:1px solid var(--line); border-radius:14px; padding:12px; background:#fff;} .panel h2{margin:0 0 10px; font-size:14px; letter-spacing:.2px; text-transform:uppercase; color:var(--muted);} .grid{display:grid; gap:10px;} @media (max-width:760px){ .grid{grid-template-columns:1fr} } label{display:block; font-size:12px; color:var(--muted); margin-bottom:6px;} input,select,button,textarea{ width:100%; padding:10px 12px; border-radius:12px; border:1px solid rgba(15,17,21,.16); font-size:14px; background:#fff; color:var(--ink); } textarea{min-height:92px; resize:vertical;} input:focus,select:focus,textarea:focus{ outline:none; border-color:rgba(176,138,60,.55); box-shadow:0 0 0 4px rgba(176,138,60,.12); } .row{display:flex; gap:10px; align-items:center;} .row > *{flex:1} .btn{appearance:none; border:1px solid var(--ink); background:var(--ink); color:#fff; padding:10px 12px; border-radius:12px; font-weight:650; font-size:13px; cursor:pointer;} .btn:hover{background:rgba(15,17,21,.065)} .btn.primary{background:rgba(15,42,34,.10); border-color:rgba(15,42,34,.22);} .btn.primary:hover{background:rgba(15,42,34,.14)} .btn.gold{background:rgba(176,138,60,.14); border-color:rgba(176,138,60,.28);} .btn.gold:hover{background:rgba(176,138,60,.20)} .divider{height:1px; background:var(--line); margin:12px 0;} .result{ margin-top:10px; border-radius:14px; border:1px solid var(--line); background: radial-gradient(900px 400px at 20% 20%, rgba(176,138,60,.10), transparent 60%), radial-gradient(900px 400px at 90% 70%, rgba(15,42,34,.09), transparent 60%), #fbfbfb; padding:12px; } .sub{font-size:12px; color:var(--muted); line-height:1.45;} .value{font-size:34px; font-weight:950; letter-spacing:-.3px; margin:6px 0 2px;} .value.sm{font-size:26px} .tiny{font-size:11px} .muted{color:var(--muted)} .hidden{display:none !important;} .req{ display:inline-flex; align-items:center; padding:6px 8px; border-radius:999px; border:1px solid rgba(176,138,60,.35); background:rgba(176,138,60,.12); font-size:11px; color:var(--ink); font-weight:900; } .sigline{ margin-top:10px; padding:10px 12px; border-radius:14px; border:1px solid var(--line); background:rgba(15,17,21,.02); font-size:12px; line-height:1.5; color:var(--ink); font-weight:750; } table{width:100%; border-collapse:collapse; font-size:13px;} th,td{padding:10px 8px; border-top:1px solid var(--line); text-align:left; vertical-align:top;} th{font-size:11px; letter-spacing:.9px; text-transform:uppercase; color:var(--muted);} .right{text-align:right} .footer{ padding:12px 18px 14px; border-top:1px solid var(--line); color:var(--muted); font-size:11px; line-height:1.45; background:linear-gradient(0deg, rgba(15,42,34,.035), transparent); } #toast{ position:fixed; bottom:14px; left:50%; transform:translateX(-50%); background:rgba(15,17,21,.92); color:#fff; padding:10px 12px; border-radius:12px; font-size:12px; display:none; } /* Print header (shown only when printing) */ #printHeader{display:none; padding:10px 0 14px; border-bottom:1px solid var(--line); margin-bottom:12px;} #printHeader .ph-title{font-weight:950; letter-spacing:2.2px; font-size:18px;} #printHeader .ph-sub{margin-top:4px; font-size:11px; color:var(--muted); line-height:1.35;} @media print{ #printHeader{display:block;} body{background:#fff} .wrap{width:100%; padding:0} .card{box-shadow:none; border:none} .tabbtn, .btn{display:none !important} #toast{display:none !important} } .contact{ margin:10px 18px 4px; font-size:11px; color:var(--muted); } .contact a{ color:var(--ink); text-decoration:none; font-weight:600; margin-left:4px; } .contact a:hover{ text-decoration:underline; } .contact .dot{ margin:0 6px; } .diag{ margin-top:6px; } .diag-toggle{ appearance:none; border:1px solid var(--line); background:rgba(255,255,255,.03); padding:5px 10px; border-radius:999px; font-size:11px; color:var(--ink); cursor:pointer; font-weight:650; } .diag-toggle:hover{ background:rgba(255,255,255,.06); } .diag-body{ margin-top:6px; padding:8px 10px; border:1px solid var(--line); border-radius:12px; background:rgba(255,255,255,.06); font-size:11px; color:var(--ink); display:none; } .diag-body.show{ display:block; } .market-line{ margin-top:6px; font-size:11px; font-weight:650; letter-spacing:.2px; } .market-line.open{ color: rgba(34,197,94,.95); } .market-line.closed{ color: rgba(239,68,68,.95); } .clock-row{ margin-top:6px; font-size:11px; color: var(--muted); display:flex; align-items:center; gap:6px; flex-wrap:wrap; } .clock{ font-variant-numeric: tabular-nums; letter-spacing:.2px; } .clock-row .sep{ opacity:.6; } .coming-soon{margin-top:10px; font-size:12px; color:var(--muted); opacity:.85;} .legal{font-size:11px; line-height:1.5; color:var(--muted); opacity:.92;} .app-footer{max-width:980px; margin:18px auto 28px; padding:0 18px;}
+
+/* FAQ Tab Styles */
+.faq-container{display:flex; flex-direction:column; gap:10px;}
+.faq-item{border:1px solid var(--line); border-radius:10px; background:#fff; overflow:hidden;}
+.faq-q{font-size:13px; font-weight:700; padding:12px 14px; color:var(--ink); background:rgba(0,0,0,.015); border-bottom:1px solid var(--line);}
+.faq-a{font-size:12px; line-height:1.55; padding:12px 14px; color:var(--muted);}
+.faq-a a{color:var(--ink); font-weight:600; text-decoration:none;}
+.faq-a a:hover{text-decoration:underline;}
 
 /* Mobile Optimization */
 @media (max-width: 768px) {
@@ -241,6 +249,60 @@ button:not(.black) {
 .diaglog{border:1px solid var(--line); background:var(--card); border-radius:14px; padding:12px; min-height:120px; white-space:pre-wrap;}
 
 #clearDiagBtn{color:#fff !important;}
+
+/* === ORODEX HERO INDEX (fixed 18k) === */
+.orodex-hero{
+  margin-top:14px;
+  max-width:520px;
+  padding:14px 16px 14px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:linear-gradient(180deg, rgba(255,255,255,.85), rgba(255,255,255,.96));
+  box-shadow:0 20px 60px rgba(0,0,0,.08);
+}
+.orx-top{ display:flex; align-items:center; justify-content:space-between; gap:10px; }
+.orx-title{ font-weight:850; letter-spacing:.18em; font-size:12px; color:var(--muted); }
+.orx-pill{
+  border:1px solid rgba(34,197,94,.35);
+  background:rgba(34,197,94,.08);
+  color:#176b35;
+  font-size:11px;
+  padding:6px 10px;
+  border-radius:999px;
+  letter-spacing:.10em;
+}
+.orx-sub{ margin-top:4px; font-size:13px; color:var(--muted); }
+.orx-main{ margin-top:12px; display:flex; align-items:baseline; justify-content:space-between; gap:14px; }
+.orx-value{
+  font-variant-numeric: tabular-nums;
+  font-size:44px;
+  font-weight:950;
+  line-height:1;
+  letter-spacing:-0.03em;
+  transform:translateZ(0);
+}
+.orx-unit{ font-size:13px; color:var(--muted); font-variant-numeric: tabular-nums; text-align:right; }
+.orx-band{ margin-top:14px; padding-top:14px; border-top:1px solid rgba(0,0,0,.06); }
+.orx-band-row{ display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:10px; }
+.orx-bar{ position:relative; height:10px; border-radius:999px; background:rgba(0,0,0,.08); overflow:hidden; }
+.orx-fill{ position:absolute; inset:0; background:linear-gradient(90deg, rgba(16,185,129,.22), rgba(232,168,94,.16)); }
+.orx-marker{
+  position:absolute; top:50%;
+  transform:translate(-50%,-50%);
+  width:2px; height:18px;
+  background:#111;
+  border-radius:999px;
+  box-shadow:0 0 0 4px rgba(0,0,0,.08);
+  transition:left 420ms cubic-bezier(.2,.9,.2,1);
+}
+.orx-foot{ margin-top:10px; display:flex; justify-content:space-between; gap:10px; align-items:center; }
+.orx-note{ font-size:12px; color:var(--muted); font-weight:650; }
+
+@keyframes orxBump { 0%{ transform:scale(1);} 35%{ transform:scale(1.03);} 100%{ transform:scale(1);} }
+.orx-bump{ animation:orxBump 260ms ease-out; }
+@keyframes orxPulse { 0%{ box-shadow:0 0 0 4px rgba(0,0,0,.08);} 50%{ box-shadow:0 0 0 7px rgba(0,0,0,.10);} 100%{ box-shadow:0 0 0 4px rgba(0,0,0,.08);} }
+.orx-pulse{ animation:orxPulse 420ms ease-out; }
+
 </style>
 </head>
 
@@ -254,6 +316,35 @@ button:not(.black) {
           <div class="odeon">ORODEX</div>
           <div class="collection">Trade Reference by Odeon</div>
         </div>
+
+        <div class="orodex-hero" aria-label="Orodex Index">
+          <div class="orx-top">
+            <div class="orx-title">ORODEX INDEX</div>
+            <div class="orx-pill">LIVE</div>
+          </div>
+          <div class="orx-sub">18k melt reference • updates live</div>
+
+          <div class="orx-main">
+            <div class="orx-value" id="orxValue" data-prev="">—</div>
+            <div class="orx-unit" id="orxUnit">—</div>
+          </div>
+
+          <div class="orx-band">
+            <div class="orx-band-row">
+              <div class="muted tiny">Trade band</div>
+              <div class="muted tiny"><span id="orxBuy">—</span> → <span id="orxSell">—</span></div>
+            </div>
+            <div class="orx-bar" aria-label="Trade band range">
+              <div class="orx-fill"></div>
+              <div class="orx-marker" id="orxMarker" style="left:50%"></div>
+            </div>
+            <div class="orx-foot">
+              <div class="orx-note" id="orxNote">—</div>
+              <div class="muted tiny">Floor: <span id="orxFloor">—</span></div>
+            </div>
+          </div>
+        </div>
+
 
         <div class="meta">
           <div><b id="spotLine">Spot: —</b></div>
@@ -312,6 +403,7 @@ button:not(.black) {
         <button onclick="window.activateTab && window.activateTab('signed')" class="tabbtn" data-tab="signed" role="tab" aria-selected="false">Signed</button>
         <button onclick="window.activateTab && window.activateTab('batch')" class="tabbtn" data-tab="batch" role="tab" aria-selected="false">Batch</button>
         <button onclick="window.activateTab && window.activateTab('auction')" class="tabbtn" data-tab="auction" role="tab" aria-selected="false">Auction</button>
+        <button onclick="window.activateTab && window.activateTab('faq')" class="tabbtn" data-tab="faq" role="tab" aria-selected="false">Q&A</button>
       </div>
       <div class="tabhint" id="tabHint">Live spot + FX, buyback, and one-item melt value.</div>
     </div>
@@ -836,6 +928,93 @@ button:not(.black) {
   </div>
 </section>
 
+<!-- TAB: Q&A -->
+<section id="panel-faq" class="panel hidden">
+  <h2>Questions & Answers</h2>
+  
+  <div class="faq-container">
+    <div class="faq-item">
+      <div class="faq-q">What is ORODEX?</div>
+      <div class="faq-a">ORODEX is a live reference tool for precious-metal valuation. It combines real-time spot prices, FX rates, and standardized purity logic to give fast, transparent estimates for melt value, dealer buyback, signed pieces, batches, and auction outcomes. It is designed for dealers, collectors, and professionals who need clarity—not price speculation.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What does the ORODEX Index represent?</div>
+      <div class="faq-a">The ORODEX Index is a live 18k gold melt reference. It answers one simple question: "What is one gram of 18k gold worth right now, at spot?" The index updates automatically using live spot and FX data and serves as a common language for discussions, pricing, and comparisons.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Is ORODEX a buy or sell price?</div>
+      <div class="faq-a">No. All values shown are indicative references, not offers. Melt value = theoretical intrinsic metal value at spot. Buyback value = melt × selected buyback percentage. Actual dealer offers may vary based on volume, form, relationship, and market conditions.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Where do spot prices come from?</div>
+      <div class="faq-a">Spot prices are derived from an aggregate of LBMA / COMEX references, converted into your selected currency using live FX. Diagnostics (available in the header) show spot feed status, FX feed status, and last update time.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What metals are supported?</div>
+      <div class="faq-a">ORODEX currently supports Gold (XAU), Silver (XAG), and Platinum (XPT). Each metal automatically loads appropriate purity presets.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How accurate are the melt calculations?</div>
+      <div class="faq-a">Calculations are mathematically precise and based on troy ounce standards, correct gram / dwt / oz conversions, and exact fineness factors. Accuracy depends on the correctness of the weight and purity you enter.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What is the "Buyback %" field?</div>
+      <div class="faq-a">This lets you model dealer payout scenarios. Examples: 100% → full melt (theoretical), 95% → strong dealer bid, 85–90% → typical wholesale buyback. It does not change spot—only the payout estimate.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What is the "Signed Pieces" tab for?</div>
+      <div class="faq-a">This tool compares intrinsic metal value vs. asking price for signed or branded jewelry. It shows melt value, multiple of gold, premium over intrinsic metal, and a clean, prepared summary line for sharing or printing. It helps answer: "How much of this price is gold—and how much is signature?"</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Are gemstones included in the melt?</div>
+      <div class="faq-a">No. Gemstones are not included in melt calculations. ORODEX is metal-centric by design. Any gem value should be considered separately.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">What is the Batch tool used for?</div>
+      <div class="faq-a">The Batch tab lets you quote multiple items at once, mix purities and weights, apply a unified buyback percentage, and export summaries or CSVs. It is ideal for estate buys, dealer memos, or lot analysis.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">How does the Auction Estimator work?</div>
+      <div class="faq-a">The Auction tool calculates buyer's premium, total buyer cost, and effective premium percentage. It uses published tiered schedules from major auction houses or a custom flat premium if selected. Note: VAT / sales tax is intentionally excluded.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Can I lock prices?</div>
+      <div class="faq-a">Yes. The Lock button freezes the current spot price so you can discuss deals, print PDFs, and avoid intraday volatility during negotiations.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Is my data saved?</div>
+      <div class="faq-a">Yes—locally. ORODEX uses local browser storage only to remember last inputs, tab state, and batch items. No data is transmitted or stored on external servers.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Is ORODEX financial advice?</div>
+      <div class="faq-a">No. ORODEX is a reference and calculation tool, not investment advice, pricing guidance, or an offer to transact.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Who is ORODEX for?</div>
+      <div class="faq-a">Jewelry dealers, collectors, auction buyers, estate professionals, and anyone who wants clarity before emotion.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">I have a question or want to sell—what next?</div>
+      <div class="faq-a">You can contact Odeon directly via <a href="mailto:bonjour@odeoncollection.com">bonjour@odeoncollection.com</a> or <a href="https://wa.me/19174454885" target="_blank" rel="noopener">WhatsApp</a>.</div>
+    </div>
+  </div>
+</section>
+
 
 
 
@@ -854,7 +1033,7 @@ button:not(.black) {
 
 <div id="toast"></div>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>window.activateTab = function(name){};
+<script>window.activateTab = function(name){};
 
 
   // --- Pro hardening: global sync + localStorage state (v1) ---
@@ -998,6 +1177,7 @@ button:not(.black) {
     document.addEventListener("DOMContentLoaded", restoreState);
   } else {
     restoreState();
+  updateOrodexHero();
   }
 
   // Save broadly on any form interaction (capture)
@@ -1069,13 +1249,14 @@ button:not(.black) {
   // Tabs
   let currentTab = "gold";
   const tabButtons = Array.from(document.querySelectorAll(".tabbtn"));
-  const panels = { gold: $("panel-gold"), signed: $("panel-signed"), batch: $("panel-batch"), auction: $("panel-auction"), gems: $("panel-gems")  };
+  const panels = { gold: $("panel-gold"), signed: $("panel-signed"), batch: $("panel-batch"), auction: $("panel-auction"), gems: $("panel-gems"), faq: $("panel-faq")  };
   const tabHint = $("tabHint");
   const tabHints = {
     gold: "Live spot + FX, buyback, and one-item melt value.",
     signed: "Enter asking price and signature to see premium over intrinsic gold.",
     batch: "Multi-item batch quoting with totals, buyback, and optional asking premiums.",
-    auction: "Hammer + tiered buyer’s premium (tax-free)."
+    auction: "Hammer + tiered buyer’s premium (tax-free).",
+    faq: "Common questions about ORODEX and how to use it.",
   };
   function activateTab(name){
     currentTab = name;
@@ -1124,6 +1305,9 @@ button:not(.black) {
   const refreshBtn = $("refreshBtn");
   const lockBtn = $("lockBtn");
   const printBtn = $("printBtn");
+  if(spot) spot.addEventListener('input', updateOrodexHero);
+  if(ccy) ccy.addEventListener('change', updateOrodexHero);
+
 
   let locked = false;
   let fxUSDTo = 1;
@@ -1544,6 +1728,7 @@ async function fetchFX(from,to){
       showToast("Live spot + FX updated.");
       updateDashboard();
       calcGold();
+      updateOrodexHero();
     } catch(e){
       spot.placeholder = "enter manually";
       fxLine.textContent = (fxToCCY === ccy.value && fxUSDTo > 0) ? ((ccy.value==="USD")?"FX: USD→USD 1.0000":`FX: USD→${ccy.value} ${num(fxUSDTo, 6)} (cached)`) : "FX: —";
@@ -2106,6 +2291,94 @@ function removeBatchItem(idx){
   });
 
   [weight, unit, customFine, spot, buyback].forEach(el => el.addEventListener("input", calcGold));
+  
+  // =========================
+  // ORODEX HERO INDEX (fixed 18k)
+  // =========================
+  const ORX = { purity: 0.75, haircut: 0.00, AF: 0.22, AS: 0.03, sigma: 0.012, ZB: 0.85, ZS: 1.35 };
+  let orxFast = null, orxSlow = null;
+
+  const orxFmt = (v, currency) => {
+    // keep it compact: no cents for large numbers, 2 decimals for $/g
+    const isSmall = v < 1000;
+    const digits = isSmall ? 2 : 0;
+    try{
+      return new Intl.NumberFormat(undefined, { style:"currency", currency, maximumFractionDigits:digits }).format(v);
+    }catch(e){
+      return (currency === "USD" ? "$" : "") + v.toFixed(digits);
+    }
+  };
+
+  function updateOrodexHero(){
+    const el = $("orxValue");
+    if(!el) return;
+
+    const currency = (ccy && ccy.value) ? ccy.value : "USD";
+    const spotOz = Number(spot && spot.value);
+    if(!Number.isFinite(spotOz) || spotOz <= 0) return;
+
+    // EWMA on spot (in selected currency per oz)
+    orxFast = (orxFast === null) ? spotOz : (ORX.AF * spotOz + (1-ORX.AF) * orxFast);
+    orxSlow = (orxSlow === null) ? spotOz : (ORX.AS * spotOz + (1-ORX.AS) * orxSlow);
+
+    // Melt floor at 18k
+    const floorOz = spotOz * ORX.purity * (1-ORX.haircut);
+    orxSlow = Math.max(orxSlow, floorOz);
+
+    // Asymmetric band around reference
+    let buyOz = orxSlow * Math.exp(-ORX.ZB * ORX.sigma);
+    let sellOz = orxSlow * Math.exp(+ORX.ZS * ORX.sigma);
+    buyOz = Math.max(buyOz, floorOz);
+
+    const gPerOz = 31.1035;
+    const idxG = orxSlow / gPerOz;
+    const buyG = buyOz / gPerOz;
+    const sellG = sellOz / gPerOz;
+    const floorG = floorOz / gPerOz;
+
+    // Animated count-up for $/g
+    const prevAttr = el.getAttribute("data-prev");
+    const prev = (prevAttr === "" || prevAttr === null) ? idxG : Number(prevAttr);
+    const start = Number.isFinite(prev) ? prev : idxG;
+    const end = idxG;
+
+    const t0 = performance.now();
+    const dur = 420;
+    const step = (now) => {
+      const p = Math.min(1, (now - t0) / dur);
+      const eased = 1 - Math.pow(1-p, 3);
+      const cur = start + (end - start) * eased;
+      el.textContent = orxFmt(cur, currency);
+      if(p < 1) requestAnimationFrame(step);
+      else{
+        el.setAttribute("data-prev", String(end));
+        el.classList.remove("orx-bump"); void el.offsetWidth; el.classList.add("orx-bump");
+      }
+    };
+    requestAnimationFrame(step);
+
+    const unit = $("orxUnit");
+    if(unit) unit.textContent = `${currency} / g (18k) • band`;
+
+    const buyEl = $("orxBuy"), sellEl = $("orxSell"), floorEl = $("orxFloor");
+    if(buyEl) buyEl.textContent = orxFmt(buyG, currency);
+    if(sellEl) sellEl.textContent = orxFmt(sellG, currency);
+    if(floorEl) floorEl.textContent = orxFmt(floorG, currency);
+
+    const score = 100 * (orxFast - buyOz) / (sellOz - buyOz);
+    const s = Math.max(0, Math.min(100, score));
+    const note = $("orxNote");
+    if(note) note.textContent = (s <= 20) ? "Buyable" : (s >= 70) ? "Rich" : "Fair";
+
+    const marker = $("orxMarker");
+    if(marker){
+      const pct = Math.max(0, Math.min(1, (orxFast - buyOz) / (sellOz - buyOz)));
+      marker.style.left = (pct * 100).toFixed(2) + "%";
+      marker.classList.remove("orx-pulse"); void marker.offsetWidth; marker.classList.add("orx-pulse");
+    }
+  }
+
+
   refreshBtn.addEventListener("click", refreshAll);
   if(metalSel) metalSel.addEventListener("change", () => { setPurityOptions(); refreshAll(); });
   lockBtn.addEventListener("click", toggleLock);
@@ -3284,6 +3557,4 @@ function removeBatchItem(idx){
     if(btn){ btn.addEventListener("click", function(ev){ ev.preventDefault(); window._odeonGemEstimate && window._odeonGemEstimate(); }); }
     // Recompute on any input change
     ["gemStone","gemShape","gemL","gemW","gemD","gemDepthPct"].forEach(function(id){
-      var el=document.getElementById(id);
-      if(el){ el.addEventListener("input", function(){ window._odeonGemEstimate && window._odeonGemEstimate(); });
-              el.addEventListe
+      var el=document.getElem
