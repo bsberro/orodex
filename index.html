@@ -3428,4 +3428,13 @@ function removeBatchItem(idx){
     if(btn){ btn.addEventListener("click", function(ev){ ev.preventDefault(); window._odeonGemEstimate && window._odeonGemEstimate(); }); }
     // Recompute on any input change
     ["gemStone","gemShape","gemL","gemW","gemD","gemDepthPct"].forEach(function(id){
-      var el=document.getElem
+      var el=document.getElement(id);
+      if(el){ el.addEventListener("input", function(){ window._odeonGemEstimate && window._odeonGemEstimate(); }); }
+    });
+  });
+})();
+</script>
+
+<script defer src="https://va.vercel-scripts.com/v1/script.js"></script>
+</body>
+</html>
