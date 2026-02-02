@@ -317,34 +317,6 @@ button:not(.black) {
           <div class="collection">Trade Reference by Odeon</div>
         </div>
 
-        <div class="orodex-hero" aria-label="Orodex Index">
-          <div class="orx-top">
-            <div class="orx-title">ORODEX INDEX</div>
-            <div class="orx-pill">LIVE</div>
-          </div>
-          <div class="orx-sub">18k melt reference • updates live</div>
-
-          <div class="orx-main">
-            <div class="orx-value" id="orxValue" data-prev="">—</div>
-            <div class="orx-unit" id="orxUnit">—</div>
-          </div>
-
-          <div class="orx-band">
-            <div class="orx-band-row">
-              <div class="muted tiny">Trade band</div>
-              <div class="muted tiny"><span id="orxBuy">—</span> → <span id="orxSell">—</span></div>
-            </div>
-            <div class="orx-bar" aria-label="Trade band range">
-              <div class="orx-fill"></div>
-              <div class="orx-marker" id="orxMarker" style="left:50%"></div>
-            </div>
-            <div class="orx-foot">
-              <div class="orx-note" id="orxNote">—</div>
-              <div class="muted tiny">Floor: <span id="orxFloor">—</span></div>
-            </div>
-          </div>
-        </div>
-
 
         <div class="meta">
           <div><b id="spotLine">Spot: —</b></div>
@@ -403,7 +375,6 @@ button:not(.black) {
         <button onclick="window.activateTab && window.activateTab('signed')" class="tabbtn" data-tab="signed" role="tab" aria-selected="false">Signed</button>
         <button onclick="window.activateTab && window.activateTab('batch')" class="tabbtn" data-tab="batch" role="tab" aria-selected="false">Batch</button>
         <button onclick="window.activateTab && window.activateTab('auction')" class="tabbtn" data-tab="auction" role="tab" aria-selected="false">Auction</button>
-        <button onclick="window.activateTab && window.activateTab('faq')" class="tabbtn" data-tab="faq" role="tab" aria-selected="false">Q&A</button>
       </div>
       <div class="tabhint" id="tabHint">Live spot + FX, buyback, and one-item melt value.</div>
     </div>
@@ -414,16 +385,6 @@ button:not(.black) {
         <div class="ph-sub" id="printSub">—</div>
       </div>
       
-      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:16px; margin-bottom:40px;">
-        <div style="border:1px solid #3b82f6; padding:12px; border-radius:4px; text-align:center;">
-          <div style="font-size:10px; color:#3b82f6; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px;">52-Week Low</div>
-          <div style="font-size:20px; font-weight:300; color:#3b82f6;" id="topLow">$2,063</div>
-        </div>
-        <div style="border:1px solid #10b981; padding:12px; border-radius:4px; text-align:center;">
-          <div style="font-size:10px; color:#10b981; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px;">52-Week High</div>
-          <div style="font-size:20px; font-weight:300; color:#10b981;" id="topHigh">$2,765</div>
-        </div>
-      </div>
 
       <!-- TABS -->
       <section id="panel-gold" class="panel hidden">
@@ -928,92 +889,6 @@ button:not(.black) {
   </div>
 </section>
 
-<!-- TAB: Q&A -->
-<section id="panel-faq" class="panel hidden">
-  <h2>Questions & Answers</h2>
-  
-  <div class="faq-container">
-    <div class="faq-item">
-      <div class="faq-q">What is ORODEX?</div>
-      <div class="faq-a">ORODEX is a live reference tool for precious-metal valuation. It combines real-time spot prices, FX rates, and standardized purity logic to give fast, transparent estimates for melt value, dealer buyback, signed pieces, batches, and auction outcomes. It is designed for dealers, collectors, and professionals who need clarity—not price speculation.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">What does the ORODEX Index represent?</div>
-      <div class="faq-a">The ORODEX Index is a live 18k gold melt reference. It answers one simple question: "What is one gram of 18k gold worth right now, at spot?" The index updates automatically using live spot and FX data and serves as a common language for discussions, pricing, and comparisons.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">Is ORODEX a buy or sell price?</div>
-      <div class="faq-a">No. All values shown are indicative references, not offers. Melt value = theoretical intrinsic metal value at spot. Buyback value = melt × selected buyback percentage. Actual dealer offers may vary based on volume, form, relationship, and market conditions.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">Where do spot prices come from?</div>
-      <div class="faq-a">Spot prices are derived from an aggregate of LBMA / COMEX references, converted into your selected currency using live FX. Diagnostics (available in the header) show spot feed status, FX feed status, and last update time.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">What metals are supported?</div>
-      <div class="faq-a">ORODEX currently supports Gold (XAU), Silver (XAG), and Platinum (XPT). Each metal automatically loads appropriate purity presets.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">How accurate are the melt calculations?</div>
-      <div class="faq-a">Calculations are mathematically precise and based on troy ounce standards, correct gram / dwt / oz conversions, and exact fineness factors. Accuracy depends on the correctness of the weight and purity you enter.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">What is the "Buyback %" field?</div>
-      <div class="faq-a">This lets you model dealer payout scenarios. Examples: 100% → full melt (theoretical), 95% → strong dealer bid, 85–90% → typical wholesale buyback. It does not change spot—only the payout estimate.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">What is the "Signed Pieces" tab for?</div>
-      <div class="faq-a">This tool compares intrinsic metal value vs. asking price for signed or branded jewelry. It shows melt value, multiple of gold, premium over intrinsic metal, and a clean, prepared summary line for sharing or printing. It helps answer: "How much of this price is gold—and how much is signature?"</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">Are gemstones included in the melt?</div>
-      <div class="faq-a">No. Gemstones are not included in melt calculations. ORODEX is metal-centric by design. Any gem value should be considered separately.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">What is the Batch tool used for?</div>
-      <div class="faq-a">The Batch tab lets you quote multiple items at once, mix purities and weights, apply a unified buyback percentage, and export summaries or CSVs. It is ideal for estate buys, dealer memos, or lot analysis.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">How does the Auction Estimator work?</div>
-      <div class="faq-a">The Auction tool calculates buyer's premium, total buyer cost, and effective premium percentage. It uses published tiered schedules from major auction houses or a custom flat premium if selected. Note: VAT / sales tax is intentionally excluded.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">Can I lock prices?</div>
-      <div class="faq-a">Yes. The Lock button freezes the current spot price so you can discuss deals, print PDFs, and avoid intraday volatility during negotiations.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">Is my data saved?</div>
-      <div class="faq-a">Yes—locally. ORODEX uses local browser storage only to remember last inputs, tab state, and batch items. No data is transmitted or stored on external servers.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">Is ORODEX financial advice?</div>
-      <div class="faq-a">No. ORODEX is a reference and calculation tool, not investment advice, pricing guidance, or an offer to transact.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">Who is ORODEX for?</div>
-      <div class="faq-a">Jewelry dealers, collectors, auction buyers, estate professionals, and anyone who wants clarity before emotion.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">I have a question or want to sell—what next?</div>
-      <div class="faq-a">You can contact Odeon directly via <a href="mailto:bonjour@odeoncollection.com">bonjour@odeoncollection.com</a> or <a href="https://wa.me/19174454885" target="_blank" rel="noopener">WhatsApp</a>.</div>
-    </div>
-  </div>
-</section>
 
 
 
@@ -1249,14 +1124,13 @@ button:not(.black) {
   // Tabs
   let currentTab = "gold";
   const tabButtons = Array.from(document.querySelectorAll(".tabbtn"));
-  const panels = { gold: $("panel-gold"), signed: $("panel-signed"), batch: $("panel-batch"), auction: $("panel-auction"), gems: $("panel-gems"), faq: $("panel-faq")  };
+  const panels = { gold: $("panel-gold"), signed: $("panel-signed"), batch: $("panel-batch"), auction: $("panel-auction"), gems: $("panel-gems")  };
   const tabHint = $("tabHint");
   const tabHints = {
     gold: "Live spot + FX, buyback, and one-item melt value.",
     signed: "Enter asking price and signature to see premium over intrinsic gold.",
     batch: "Multi-item batch quoting with totals, buyback, and optional asking premiums.",
     auction: "Hammer + tiered buyer’s premium (tax-free).",
-    faq: "Common questions about ORODEX and how to use it.",
   };
   function activateTab(name){
     currentTab = name;
@@ -1662,8 +1536,6 @@ async function fetchFX(from,to){
   // Note: Replace above with real Firebase config from your console
   // For now, using localStorage as fallback
 
-  function updateDashboard(){if(spot&&spot.value){const p=parseFloat(spot.value);const topL=document.getElementById('topLow');const topH=document.getElementById('topHigh');if(topL)topL.textContent='$'+(p*0.75).toFixed(2);if(topH)topH.textContent='$'+p.toFixed(2);}}
-
   // Calculator Functions
   let calcVal = '0';
   let calcOp = null;
@@ -1726,7 +1598,6 @@ async function fetchFX(from,to){
       timeLine.textContent = nowString();
       fxLine.textContent = (target === "USD") ? "FX: USD→USD 1.0000" : `FX: USD→${target} ${num(rate, 6)}`;
       showToast("Live spot + FX updated.");
-      updateDashboard();
       calcGold();
       updateOrodexHero();
     } catch(e){
